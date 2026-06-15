@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — AutoRent CRM</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <h1>AUTORENT</h1>
+        <p>Система управления арендой автомобилей</p>
+      </div>
+
+      <div id="error-msg" class="alert alert-error hidden"></div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label">Логин</label>
+          <input type="text" id="login-input" class="form-input" placeholder="Введите логин" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Пароль</label>
+          <input type="password" id="password-input" class="form-input" placeholder="Введите пароль" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%; justify-content:center; margin-top:8px;">
+          Войти
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/api/config.js"></script>
+  <script src="../js/api/auth.js"></script>
+  <script src="../js/utils/storage.js"></script>
+  <script src="../js/utils/sw-register.js"></script>
+  <script src="../js/pages/login.js"></script>
+</body>
+</html>

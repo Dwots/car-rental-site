@@ -1,0 +1,53 @@
+@media print {
+  .sidebar,
+  .header,
+  .btn-print,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  .contract-wrapper {
+    padding: 0 !important;
+  }
+
+  .contract-document {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    font-size: 11pt;
+    color: black !important;
+    background: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .contract-document * {
+    color: black !important;
+    border-color: #999 !important;
+  }
+
+  /* Штрих-код при печати */
+  .barcode-container {
+    background: white !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .barcode-label {
+    color: #333 !important;
+  }
+
+  /* Бейджи статусов */
+  .status-badge {
+    border: 1px solid #999 !important;
+    color: #000 !important;
+  }
+}

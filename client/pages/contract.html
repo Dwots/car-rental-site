@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Договор — AutoRent CRM</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/print.css">
+  <!-- Подключаем библиотеку штрих-кодов -->
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  <style>
+    .contract-wrapper { padding: 32px; }
+
+    .contract-document {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .contract-header {
+      text-align: center;
+      margin-bottom: 36px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contract-header h2 {
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .contract-order-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent-hover);
+      letter-spacing: 0.05em;
+      line-height: 1;
+      margin: 8px 0 12px;
+    }
+
+    .contract-header p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    /* Штрих-код */
+    .barcode-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 16px 0;
+      padding: 12px;
+      background: white;
+      border-radius: 8px;
+    }
+
+    .barcode-container svg {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .barcode-label {
+      font-size: 11px;
+      color: #666;
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .contract-section { margin-bottom: 28px; }
+
+    .contract-section h3 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-hover);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contract-row {
+      display: flex;
+      gap: 8px;
+      font-size: 14px;
+      margin-bottom: 8px;
+      align-items: baseline;
+    }
+
+    .contract-row-label {
+      color: var(--text-secondary);
+      min-width: 200px;
+      flex-shrink: 0;
+    }
+
+    .signatures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .signature-block { font-size: 13px; }
+    .signature-block p { margin-bottom: 8px; }
+
+    .signature-line {
+      border-bottom: 1px solid var(--text-secondary);
+      height: 40px;
+      margin-bottom: 6px;
+    }
+
+    .conditions p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h1>AUTORENT</h1>
+        <span>CRM система</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="new-order.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Новый заказ
+        </a>
+        <a href="search.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+          Поиск заказа
+        </a>
+        <a href="cars.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14l4 4v4a2 2 0 0 1-2 2h-2M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
+          Автомобили
+        </a>
+        <a href="return.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 0 1 8 8v2M3 10l6 6m-6-6l6-6"/></svg>
+          Возврат
+        </a>
+        <a href="logs.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M7 4h10a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V6a2 2 0 0 1 2-2z"/></svg>
+          Журнал
+        </a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <span class="header-title">Договор аренды</span>
+        <div class="header-employee flex gap-12">
+          <button class="btn btn-primary btn-print" id="print-btn" disabled>
+            Печать
+          </button>
+          <span class="employee-badge" id="employee-badge"></span>
+          <button class="btn btn-danger btn-sm" id="logout-btn">Выйти</button>
+        </div>
+      </header>
+
+      <div class="contract-wrapper">
+        <div id="loading" class="text-secondary">Загрузка договора...</div>
+        <div id="contract-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils/storage.js"></script>
+  <script src="../js/utils/auth-guard.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/api/config.js"></script>
+  <script src="../js/utils/crypto.js"></script>
+  <script src="../js/api/clients.js"></script>
+  <script src="../js/api/orders.js"></script>
+  <script src="../js/api/logs.js"></script>
+  <script src="../js/utils/offline-db.js"></script>
+  <script src="../js/utils/sync.js"></script>
+  <script src="../js/utils/sw-register.js"></script>
+  <script src="../js/pages/contract.js"></script>
+</body>
+</html>

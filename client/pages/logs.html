@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Журнал действий — AutoRent CRM</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <h1>AUTORENT</h1>
+        <span>CRM система</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="new-order.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Новый заказ
+        </a>
+        <a href="search.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg>
+          Поиск заказа
+        </a>
+        <a href="cars.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14l4 4v4a2 2 0 0 1-2 2h-2M5 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zm10 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0z"/></svg>
+          Автомобили
+        </a>
+        <a href="return.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 0 1 8 8v2M3 10l6 6m-6-6l6-6"/></svg>
+          Возврат
+        </a>
+        <a href="logs.html" class="nav-item">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M7 4h10a2 2 0 0 1 2 2v14l-4-2-4 2-4-2-4 2V6a2 2 0 0 1 2-2z"/></svg>
+          Журнал
+        </a>
+      </nav>
+    </aside>
+
+    <div class="main-content">
+      <header class="header">
+        <span class="header-title">Журнал действий</span>
+        <div class="header-employee">
+          <span class="employee-badge" id="employee-badge"></span>
+          <button class="btn btn-danger btn-sm" id="logout-btn">Выйти</button>
+        </div>
+      </header>
+
+      <div class="page-content">
+        <div class="flex gap-12 mb-16" style="justify-content:space-between; align-items:center;">
+          <div class="text-secondary">Последние действия сотрудников и офлайн-синхронизации</div>
+          <button class="btn btn-outline btn-sm" id="refresh-btn">Обновить</button>
+        </div>
+
+        <div id="loading" class="text-secondary">Загрузка...</div>
+        <div id="error-msg" class="alert alert-error hidden"></div>
+
+        <div class="table-wrapper hidden" id="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Действие</th>
+                <th>Сотрудник</th>
+                <th>Объект</th>
+                <th>ID</th>
+                <th>Детали</th>
+              </tr>
+            </thead>
+            <tbody id="logs-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils/storage.js"></script>
+  <script src="../js/utils/auth-guard.js"></script>
+  <script src="../js/utils/format.js"></script>
+  <script src="../js/api/config.js"></script>
+  <script src="../js/utils/crypto.js"></script>
+  <script src="../js/api/clients.js"></script>
+  <script src="../js/api/orders.js"></script>
+  <script src="../js/api/logs.js"></script>
+  <script src="../js/utils/offline-db.js"></script>
+  <script src="../js/utils/sync.js"></script>
+  <script src="../js/utils/sw-register.js"></script>
+  <script src="../js/pages/logs.js"></script>
+</body>
+</html>
