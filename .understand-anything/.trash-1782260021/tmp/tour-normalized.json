@@ -1,0 +1,140 @@
+[
+  {
+    "order": 1,
+    "title": "Обзор проекта и план реализации",
+    "description": "README проекта почти пустой («Сайт по аренде машин.»), поэтому настоящая дорожная карта живёт в папке docs. IMPLEMENTATION_GUIDE.md и tz-implementation-plan.md описывают архитектуру AutoRent целиком: серверная схема БД, аудит действий, шифрование клиентов, заказы, API-обёртки, IndexedDB, фоновая синхронизация, договор и Service Worker. Прочитайте их как карту перед погружением — каждый следующий шаг тура раскрывает один из этих блоков в коде.",
+    "nodeIds": [
+      "document:README.md",
+      "document:docs/IMPLEMENTATION_GUIDE.md",
+      "document:docs/tz-implementation-plan.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Точка входа сервера",
+    "description": "server/index.js — корень всего бэкенда и старт BFS-обхода зависимостей. Он настраивает CORS и раздачу статики клиента, монтирует все API-роуты (auth, cars, clients, orders, logs), инициализирует схему БД с тестовыми данными и запускает прослушивание порта. Манифест package.json фиксирует стек (Express 5, better-sqlite3, jsonwebtoken, bcryptjs) и задаёт именно этот файл точкой входа в режиме CommonJS.",
+    "nodeIds": [
+      "file:server/index.js",
+      "config:server/package.json"
+    ],
+    "languageLesson": "Express 5 монтирует роутеры через app.use('/api/...', router). В CommonJS модули подключаются через require/module.exports — в отличие от ESM, импорт синхронный, что и позволяет index.js собрать всё дерево зависимостей при первом запуске."
+  },
+  {
+    "order": 3,
+    "title": "Подключение к базе данных",
+    "description": "На глубине 1 от точки входа находится server/db.js — самый востребованный серверный модуль (fan-in 7). Он создаёт единственный экземпляр подключения к better-sqlite3, включает режим WAL для производительности и экспортирует его как singleton. Каждый роутер из следующих шагов импортирует именно этот экземпляр, поэтому понимание db.js — ключ ко всему слою данных.",
+    "nodeIds": [
+      "file:server/db.js"
+    ],
+    "languageLesson": "better-sqlite3 работает синхронно (db.prepare(...).get()/all()/run()), без коллбэков и промисов. Режим WAL (Write-Ahead Logging) позволяет читать БД одновременно с записью, что ускоряет работу при множестве запросов."
+  },
+  {
+    "order": 4,
+    "title": "Схема базы данных",
+    "description": "Миграция 001_create_tables.sql задаёт фундамент данных всего приложения: сотрудники (логин и bcrypt-хеш для входа), клиенты (паспорт и контакты), автомобили (тарифы и статус), заказы и журнал действий. Центральная таблица orders связывает сотрудника, клиента и автомобиль внешними ключами и дополнительно хранит денормализованные JSON-снимки и HTML-договор — это пригодится для offline-режима в дальнейшем. Таблица action_logs — основа аудита из следующих шагов.",
+    "nodeIds": [
+      "file:server/migrations/001_create_tables.sql",
+      "table:server/migrations/001_create_tables.sql:orders",
+      "table:server/migrations/001_create_tables.sql:employees",
+      "table:server/migrations/001_create_tables.sql:clients",
+      "table:server/migrations/001_create_tables.sql:cars"
+    ],
+    "languageLesson": "Внешние ключи (FOREIGN KEY) в SQLite связывают таблицы, но проверка ссылочной целостности включается прагмой PRAGMA foreign_keys = ON. Денормализованные снимки (JSON-колонки) намеренно дублируют данные, чтобы заказ оставался читаемым даже при изменении исходных записей."
+  },
+  {
+    "order": 5,
+    "title": "Сквозные службы: middleware, аудит, шифрование",
+    "description": "На глубине 2 обхода лежат три инфраструктурных модуля, от которых зависят почти все роутеры. middleware/auth.js извлекает Bearer-токен, проверяет JWT и кладёт сотрудника в req.employee. utils/audit.js функцией logAction пишет каждое действие в таблицу action_logs. utils/encrypt.js симметрично шифрует персональные данные через AES со случайным IV. Эти три кирпича обеспечивают безопасность и прослеживаемость на сервере.",
+    "nodeIds": [
+      "file:server/middleware/auth.js",
+      "file:server/utils/audit.js",
+      "file:server/utils/encrypt.js"
+    ],
+    "languageLesson": "Express-middleware — это функция (req, res, next): она либо передаёт управление дальше через next(), либо завершает запрос (например, 401 при невалидном токене). AES с случайным IV даёт разный шифротекст для одинаковых данных, поэтому IV хранят рядом с зашифрованным значением."
+  },
+  {
+    "order": 6,
+    "title": "Аутентификация: вход и выдача JWT",
+    "description": "Опираясь на db.js и audit.js из предыдущих шагов, роутер auth.js реализует POST /api/auth/login: проверяет пароль bcrypt-сравнением с хешем из таблицы employees и выдаёт JWT со сроком 8 часов. Это входная точка пользовательского сценария — без валидного токена middleware из шага 5 не пропустит ни один защищённый эндпоинт.",
+    "nodeIds": [
+      "file:server/routes/auth.js",
+      "endpoint:server/routes/auth.js:POST-/api/auth/login"
+    ],
+    "languageLesson": "bcrypt намеренно медленный и хранит соль внутри хеша, поэтому сравнение делается через bcrypt.compare, а не прямым сравнением строк. JWT подписывается секретом сервера: клиент не может подделать токен, но и сервер не хранит сессию — вся информация внутри самого токена."
+  },
+  {
+    "order": 7,
+    "title": "Защищённый CRUD: автомобили и заказы",
+    "description": "Роутеры cars.js и orders.js показывают типичный поток запроса. cars.js за authMiddleware отдаёт список машин, доступные машины и авто по id. orders.js — сердце бизнес-логики: создаёт заказ со снимками клиента и автомобиля, ищет по паспорту и id, оформляет возврат и фиксирует печать договора, по пути расшифровывая данные (encrypt.js) и логируя действия (audit.js). Вместе с clients.js эти роутеры образуют самый плотно связанный кластер сервера.",
+    "nodeIds": [
+      "file:server/routes/cars.js",
+      "file:server/routes/orders.js",
+      "file:server/routes/clients.js",
+      "endpoint:server/routes/cars.js:GET-/api/cars/available"
+    ],
+    "languageLesson": "Денормализованные снимки в заказе (JSON.stringify клиента и машины при создании) — это паттерн «event sourcing lite»: заказ фиксирует состояние на момент сделки, поэтому последующее изменение тарифа или данных клиента не искажает уже оформленный договор."
+  },
+  {
+    "order": 8,
+    "title": "Переход на клиент: вход и базовый HTTP-слой",
+    "description": "Теперь пересекаем границу к фронтенду. Страница login.html и контроллер login.js вызывают API-обёртку api/auth.js, которая, как и все остальные, работает поверх api/config.js. config.js (fan-in 7) — фундамент клиентского сетевого слоя: функция apiRequest подставляет JWT-токен в каждый запрос и сбрасывает авторизацию при ответе 401. После успешного входа токен сохраняется через storage.js.",
+    "nodeIds": [
+      "file:client/pages/login.html",
+      "file:client/js/pages/login.js",
+      "file:client/js/api/auth.js",
+      "file:client/js/api/config.js",
+      "file:client/js/utils/storage.js"
+    ],
+    "languageLesson": "В этом проекте нет сборщика и модулей ES — скрипты подключаются тегами <script> по порядку, а функции живут в глобальной области. Поэтому config.js должен загружаться раньше api-обёрток, которые от него зависят: порядок <script> в HTML и есть граф зависимостей."
+  },
+  {
+    "order": 9,
+    "title": "Страница и её контроллер: каталог авто",
+    "description": "На примере каталога видно общую структуру UI-слоя: cars.html описывает разметку и боковую навигацию, а контроллер cars.js загружает машины через api/cars.js и рендерит таблицу. Утилита auth-guard.js (fan-in 6) подключена почти к каждой защищённой странице: при отсутствии токена она редиректит на вход, показывает имя сотрудника и подсвечивает активный пункт меню. format.js даёт форматирование цен, дат и статусов.",
+    "nodeIds": [
+      "file:client/pages/cars.html",
+      "file:client/js/pages/cars.js",
+      "file:client/js/api/cars.js",
+      "file:client/js/utils/auth-guard.js",
+      "file:client/js/utils/format.js"
+    ],
+    "languageLesson": "format.js использует Intl.NumberFormat и Intl.DateTimeFormat — встроенную в браузер локализацию, без сторонних библиотек. Функция formatDuration через pluralize выбирает правильную форму слова («1 день», «2 дня», «5 дней») по правилам русского языка."
+  },
+  {
+    "order": 10,
+    "title": "Оформление заказа и клиентское шифрование",
+    "description": "new-order.html и new-order.js — самый функциональный сценарий клиента: многошаговая форма с валидацией паспорта, телефона и водительского удостоверения, поиском или созданием клиента, выбором машины и расчётом цены. Создание клиента идёт через api/clients.js, который перед отправкой шифрует персональные данные через crypto.js (Web Crypto API, AES-GCM) — клиентское шифрование зеркалит серверное из шага 5. Здесь же впервые появляется offline-очередь заказов в IndexedDB.",
+    "nodeIds": [
+      "file:client/pages/new-order.html",
+      "file:client/js/pages/new-order.js",
+      "file:client/js/api/clients.js",
+      "file:client/js/utils/crypto.js"
+    ],
+    "languageLesson": "Web Crypto API (crypto.subtle) асинхронен и возвращает промисы, а ключи импортируются через importKey. AES-GCM, в отличие от серверного AES-CBC, даёт аутентифицированное шифрование: тег целостности позволяет обнаружить подмену шифротекста."
+  },
+  {
+    "order": 11,
+    "title": "Offline-хранилище и сценарии поиска/возврата",
+    "description": "offline-db.js (на IndexedDB) — основа PWA-устойчивости: кэш заказов, клиентов и машин плюс очередь отложенных заказов и offline-логов. Контроллеры search.js и return.js демонстрируют гибридную логику: поиск объединяет данные с сервера, из offline-кэша и из локальной очереди, а возврат при отсутствии сети пишет offline-лог. contract.js завершает сценарий — печатает договор, беря заказ с сервера или из кэша, и генерирует штрихкод.",
+    "nodeIds": [
+      "file:client/js/utils/offline-db.js",
+      "file:client/js/pages/search.js",
+      "file:client/js/pages/return.js",
+      "file:client/js/pages/contract.js"
+    ],
+    "languageLesson": "IndexedDB — асинхронная браузерная БД с object stores (аналог таблиц) и транзакциями. Здесь она играет роль локального буфера: операции, сделанные offline, складываются в очередь, чтобы быть отправленными на сервер, когда сеть вернётся."
+  },
+  {
+    "order": 12,
+    "title": "PWA: Service Worker и фоновая синхронизация",
+    "description": "Финальный аккорд — offline-возможности PWA. sw.js кэширует app shell (статические ресурсы) и обслуживает запросы из кэша при отсутствии сети, а sw-register.js подключает его при загрузке окна. sync.js при восстановлении сети отправляет отложенные заказы и offline-логи на сервер (роуты orders и logs из шагов 6-7), создаёт накопленных клиентов и разрешает конфликты по статусам машин. Документ FULL_VERIFICATION.md даёт пошаговый сценарий проверки всей этой связки online/offline.",
+    "nodeIds": [
+      "file:client/sw.js",
+      "file:client/js/utils/sw-register.js",
+      "file:client/js/utils/sync.js",
+      "file:server/routes/logs.js",
+      "document:docs/FULL_VERIFICATION.md"
+    ],
+    "languageLesson": "Service Worker — фоновый скрипт-прокси между страницей и сетью с жизненным циклом install → activate → fetch. Он работает в отдельном потоке без доступа к DOM, поэтому общение со страницей идёт через сообщения, а кэширование — через Cache API."
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "README.md", "language": "markdown", "sizeLines": 0, "fileCategory": "docs"},
+    {"path": "server/package.json", "language": "json", "sizeLines": 26, "fileCategory": "config"}
+  ],
+  "batchImportData": {"README.md": [], "server/package.json": []}
+}

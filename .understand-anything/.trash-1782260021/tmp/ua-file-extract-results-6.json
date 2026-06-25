@@ -1,0 +1,3230 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 23,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/css/main.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 522,
+      "nonEmptyLines": 447,
+      "metrics": {}
+    },
+    {
+      "path": "client/css/print.css",
+      "language": "css",
+      "fileCategory": "markup",
+      "totalLines": 53,
+      "nonEmptyLines": 45,
+      "metrics": {}
+    },
+    {
+      "path": "client/js/api/auth.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "functions": [
+        {
+          "name": "loginRequest",
+          "startLine": 1,
+          "endLine": 3,
+          "params": [
+            "login",
+            "password"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loginRequest",
+          "callee": "apiRequest",
+          "lineNumber": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/api/cars.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 8,
+      "nonEmptyLines": 7,
+      "functions": [
+        {
+          "name": "getCars",
+          "startLine": 1,
+          "endLine": 4,
+          "params": []
+        },
+        {
+          "name": "getAvailableCars",
+          "startLine": 6,
+          "endLine": 8,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getCars",
+          "callee": "apiRequest",
+          "lineNumber": 3
+        },
+        {
+          "caller": "getAvailableCars",
+          "callee": "apiRequest",
+          "lineNumber": 7
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/api/clients.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 14,
+      "nonEmptyLines": 13,
+      "functions": [
+        {
+          "name": "findClient",
+          "startLine": 1,
+          "endLine": 3,
+          "params": [
+            "passport"
+          ]
+        },
+        {
+          "name": "createClient",
+          "startLine": 5,
+          "endLine": 14,
+          "params": [
+            "data"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "findClient",
+          "callee": "apiRequest",
+          "lineNumber": 2
+        },
+        {
+          "caller": "findClient",
+          "callee": "encodeURIComponent",
+          "lineNumber": 2
+        },
+        {
+          "caller": "createClient",
+          "callee": "encryptText",
+          "lineNumber": 8
+        },
+        {
+          "caller": "createClient",
+          "callee": "encryptText",
+          "lineNumber": 9
+        },
+        {
+          "caller": "createClient",
+          "callee": "encryptText",
+          "lineNumber": 10
+        },
+        {
+          "caller": "createClient",
+          "callee": "encryptText",
+          "lineNumber": 11
+        },
+        {
+          "caller": "createClient",
+          "callee": "apiRequest",
+          "lineNumber": 13
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/api/config.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 39,
+      "functions": [
+        {
+          "name": "readAuthToken",
+          "startLine": 3,
+          "endLine": 5,
+          "params": []
+        },
+        {
+          "name": "removeAuthToken",
+          "startLine": 7,
+          "endLine": 12,
+          "params": []
+        },
+        {
+          "name": "apiRequest",
+          "startLine": 14,
+          "endLine": 49,
+          "params": [
+            "method",
+            "url"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "readAuthToken",
+          "callee": "localStorage.getItem",
+          "lineNumber": 4
+        },
+        {
+          "caller": "readAuthToken",
+          "callee": "sessionStorage.getItem",
+          "lineNumber": 4
+        },
+        {
+          "caller": "removeAuthToken",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 8
+        },
+        {
+          "caller": "removeAuthToken",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 9
+        },
+        {
+          "caller": "removeAuthToken",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 10
+        },
+        {
+          "caller": "removeAuthToken",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 11
+        },
+        {
+          "caller": "apiRequest",
+          "callee": "readAuthToken",
+          "lineNumber": 15
+        },
+        {
+          "caller": "apiRequest",
+          "callee": "JSON.stringify",
+          "lineNumber": 26
+        },
+        {
+          "caller": "apiRequest",
+          "callee": "fetch",
+          "lineNumber": 31
+        },
+        {
+          "caller": "apiRequest",
+          "callee": "removeAuthToken",
+          "lineNumber": 37
+        },
+        {
+          "caller": "apiRequest",
+          "callee": "response.json",
+          "lineNumber": 42
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 3,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/api/logs.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 3,
+      "nonEmptyLines": 3,
+      "functions": [
+        {
+          "name": "getLogs",
+          "startLine": 1,
+          "endLine": 3,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getLogs",
+          "callee": "apiRequest",
+          "lineNumber": 2
+        },
+        {
+          "caller": "getLogs",
+          "callee": "encodeURIComponent",
+          "lineNumber": 2
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/api/orders.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 19,
+      "nonEmptyLines": 15,
+      "functions": [
+        {
+          "name": "createOrder",
+          "startLine": 1,
+          "endLine": 3,
+          "params": [
+            "data"
+          ]
+        },
+        {
+          "name": "getOrder",
+          "startLine": 5,
+          "endLine": 7,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "returnOrder",
+          "startLine": 9,
+          "endLine": 11,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "markOrderPrinted",
+          "startLine": 13,
+          "endLine": 15,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getOrdersByPassport",
+          "startLine": 17,
+          "endLine": 19,
+          "params": [
+            "passport"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "createOrder",
+          "callee": "apiRequest",
+          "lineNumber": 2
+        },
+        {
+          "caller": "getOrder",
+          "callee": "apiRequest",
+          "lineNumber": 6
+        },
+        {
+          "caller": "returnOrder",
+          "callee": "apiRequest",
+          "lineNumber": 10
+        },
+        {
+          "caller": "markOrderPrinted",
+          "callee": "apiRequest",
+          "lineNumber": 14
+        },
+        {
+          "caller": "getOrdersByPassport",
+          "callee": "apiRequest",
+          "lineNumber": 18
+        },
+        {
+          "caller": "getOrdersByPassport",
+          "callee": "encodeURIComponent",
+          "lineNumber": 18
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/cars.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 59,
+      "nonEmptyLines": 52,
+      "callGraph": [
+        {
+          "caller": "renderTable",
+          "callee": "cars.map(car => `\r\n      <tr>\r\n        <td><strong>${car.brand} ${car.model}</strong></td>\r\n        <td>${car.year}</td>\r\n        <td>${car.reg_number}</td>\r\n        <td style=\"font-size:12px; color:var(--text-secondary);\">${car.vin}</td>\r\n        <td>${car.color}</td>\r\n        <td class=\"text-accent\">${formatPrice(car.price_per_day)}</td>\r\n        <td class=\"text-accent\">${formatPrice(car.price_per_hour)}</td>\r\n        <td>\r\n          <span class=\"status-badge ${getStatusClass(car.status)}\">\r\n            ${getStatusLabel(car.status)}\r\n          </span>\r\n        </td>\r\n      </tr>\r\n    `).join",
+          "lineNumber": 42
+        },
+        {
+          "caller": "renderTable",
+          "callee": "cars.map",
+          "lineNumber": 42
+        },
+        {
+          "caller": "renderTable",
+          "callee": "formatPrice",
+          "lineNumber": 49
+        },
+        {
+          "caller": "renderTable",
+          "callee": "formatPrice",
+          "lineNumber": 50
+        },
+        {
+          "caller": "renderTable",
+          "callee": "getStatusClass",
+          "lineNumber": 52
+        },
+        {
+          "caller": "renderTable",
+          "callee": "getStatusLabel",
+          "lineNumber": 53
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/contract.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 309,
+      "nonEmptyLines": 274,
+      "functions": [
+        {
+          "name": "loadServerOrder",
+          "startLine": 89,
+          "endLine": 99,
+          "params": [
+            "orderId"
+          ]
+        },
+        {
+          "name": "normalizeOrder",
+          "startLine": 101,
+          "endLine": 122,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "getOrderNumber",
+          "startLine": 124,
+          "endLine": 126,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "setupPrint",
+          "startLine": 128,
+          "endLine": 153,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "renderContract",
+          "startLine": 155,
+          "endLine": 292,
+          "params": [
+            "o"
+          ]
+        },
+        {
+          "name": "generateBarcode",
+          "startLine": 294,
+          "endLine": 309,
+          "params": [
+            "orderId"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loadServerOrder",
+          "callee": "getOrder",
+          "lineNumber": 91
+        },
+        {
+          "caller": "loadServerOrder",
+          "callee": "saveCachedOrder",
+          "lineNumber": 92
+        },
+        {
+          "caller": "loadServerOrder",
+          "callee": "getCachedOrder",
+          "lineNumber": 95
+        },
+        {
+          "caller": "setupPrint",
+          "callee": "document.getElementById",
+          "lineNumber": 129
+        },
+        {
+          "caller": "setupPrint",
+          "callee": "document.getElementById",
+          "lineNumber": 130
+        },
+        {
+          "caller": "setupPrint",
+          "callee": "content.insertAdjacentHTML",
+          "lineNumber": 139
+        },
+        {
+          "caller": "setupPrint",
+          "callee": "content.insertAdjacentHTML",
+          "lineNumber": 148
+        },
+        {
+          "caller": "renderContract",
+          "callee": "getOrderNumber",
+          "lineNumber": 156
+        },
+        {
+          "caller": "renderContract",
+          "callee": "formatDateOnly",
+          "lineNumber": 165
+        },
+        {
+          "caller": "renderContract",
+          "callee": "formatDuration",
+          "lineNumber": 246
+        },
+        {
+          "caller": "renderContract",
+          "callee": "formatDate",
+          "lineNumber": 250
+        },
+        {
+          "caller": "renderContract",
+          "callee": "formatPrice",
+          "lineNumber": 254
+        },
+        {
+          "caller": "renderContract",
+          "callee": "getStatusClass",
+          "lineNumber": 258
+        },
+        {
+          "caller": "renderContract",
+          "callee": "getStatusLabel",
+          "lineNumber": 258
+        },
+        {
+          "caller": "generateBarcode",
+          "callee": "JsBarcode",
+          "lineNumber": 297
+        },
+        {
+          "caller": "generateBarcode",
+          "callee": "String",
+          "lineNumber": 297
+        },
+        {
+          "caller": "generateBarcode",
+          "callee": "console.error",
+          "lineNumber": 307
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 6,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/login.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 41,
+      "nonEmptyLines": 35,
+      "callGraph": [
+        {
+          "caller": "showError",
+          "callee": "errorMsg.classList.remove",
+          "lineNumber": 39
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/logs.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 96,
+      "nonEmptyLines": 87,
+      "functions": [
+        {
+          "name": "getActionLabel",
+          "startLine": 55,
+          "endLine": 74,
+          "params": [
+            "action"
+          ]
+        },
+        {
+          "name": "getActionClass",
+          "startLine": 76,
+          "endLine": 81,
+          "params": [
+            "action"
+          ]
+        },
+        {
+          "name": "formatDetails",
+          "startLine": 83,
+          "endLine": 87,
+          "params": [
+            "details"
+          ]
+        },
+        {
+          "name": "escapeHtml",
+          "startLine": 89,
+          "endLine": 96,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "loadLogs",
+          "callee": "loading.classList.remove",
+          "lineNumber": 9
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "errorMsg.classList.add",
+          "lineNumber": 10
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "tableWrapper.classList.add",
+          "lineNumber": 11
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "getLogs",
+          "lineNumber": 14
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "renderLogs",
+          "lineNumber": 15
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "tableWrapper.classList.remove",
+          "lineNumber": 16
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "errorMsg.classList.remove",
+          "lineNumber": 19
+        },
+        {
+          "caller": "loadLogs",
+          "callee": "loading.classList.add",
+          "lineNumber": 21
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "logs.map(log => `\r\n      <tr>\r\n        <td>${escapeHtml(formatDate(log.created_at))}</td>\r\n        <td>\r\n          <span class=\"status-badge ${getActionClass(log.action)}\">\r\n            ${escapeHtml(getActionLabel(log.action))}\r\n          </span>\r\n        </td>\r\n        <td>${escapeHtml(log.employee_name || log.employee_login || `ID ${log.employee_id}`)}</td>\r\n        <td>${escapeHtml(log.entity_type)}</td>\r\n        <td>${escapeHtml(log.entity_id || '—')}</td>\r\n        <td><code>${escapeHtml(formatDetails(log.details))}</code></td>\r\n      </tr>\r\n    `).join",
+          "lineNumber": 35
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "logs.map",
+          "lineNumber": 35
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 37
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "formatDate",
+          "lineNumber": 37
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "getActionClass",
+          "lineNumber": 39
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 40
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "getActionLabel",
+          "lineNumber": 40
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 43
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 44
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 45
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "escapeHtml",
+          "lineNumber": 46
+        },
+        {
+          "caller": "renderLogs",
+          "callee": "formatDetails",
+          "lineNumber": 46
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 77
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 77
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 78
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 78
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 79
+        },
+        {
+          "caller": "getActionClass",
+          "callee": "action.includes",
+          "lineNumber": 79
+        },
+        {
+          "caller": "formatDetails",
+          "callee": "JSON.stringify",
+          "lineNumber": 86
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value)\r\n    .replaceAll('&', '&amp;')\r\n    .replaceAll('<', '&lt;')\r\n    .replaceAll('>', '&gt;')\r\n    .replaceAll('\"', '&quot;')\r\n    .replaceAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value)\r\n    .replaceAll('&', '&amp;')\r\n    .replaceAll('<', '&lt;')\r\n    .replaceAll('>', '&gt;')\r\n    .replaceAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value)\r\n    .replaceAll('&', '&amp;')\r\n    .replaceAll('<', '&lt;')\r\n    .replaceAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value)\r\n    .replaceAll('&', '&amp;')\r\n    .replaceAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String(value)\r\n    .replaceAll",
+          "lineNumber": 90
+        },
+        {
+          "caller": "escapeHtml",
+          "callee": "String",
+          "lineNumber": 90
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/new-order.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 558,
+      "nonEmptyLines": 489,
+      "callGraph": [
+        {
+          "caller": "makeLocalId",
+          "callee": "Date.now",
+          "lineNumber": 19
+        },
+        {
+          "caller": "makeLocalId",
+          "callee": "Math.random().toString(16).slice",
+          "lineNumber": 19
+        },
+        {
+          "caller": "makeLocalId",
+          "callee": "Math.random().toString",
+          "lineNumber": 19
+        },
+        {
+          "caller": "makeLocalId",
+          "callee": "Math.random",
+          "lineNumber": 19
+        },
+        {
+          "caller": "nowForDisplay",
+          "callee": "new Date().toISOString().slice(0, 19).replace",
+          "lineNumber": 27
+        },
+        {
+          "caller": "nowForDisplay",
+          "callee": "new Date().toISOString().slice",
+          "lineNumber": 27
+        },
+        {
+          "caller": "nowForDisplay",
+          "callee": "new Date().toISOString",
+          "lineNumber": 27
+        },
+        {
+          "caller": "validatePassport",
+          "callee": "value.replace",
+          "lineNumber": 31
+        },
+        {
+          "caller": "validatePassport",
+          "callee": "/^\\d{10}$/.test",
+          "lineNumber": 32
+        },
+        {
+          "caller": "validatePassport",
+          "callee": "cleaned.slice",
+          "lineNumber": 35
+        },
+        {
+          "caller": "validatePassport",
+          "callee": "cleaned.slice",
+          "lineNumber": 35
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "value.replace",
+          "lineNumber": 39
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.startsWith",
+          "lineNumber": 40
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.slice",
+          "lineNumber": 40
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.slice",
+          "lineNumber": 44
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.slice",
+          "lineNumber": 45
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.slice",
+          "lineNumber": 46
+        },
+        {
+          "caller": "formatPhone",
+          "callee": "digits.slice",
+          "lineNumber": 47
+        },
+        {
+          "caller": "validatePhone",
+          "callee": "value.replace",
+          "lineNumber": 52
+        },
+        {
+          "caller": "normalizeLocalOrder",
+          "callee": "getEmployee",
+          "lineNumber": 60
+        },
+        {
+          "caller": "normalizeLocalOrder",
+          "callee": "nowForDisplay",
+          "lineNumber": 96
+        },
+        {
+          "caller": "loadCars",
+          "callee": "getAvailableCars",
+          "lineNumber": 232
+        },
+        {
+          "caller": "loadCars",
+          "callee": "saveCachedCars",
+          "lineNumber": 233
+        },
+        {
+          "caller": "loadCars",
+          "callee": "renderCars",
+          "lineNumber": 234
+        },
+        {
+          "caller": "loadCars",
+          "callee": "filterCarsAvailableForLocalQueue",
+          "lineNumber": 234
+        },
+        {
+          "caller": "loadCars",
+          "callee": "getCachedCars",
+          "lineNumber": 238
+        },
+        {
+          "caller": "loadCars",
+          "callee": "renderCars",
+          "lineNumber": 239
+        },
+        {
+          "caller": "loadCars",
+          "callee": "filterCarsAvailableForLocalQueue",
+          "lineNumber": 239
+        },
+        {
+          "caller": "loadCars",
+          "callee": "cars.filter",
+          "lineNumber": 239
+        },
+        {
+          "caller": "loadCars",
+          "callee": "getCachedCars",
+          "lineNumber": 241
+        },
+        {
+          "caller": "loadCars",
+          "callee": "renderCars",
+          "lineNumber": 243
+        },
+        {
+          "caller": "loadCars",
+          "callee": "filterCarsAvailableForLocalQueue",
+          "lineNumber": 243
+        },
+        {
+          "caller": "loadCars",
+          "callee": "cachedCars.filter",
+          "lineNumber": 243
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "getPendingOrders",
+          "lineNumber": 251
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "pending\r\n        .filter(order => !order.synced && !order.sync_failed)\r\n        .map",
+          "lineNumber": 253
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "pending\r\n        .filter",
+          "lineNumber": 253
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "Number",
+          "lineNumber": 255
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "cars.filter",
+          "lineNumber": 257
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "blockedCarIds.has",
+          "lineNumber": 257
+        },
+        {
+          "caller": "filterCarsAvailableForLocalQueue",
+          "callee": "Number",
+          "lineNumber": 257
+        },
+        {
+          "caller": "renderCars",
+          "callee": "cars.forEach",
+          "lineNumber": 262
+        },
+        {
+          "caller": "renderCars",
+          "callee": "document.createElement",
+          "lineNumber": 263
+        },
+        {
+          "caller": "renderCars",
+          "callee": "JSON.stringify",
+          "lineNumber": 265
+        },
+        {
+          "caller": "renderCars",
+          "callee": "formatPrice",
+          "lineNumber": 266
+        },
+        {
+          "caller": "renderCars",
+          "callee": "carSelect.appendChild",
+          "lineNumber": 267
+        },
+        {
+          "caller": "showOfflineClient",
+          "callee": "getCachedClient",
+          "lineNumber": 275
+        },
+        {
+          "caller": "showOfflineClient",
+          "callee": "renderClientCard",
+          "lineNumber": 278
+        },
+        {
+          "caller": "showOfflineClient",
+          "callee": "renderNewClientForm",
+          "lineNumber": 280
+        },
+        {
+          "caller": "ensureServerClient",
+          "callee": "findClient",
+          "lineNumber": 288
+        },
+        {
+          "caller": "ensureServerClient",
+          "callee": "createClient",
+          "lineNumber": 291
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "getOpenLocalOrderForCar",
+          "lineNumber": 298
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "makeLocalId",
+          "lineNumber": 303
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "normalizeLocalOrder",
+          "lineNumber": 304
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "savePendingOrder",
+          "lineNumber": 305
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "markCachedCarStatus",
+          "lineNumber": 306
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "saveOfflineLog",
+          "lineNumber": 307
+        },
+        {
+          "caller": "saveLocalOrder",
+          "callee": "openLocalContract",
+          "lineNumber": 312
+        },
+        {
+          "caller": "getOpenLocalOrderForCar",
+          "callee": "getPendingOrders",
+          "lineNumber": 316
+        },
+        {
+          "caller": "getOpenLocalOrderForCar",
+          "callee": "pending.find",
+          "lineNumber": 317
+        },
+        {
+          "caller": "getOpenLocalOrderForCar",
+          "callee": "Number",
+          "lineNumber": 318
+        },
+        {
+          "caller": "getOpenLocalOrderForCar",
+          "callee": "Number",
+          "lineNumber": 318
+        },
+        {
+          "caller": "openLocalContract",
+          "callee": "encodeURIComponent",
+          "lineNumber": 325
+        },
+        {
+          "caller": "openLocalContract",
+          "callee": "sessionStorage.setItem",
+          "lineNumber": 326
+        },
+        {
+          "caller": "openLocalContract",
+          "callee": "errorMsg.classList.remove",
+          "lineNumber": 338
+        },
+        {
+          "caller": "showFieldError",
+          "callee": "clearFieldError",
+          "lineNumber": 344
+        },
+        {
+          "caller": "showFieldError",
+          "callee": "document.createElement",
+          "lineNumber": 346
+        },
+        {
+          "caller": "showFieldError",
+          "callee": "input.parentNode.appendChild",
+          "lineNumber": 350
+        },
+        {
+          "caller": "clearFieldError",
+          "callee": "input.parentNode.querySelector",
+          "lineNumber": 355
+        },
+        {
+          "caller": "clearFieldError",
+          "callee": "existing.remove",
+          "lineNumber": 356
+        },
+        {
+          "caller": "renderClientCard",
+          "callee": "checkReady",
+          "lineNumber": 370
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 419
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "newPassportInput.addEventListener",
+          "lineNumber": 420
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "newPassportInput.value.replace(/\\D/g, '').slice",
+          "lineNumber": 421
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "newPassportInput.value.replace",
+          "lineNumber": 421
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "digits.slice",
+          "lineNumber": 423
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "digits.slice",
+          "lineNumber": 423
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 427
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "phoneInput.addEventListener",
+          "lineNumber": 428
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "formatPhone",
+          "lineNumber": 429
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 432
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "licenseInput.addEventListener",
+          "lineNumber": 433
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "formatDriverLicense",
+          "lineNumber": 434
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById('save-client-btn').addEventListener",
+          "lineNumber": 437
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 437
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 438
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 439
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 440
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.add",
+          "lineNumber": 442
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "validatePassport",
+          "lineNumber": 445
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById('new-fullname').value.trim",
+          "lineNumber": 452
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 452
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "phoneInput.value.trim",
+          "lineNumber": 453
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById('new-address').value.trim",
+          "lineNumber": 454
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "document.getElementById",
+          "lineNumber": 454
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "licenseInput.value.trim",
+          "lineNumber": 455
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "fullName.split(' ').filter",
+          "lineNumber": 457
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "fullName.split",
+          "lineNumber": 457
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.remove",
+          "lineNumber": 459
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "validatePhone",
+          "lineNumber": 463
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.remove",
+          "lineNumber": 466
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.remove",
+          "lineNumber": 472
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "validateDriverLicense",
+          "lineNumber": 476
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.remove",
+          "lineNumber": 479
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "createClient",
+          "lineNumber": 498
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveCachedClient",
+          "lineNumber": 502
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "renderClientCard",
+          "lineNumber": 504
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "isNetworkError",
+          "lineNumber": 506
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveCachedClient",
+          "lineNumber": 508
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveOfflineLog",
+          "lineNumber": 509
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "passportVal.cleaned.slice",
+          "lineNumber": 510
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "renderClientCard",
+          "lineNumber": 513
+        },
+        {
+          "caller": "renderNewClientForm",
+          "callee": "saveErr.classList.remove",
+          "lineNumber": 518
+        },
+        {
+          "caller": "renderCarDetails",
+          "callee": "formatPrice",
+          "lineNumber": 532
+        },
+        {
+          "caller": "renderCarDetails",
+          "callee": "formatPrice",
+          "lineNumber": 533
+        },
+        {
+          "caller": "calculatePrice",
+          "callee": "priceDisplay.classList.add",
+          "lineNumber": 540
+        },
+        {
+          "caller": "calculatePrice",
+          "callee": "parseInt",
+          "lineNumber": 544
+        },
+        {
+          "caller": "calculatePrice",
+          "callee": "formatPrice",
+          "lineNumber": 549
+        },
+        {
+          "caller": "calculatePrice",
+          "callee": "formatPrice",
+          "lineNumber": 550
+        },
+        {
+          "caller": "calculatePrice",
+          "callee": "priceDisplay.classList.remove",
+          "lineNumber": 551
+        },
+        {
+          "caller": "checkReady",
+          "callee": "parseInt",
+          "lineNumber": 555
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/return.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 118,
+      "nonEmptyLines": 103,
+      "callGraph": [
+        {
+          "caller": "findOrder",
+          "callee": "orderInput.value.trim",
+          "lineNumber": 33
+        },
+        {
+          "caller": "findOrder",
+          "callee": "saveOfflineLog",
+          "lineNumber": 37
+        },
+        {
+          "caller": "findOrder",
+          "callee": "successMsg.classList.add",
+          "lineNumber": 47
+        },
+        {
+          "caller": "findOrder",
+          "callee": "getOrder",
+          "lineNumber": 50
+        },
+        {
+          "caller": "findOrder",
+          "callee": "getStatusLabel",
+          "lineNumber": 55
+        },
+        {
+          "caller": "findOrder",
+          "callee": "formatDuration",
+          "lineNumber": 78
+        },
+        {
+          "caller": "findOrder",
+          "callee": "formatPrice",
+          "lineNumber": 79
+        },
+        {
+          "caller": "findOrder",
+          "callee": "formatDate",
+          "lineNumber": 80
+        },
+        {
+          "caller": "findOrder",
+          "callee": "document.getElementById('confirm-return-btn').addEventListener",
+          "lineNumber": 90
+        },
+        {
+          "caller": "findOrder",
+          "callee": "document.getElementById",
+          "lineNumber": 90
+        },
+        {
+          "caller": "findOrder",
+          "callee": "document.getElementById",
+          "lineNumber": 91
+        },
+        {
+          "caller": "findOrder",
+          "callee": "returnOrder",
+          "lineNumber": 96
+        },
+        {
+          "caller": "findOrder",
+          "callee": "formatDate",
+          "lineNumber": 101
+        },
+        {
+          "caller": "findOrder",
+          "callee": "orderDetails.insertAdjacentHTML",
+          "lineNumber": 107
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/pages/search.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 266,
+      "nonEmptyLines": 230,
+      "callGraph": [
+        {
+          "caller": "doSearch",
+          "callee": "searchInput.value.trim",
+          "lineNumber": 53
+        },
+        {
+          "caller": "doSearch",
+          "callee": "value.replace",
+          "lineNumber": 62
+        },
+        {
+          "caller": "doSearch",
+          "callee": "/^\\d{10}$/.test",
+          "lineNumber": 63
+        },
+        {
+          "caller": "doSearch",
+          "callee": "searchByOrderId",
+          "lineNumber": 73
+        },
+        {
+          "caller": "doSearch",
+          "callee": "searchByPassport",
+          "lineNumber": 75
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "getOrder",
+          "lineNumber": 85
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "saveCachedOrder",
+          "lineNumber": 86
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "renderOrderCard",
+          "lineNumber": 87
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "getCachedOrder",
+          "lineNumber": 96
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "saveOfflineLog",
+          "lineNumber": 98
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "renderOrderCard",
+          "lineNumber": 99
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "getPendingOrders",
+          "lineNumber": 103
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "pending.find",
+          "lineNumber": 104
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "String",
+          "lineNumber": 104
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "String",
+          "lineNumber": 104
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "saveOfflineLog",
+          "lineNumber": 106
+        },
+        {
+          "caller": "searchByOrderId",
+          "callee": "renderOrderCard",
+          "lineNumber": 109
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "passport.replace",
+          "lineNumber": 117
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "cleaned.slice",
+          "lineNumber": 118
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "cleaned.slice",
+          "lineNumber": 118
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "getOrdersByPassport",
+          "lineNumber": 122
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "Promise.all",
+          "lineNumber": 123
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "data.orders.map",
+          "lineNumber": 123
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "saveCachedOrder",
+          "lineNumber": 123
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "renderPassportResult",
+          "lineNumber": 124
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "(await getCachedOrders())\r\n      .map(normalizeOrder)\r\n      .filter",
+          "lineNumber": 131
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "(await getCachedOrders())\r\n      .map",
+          "lineNumber": 131
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "getCachedOrders",
+          "lineNumber": 131
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "(await getPendingOrders())\r\n      .filter(order => normalizeOrder(order).client_passport === formatted)\r\n      .map",
+          "lineNumber": 135
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "(await getPendingOrders())\r\n      .filter",
+          "lineNumber": 135
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "getPendingOrders",
+          "lineNumber": 135
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "normalizeOrder",
+          "lineNumber": 136
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "saveOfflineLog",
+          "lineNumber": 142
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "formatted.slice",
+          "lineNumber": 143
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "localOrders.map(o => renderOrderCard(o)).join",
+          "lineNumber": 147
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "localOrders.map",
+          "lineNumber": 147
+        },
+        {
+          "caller": "searchByPassport",
+          "callee": "renderOrderCard",
+          "lineNumber": 147
+        },
+        {
+          "caller": "renderPassportResult",
+          "callee": "data.orders.map(o => renderOrderCard(o)).join",
+          "lineNumber": 178
+        },
+        {
+          "caller": "renderPassportResult",
+          "callee": "data.orders.map",
+          "lineNumber": 178
+        },
+        {
+          "caller": "renderPassportResult",
+          "callee": "renderOrderCard",
+          "lineNumber": 178
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "normalizeOrder",
+          "lineNumber": 212
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "getOrderNumber",
+          "lineNumber": 213
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "getStatusClass",
+          "lineNumber": 219
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "getStatusLabel",
+          "lineNumber": 219
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "renderSyncAlert",
+          "lineNumber": 222
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "formatDuration",
+          "lineNumber": 240
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "formatPrice",
+          "lineNumber": 241
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "formatDate",
+          "lineNumber": 242
+        },
+        {
+          "caller": "renderOrderCard",
+          "callee": "getContractHref",
+          "lineNumber": 247
+        },
+        {
+          "caller": "formatPassportInput",
+          "callee": "value.replace(/\\D/g, '').slice",
+          "lineNumber": 254
+        },
+        {
+          "caller": "formatPassportInput",
+          "callee": "value.replace",
+          "lineNumber": 254
+        },
+        {
+          "caller": "formatPassportInput",
+          "callee": "digits.slice",
+          "lineNumber": 256
+        },
+        {
+          "caller": "formatPassportInput",
+          "callee": "digits.slice",
+          "lineNumber": 256
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/auth-guard.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 33,
+      "nonEmptyLines": 30,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/crypto.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "toHex",
+          "startLine": 3,
+          "endLine": 7,
+          "params": [
+            "buffer"
+          ]
+        },
+        {
+          "name": "fromHex",
+          "startLine": 9,
+          "endLine": 15,
+          "params": [
+            "hex"
+          ]
+        },
+        {
+          "name": "importKey",
+          "startLine": 17,
+          "endLine": 20,
+          "params": []
+        },
+        {
+          "name": "encryptText",
+          "startLine": 22,
+          "endLine": 28,
+          "params": [
+            "plainText"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "toHex",
+          "callee": "Array.from(new Uint8Array(buffer))\r\n    .map(b => b.toString(16).padStart(2, '0'))\r\n    .join",
+          "lineNumber": 4
+        },
+        {
+          "caller": "toHex",
+          "callee": "Array.from(new Uint8Array(buffer))\r\n    .map",
+          "lineNumber": 4
+        },
+        {
+          "caller": "toHex",
+          "callee": "Array.from",
+          "lineNumber": 4
+        },
+        {
+          "caller": "toHex",
+          "callee": "b.toString(16).padStart",
+          "lineNumber": 5
+        },
+        {
+          "caller": "toHex",
+          "callee": "b.toString",
+          "lineNumber": 5
+        },
+        {
+          "caller": "fromHex",
+          "callee": "parseInt",
+          "lineNumber": 12
+        },
+        {
+          "caller": "fromHex",
+          "callee": "hex.substr",
+          "lineNumber": 12
+        },
+        {
+          "caller": "importKey",
+          "callee": "new TextEncoder().encode",
+          "lineNumber": 18
+        },
+        {
+          "caller": "importKey",
+          "callee": "FRONTEND_ENCRYPT_KEY.padEnd(32).slice",
+          "lineNumber": 18
+        },
+        {
+          "caller": "importKey",
+          "callee": "FRONTEND_ENCRYPT_KEY.padEnd",
+          "lineNumber": 18
+        },
+        {
+          "caller": "importKey",
+          "callee": "crypto.subtle.importKey",
+          "lineNumber": 19
+        },
+        {
+          "caller": "encryptText",
+          "callee": "importKey",
+          "lineNumber": 23
+        },
+        {
+          "caller": "encryptText",
+          "callee": "crypto.getRandomValues",
+          "lineNumber": 24
+        },
+        {
+          "caller": "encryptText",
+          "callee": "new TextEncoder().encode",
+          "lineNumber": 25
+        },
+        {
+          "caller": "encryptText",
+          "callee": "String",
+          "lineNumber": 25
+        },
+        {
+          "caller": "encryptText",
+          "callee": "crypto.subtle.encrypt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "encryptText",
+          "callee": "toHex",
+          "lineNumber": 27
+        },
+        {
+          "caller": "encryptText",
+          "callee": "toHex",
+          "lineNumber": 27
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/format.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 104,
+      "nonEmptyLines": 88,
+      "functions": [
+        {
+          "name": "formatPrice",
+          "startLine": 1,
+          "endLine": 7,
+          "params": [
+            "price"
+          ]
+        },
+        {
+          "name": "parseLocalDate",
+          "startLine": 9,
+          "endLine": 13,
+          "params": [
+            "dateStr"
+          ]
+        },
+        {
+          "name": "formatDate",
+          "startLine": 15,
+          "endLine": 25,
+          "params": [
+            "dateStr"
+          ]
+        },
+        {
+          "name": "formatDateOnly",
+          "startLine": 27,
+          "endLine": 31,
+          "params": [
+            "dateStr"
+          ]
+        },
+        {
+          "name": "formatDuration",
+          "startLine": 33,
+          "endLine": 37,
+          "params": [
+            "duration",
+            "type"
+          ]
+        },
+        {
+          "name": "pluralize",
+          "startLine": 39,
+          "endLine": 45,
+          "params": [
+            "n",
+            "one",
+            "few",
+            "many"
+          ]
+        },
+        {
+          "name": "getStatusLabel",
+          "startLine": 47,
+          "endLine": 57,
+          "params": [
+            "status"
+          ]
+        },
+        {
+          "name": "getStatusClass",
+          "startLine": 59,
+          "endLine": 69,
+          "params": [
+            "status"
+          ]
+        },
+        {
+          "name": "formatDriverLicense",
+          "startLine": 76,
+          "endLine": 86,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "validateDriverLicense",
+          "startLine": 88,
+          "endLine": 104,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "formatPrice",
+          "callee": "new Intl.NumberFormat('ru-RU', {\r\n    style: 'currency',\r\n    currency: 'RUB',\r\n    minimumFractionDigits: 0\r\n  }).format",
+          "lineNumber": 2
+        },
+        {
+          "caller": "parseLocalDate",
+          "callee": "dateStr.replace",
+          "lineNumber": 11
+        },
+        {
+          "caller": "formatDate",
+          "callee": "parseLocalDate",
+          "lineNumber": 17
+        },
+        {
+          "caller": "formatDate",
+          "callee": "date.toLocaleString",
+          "lineNumber": 18
+        },
+        {
+          "caller": "formatDateOnly",
+          "callee": "parseLocalDate",
+          "lineNumber": 29
+        },
+        {
+          "caller": "formatDateOnly",
+          "callee": "date.toLocaleDateString",
+          "lineNumber": 30
+        },
+        {
+          "caller": "formatDuration",
+          "callee": "pluralize",
+          "lineNumber": 35
+        },
+        {
+          "caller": "formatDuration",
+          "callee": "pluralize",
+          "lineNumber": 36
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "value.replace(/[^А-ЯA-Zа-яa-z0-9]/gi, '').toUpperCase().slice",
+          "lineNumber": 78
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "value.replace(/[^А-ЯA-Zа-яa-z0-9]/gi, '').toUpperCase",
+          "lineNumber": 78
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "value.replace",
+          "lineNumber": 78
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "cleaned.slice",
+          "lineNumber": 82
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "cleaned.slice",
+          "lineNumber": 82
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "cleaned.slice",
+          "lineNumber": 85
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "cleaned.slice",
+          "lineNumber": 85
+        },
+        {
+          "caller": "formatDriverLicense",
+          "callee": "cleaned.slice",
+          "lineNumber": 85
+        },
+        {
+          "caller": "validateDriverLicense",
+          "callee": "value.replace(/\\s/g, '').toUpperCase",
+          "lineNumber": 89
+        },
+        {
+          "caller": "validateDriverLicense",
+          "callee": "value.replace",
+          "lineNumber": 89
+        },
+        {
+          "caller": "validateDriverLicense",
+          "callee": "pattern.test",
+          "lineNumber": 96
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 10,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/offline-db.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 167,
+      "nonEmptyLines": 151,
+      "functions": [
+        {
+          "name": "isQuotaError",
+          "startLine": 5,
+          "endLine": 8,
+          "params": [
+            "err"
+          ]
+        },
+        {
+          "name": "openDb",
+          "startLine": 10,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "put",
+          "startLine": 36,
+          "endLine": 45,
+          "params": [
+            "storeName",
+            "value"
+          ]
+        },
+        {
+          "name": "putWithCacheCleanup",
+          "startLine": 47,
+          "endLine": 58,
+          "params": [
+            "storeName",
+            "value"
+          ]
+        },
+        {
+          "name": "getAll",
+          "startLine": 60,
+          "endLine": 69,
+          "params": [
+            "storeName"
+          ]
+        },
+        {
+          "name": "getByKey",
+          "startLine": 71,
+          "endLine": 80,
+          "params": [
+            "storeName",
+            "key"
+          ]
+        },
+        {
+          "name": "deleteByKey",
+          "startLine": 82,
+          "endLine": 91,
+          "params": [
+            "storeName",
+            "key"
+          ]
+        },
+        {
+          "name": "clearStore",
+          "startLine": 93,
+          "endLine": 102,
+          "params": [
+            "storeName"
+          ]
+        },
+        {
+          "name": "clearOfflineCache",
+          "startLine": 104,
+          "endLine": 106,
+          "params": []
+        },
+        {
+          "name": "replaceStore",
+          "startLine": 108,
+          "endLine": 119,
+          "params": [
+            "storeName",
+            "values"
+          ]
+        },
+        {
+          "name": "savePendingOrder",
+          "startLine": 121,
+          "endLine": 121,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "getPendingOrder",
+          "startLine": 122,
+          "endLine": 122,
+          "params": [
+            "localId"
+          ]
+        },
+        {
+          "name": "getPendingOrders",
+          "startLine": 123,
+          "endLine": 123,
+          "params": []
+        },
+        {
+          "name": "deletePendingOrder",
+          "startLine": 124,
+          "endLine": 124,
+          "params": [
+            "localId"
+          ]
+        },
+        {
+          "name": "saveCachedOrder",
+          "startLine": 125,
+          "endLine": 125,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "getCachedOrder",
+          "startLine": 126,
+          "endLine": 126,
+          "params": [
+            "id"
+          ]
+        },
+        {
+          "name": "getCachedOrders",
+          "startLine": 127,
+          "endLine": 127,
+          "params": []
+        },
+        {
+          "name": "saveCachedClient",
+          "startLine": 128,
+          "endLine": 128,
+          "params": [
+            "client"
+          ]
+        },
+        {
+          "name": "getCachedClient",
+          "startLine": 129,
+          "endLine": 129,
+          "params": [
+            "passport"
+          ]
+        },
+        {
+          "name": "saveCachedCars",
+          "startLine": 130,
+          "endLine": 138,
+          "params": [
+            "cars"
+          ]
+        },
+        {
+          "name": "getCachedCars",
+          "startLine": 139,
+          "endLine": 139,
+          "params": []
+        },
+        {
+          "name": "saveCachedCar",
+          "startLine": 140,
+          "endLine": 140,
+          "params": [
+            "car"
+          ]
+        },
+        {
+          "name": "markCachedCarStatus",
+          "startLine": 142,
+          "endLine": 149,
+          "params": [
+            "carId",
+            "status"
+          ]
+        },
+        {
+          "name": "saveOfflineLog",
+          "startLine": 151,
+          "endLine": 164,
+          "params": [
+            "action",
+            "entityType"
+          ]
+        },
+        {
+          "name": "getOfflineLogs",
+          "startLine": 166,
+          "endLine": 166,
+          "params": []
+        },
+        {
+          "name": "deleteOfflineLog",
+          "startLine": 167,
+          "endLine": 167,
+          "params": [
+            "id"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "isQuotaError",
+          "callee": "err?.message?.toLowerCase().includes",
+          "lineNumber": 7
+        },
+        {
+          "caller": "isQuotaError",
+          "callee": "err?.message?.toLowerCase",
+          "lineNumber": 7
+        },
+        {
+          "caller": "openDb",
+          "callee": "indexedDB.open",
+          "lineNumber": 12
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.objectStoreNames.contains",
+          "lineNumber": 15
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.createObjectStore",
+          "lineNumber": 16
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.objectStoreNames.contains",
+          "lineNumber": 18
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.createObjectStore",
+          "lineNumber": 19
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.objectStoreNames.contains",
+          "lineNumber": 21
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.createObjectStore",
+          "lineNumber": 22
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.objectStoreNames.contains",
+          "lineNumber": 24
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.createObjectStore",
+          "lineNumber": 25
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.objectStoreNames.contains",
+          "lineNumber": 27
+        },
+        {
+          "caller": "openDb",
+          "callee": "db.createObjectStore",
+          "lineNumber": 28
+        },
+        {
+          "caller": "openDb",
+          "callee": "resolve",
+          "lineNumber": 31
+        },
+        {
+          "caller": "openDb",
+          "callee": "reject",
+          "lineNumber": 32
+        },
+        {
+          "caller": "put",
+          "callee": "openDb",
+          "lineNumber": 37
+        },
+        {
+          "caller": "put",
+          "callee": "db.transaction",
+          "lineNumber": 39
+        },
+        {
+          "caller": "put",
+          "callee": "tx.objectStore(storeName).put",
+          "lineNumber": 40
+        },
+        {
+          "caller": "put",
+          "callee": "tx.objectStore",
+          "lineNumber": 40
+        },
+        {
+          "caller": "put",
+          "callee": "resolve",
+          "lineNumber": 41
+        },
+        {
+          "caller": "put",
+          "callee": "reject",
+          "lineNumber": 42
+        },
+        {
+          "caller": "put",
+          "callee": "reject",
+          "lineNumber": 43
+        },
+        {
+          "caller": "putWithCacheCleanup",
+          "callee": "put",
+          "lineNumber": 49
+        },
+        {
+          "caller": "putWithCacheCleanup",
+          "callee": "isQuotaError",
+          "lineNumber": 51
+        },
+        {
+          "caller": "putWithCacheCleanup",
+          "callee": "CACHE_STORES.includes",
+          "lineNumber": 51
+        },
+        {
+          "caller": "putWithCacheCleanup",
+          "callee": "clearOfflineCache",
+          "lineNumber": 55
+        },
+        {
+          "caller": "putWithCacheCleanup",
+          "callee": "put",
+          "lineNumber": 56
+        },
+        {
+          "caller": "getAll",
+          "callee": "openDb",
+          "lineNumber": 61
+        },
+        {
+          "caller": "getAll",
+          "callee": "db.transaction",
+          "lineNumber": 63
+        },
+        {
+          "caller": "getAll",
+          "callee": "tx.objectStore(storeName).getAll",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getAll",
+          "callee": "tx.objectStore",
+          "lineNumber": 64
+        },
+        {
+          "caller": "getAll",
+          "callee": "resolve",
+          "lineNumber": 65
+        },
+        {
+          "caller": "getAll",
+          "callee": "reject",
+          "lineNumber": 66
+        },
+        {
+          "caller": "getAll",
+          "callee": "reject",
+          "lineNumber": 67
+        },
+        {
+          "caller": "getByKey",
+          "callee": "openDb",
+          "lineNumber": 72
+        },
+        {
+          "caller": "getByKey",
+          "callee": "db.transaction",
+          "lineNumber": 74
+        },
+        {
+          "caller": "getByKey",
+          "callee": "tx.objectStore(storeName).get",
+          "lineNumber": 75
+        },
+        {
+          "caller": "getByKey",
+          "callee": "tx.objectStore",
+          "lineNumber": 75
+        },
+        {
+          "caller": "getByKey",
+          "callee": "resolve",
+          "lineNumber": 76
+        },
+        {
+          "caller": "getByKey",
+          "callee": "reject",
+          "lineNumber": 77
+        },
+        {
+          "caller": "getByKey",
+          "callee": "reject",
+          "lineNumber": 78
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "openDb",
+          "lineNumber": 83
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "db.transaction",
+          "lineNumber": 85
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "tx.objectStore(storeName).delete",
+          "lineNumber": 86
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "tx.objectStore",
+          "lineNumber": 86
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "resolve",
+          "lineNumber": 87
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "reject",
+          "lineNumber": 88
+        },
+        {
+          "caller": "deleteByKey",
+          "callee": "reject",
+          "lineNumber": 89
+        },
+        {
+          "caller": "clearStore",
+          "callee": "openDb",
+          "lineNumber": 94
+        },
+        {
+          "caller": "clearStore",
+          "callee": "db.transaction",
+          "lineNumber": 96
+        },
+        {
+          "caller": "clearStore",
+          "callee": "tx.objectStore(storeName).clear",
+          "lineNumber": 97
+        },
+        {
+          "caller": "clearStore",
+          "callee": "tx.objectStore",
+          "lineNumber": 97
+        },
+        {
+          "caller": "clearStore",
+          "callee": "resolve",
+          "lineNumber": 98
+        },
+        {
+          "caller": "clearStore",
+          "callee": "reject",
+          "lineNumber": 99
+        },
+        {
+          "caller": "clearStore",
+          "callee": "reject",
+          "lineNumber": 100
+        },
+        {
+          "caller": "clearOfflineCache",
+          "callee": "Promise.all",
+          "lineNumber": 105
+        },
+        {
+          "caller": "clearOfflineCache",
+          "callee": "CACHE_STORES.map",
+          "lineNumber": 105
+        },
+        {
+          "caller": "clearOfflineCache",
+          "callee": "clearStore",
+          "lineNumber": 105
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "openDb",
+          "lineNumber": 109
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "db.transaction",
+          "lineNumber": 111
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "tx.objectStore",
+          "lineNumber": 112
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "store.clear",
+          "lineNumber": 113
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "values.forEach",
+          "lineNumber": 114
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "store.put",
+          "lineNumber": 114
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "resolve",
+          "lineNumber": 115
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "reject",
+          "lineNumber": 116
+        },
+        {
+          "caller": "replaceStore",
+          "callee": "reject",
+          "lineNumber": 117
+        },
+        {
+          "caller": "savePendingOrder",
+          "callee": "put",
+          "lineNumber": 121
+        },
+        {
+          "caller": "getPendingOrder",
+          "callee": "getByKey",
+          "lineNumber": 122
+        },
+        {
+          "caller": "getPendingOrders",
+          "callee": "getAll",
+          "lineNumber": 123
+        },
+        {
+          "caller": "deletePendingOrder",
+          "callee": "deleteByKey",
+          "lineNumber": 124
+        },
+        {
+          "caller": "saveCachedOrder",
+          "callee": "putWithCacheCleanup",
+          "lineNumber": 125
+        },
+        {
+          "caller": "getCachedOrder",
+          "callee": "getByKey",
+          "lineNumber": 126
+        },
+        {
+          "caller": "getCachedOrder",
+          "callee": "Number",
+          "lineNumber": 126
+        },
+        {
+          "caller": "getCachedOrders",
+          "callee": "getAll",
+          "lineNumber": 127
+        },
+        {
+          "caller": "saveCachedClient",
+          "callee": "putWithCacheCleanup",
+          "lineNumber": 128
+        },
+        {
+          "caller": "getCachedClient",
+          "callee": "getByKey",
+          "lineNumber": 129
+        },
+        {
+          "caller": "saveCachedCars",
+          "callee": "replaceStore",
+          "lineNumber": 132
+        },
+        {
+          "caller": "saveCachedCars",
+          "callee": "isQuotaError",
+          "lineNumber": 134
+        },
+        {
+          "caller": "saveCachedCars",
+          "callee": "clearOfflineCache",
+          "lineNumber": 135
+        },
+        {
+          "caller": "saveCachedCars",
+          "callee": "replaceStore",
+          "lineNumber": 136
+        },
+        {
+          "caller": "getCachedCars",
+          "callee": "getAll",
+          "lineNumber": 139
+        },
+        {
+          "caller": "saveCachedCar",
+          "callee": "putWithCacheCleanup",
+          "lineNumber": 140
+        },
+        {
+          "caller": "markCachedCarStatus",
+          "callee": "getByKey",
+          "lineNumber": 143
+        },
+        {
+          "caller": "markCachedCarStatus",
+          "callee": "Number",
+          "lineNumber": 143
+        },
+        {
+          "caller": "markCachedCarStatus",
+          "callee": "saveCachedCar",
+          "lineNumber": 147
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "getEmployee",
+          "lineNumber": 152
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "Date.now",
+          "lineNumber": 154
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "Math.random().toString(16).slice",
+          "lineNumber": 154
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "Math.random().toString",
+          "lineNumber": 154
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "Math.random",
+          "lineNumber": 154
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "String",
+          "lineNumber": 158
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "new Date().toISOString",
+          "lineNumber": 160
+        },
+        {
+          "caller": "saveOfflineLog",
+          "callee": "put",
+          "lineNumber": 162
+        },
+        {
+          "caller": "getOfflineLogs",
+          "callee": "getAll",
+          "lineNumber": 166
+        },
+        {
+          "caller": "deleteOfflineLog",
+          "callee": "deleteByKey",
+          "lineNumber": 167
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 26,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/storage.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 49,
+      "nonEmptyLines": 43,
+      "functions": [
+        {
+          "name": "saveAuth",
+          "startLine": 1,
+          "endLine": 22,
+          "params": [
+            "token",
+            "employee"
+          ]
+        },
+        {
+          "name": "getToken",
+          "startLine": 24,
+          "endLine": 26,
+          "params": []
+        },
+        {
+          "name": "getEmployee",
+          "startLine": 28,
+          "endLine": 34,
+          "params": []
+        },
+        {
+          "name": "clearAuth",
+          "startLine": 36,
+          "endLine": 41,
+          "params": []
+        },
+        {
+          "name": "clearAppStorage",
+          "startLine": 43,
+          "endLine": 49,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "saveAuth",
+          "callee": "JSON.stringify",
+          "lineNumber": 2
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "localStorage.setItem",
+          "lineNumber": 5
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "localStorage.setItem",
+          "lineNumber": 6
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 7
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 8
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "clearAppStorage",
+          "lineNumber": 11
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "localStorage.setItem",
+          "lineNumber": 15
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "localStorage.setItem",
+          "lineNumber": 16
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "sessionStorage.setItem",
+          "lineNumber": 19
+        },
+        {
+          "caller": "saveAuth",
+          "callee": "sessionStorage.setItem",
+          "lineNumber": 20
+        },
+        {
+          "caller": "getToken",
+          "callee": "localStorage.getItem",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getToken",
+          "callee": "sessionStorage.getItem",
+          "lineNumber": 25
+        },
+        {
+          "caller": "getEmployee",
+          "callee": "JSON.parse",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getEmployee",
+          "callee": "localStorage.getItem",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getEmployee",
+          "callee": "sessionStorage.getItem",
+          "lineNumber": 30
+        },
+        {
+          "caller": "clearAuth",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 37
+        },
+        {
+          "caller": "clearAuth",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 38
+        },
+        {
+          "caller": "clearAuth",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 39
+        },
+        {
+          "caller": "clearAuth",
+          "callee": "sessionStorage.removeItem",
+          "lineNumber": 40
+        },
+        {
+          "caller": "clearAppStorage",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 44
+        },
+        {
+          "caller": "clearAppStorage",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 45
+        },
+        {
+          "caller": "clearAppStorage",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 46
+        },
+        {
+          "caller": "clearAppStorage",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 47
+        },
+        {
+          "caller": "clearAppStorage",
+          "callee": "localStorage.removeItem",
+          "lineNumber": 48
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/sw-register.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 16,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/js/utils/sync.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 124,
+      "nonEmptyLines": 106,
+      "functions": [
+        {
+          "name": "syncPendingOrders",
+          "startLine": 1,
+          "endLine": 78,
+          "params": []
+        },
+        {
+          "name": "syncOfflineLogs",
+          "startLine": 80,
+          "endLine": 99,
+          "params": []
+        },
+        {
+          "name": "isCarConflict",
+          "startLine": 108,
+          "endLine": 110,
+          "params": [
+            "err"
+          ]
+        },
+        {
+          "name": "cleanupSyncedPendingOrder",
+          "startLine": 112,
+          "endLine": 124,
+          "params": [
+            "local"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "syncPendingOrders",
+          "callee": "getPendingOrders",
+          "lineNumber": 6
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "console.warn",
+          "lineNumber": 8
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "syncOfflineLogs",
+          "lineNumber": 13
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "cleanupSyncedPendingOrder",
+          "lineNumber": 19
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "createClient",
+          "lineNumber": 30
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "err.message.includes",
+          "lineNumber": 32
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "findClient",
+          "lineNumber": 33
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "saveCachedClient",
+          "lineNumber": 37
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "createOrder",
+          "lineNumber": 39
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "saveCachedOrder",
+          "lineNumber": 46
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "deletePendingOrder",
+          "lineNumber": 47
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "markCachedCarStatus",
+          "lineNumber": 48
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "saveOfflineLog",
+          "lineNumber": 49
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "window.dispatchEvent",
+          "lineNumber": 52
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "isCarConflict",
+          "lineNumber": 56
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "new Date().toISOString",
+          "lineNumber": 61
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "savePendingOrder",
+          "lineNumber": 63
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "markCachedCarStatus",
+          "lineNumber": 64
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "saveOfflineLog",
+          "lineNumber": 65
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "window.dispatchEvent",
+          "lineNumber": 69
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "console.warn",
+          "lineNumber": 73
+        },
+        {
+          "caller": "syncPendingOrders",
+          "callee": "syncOfflineLogs",
+          "lineNumber": 77
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "getOfflineLogs",
+          "lineNumber": 85
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "console.warn",
+          "lineNumber": 87
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "apiRequest",
+          "lineNumber": 94
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "Promise.all",
+          "lineNumber": 95
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "logs.map",
+          "lineNumber": 95
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "deleteOfflineLog",
+          "lineNumber": 95
+        },
+        {
+          "caller": "syncOfflineLogs",
+          "callee": "console.warn",
+          "lineNumber": 97
+        },
+        {
+          "caller": "isCarConflict",
+          "callee": "err?.message?.includes",
+          "lineNumber": 109
+        },
+        {
+          "caller": "cleanupSyncedPendingOrder",
+          "callee": "saveCachedOrder",
+          "lineNumber": 116
+        },
+        {
+          "caller": "cleanupSyncedPendingOrder",
+          "callee": "deletePendingOrder",
+          "lineNumber": 123
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 4,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "client/sw.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 98,
+      "nonEmptyLines": 88,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

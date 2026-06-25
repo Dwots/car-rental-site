@@ -1,0 +1,149 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 4,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "server/db.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 11,
+      "nonEmptyLines": 8,
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/index.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 80,
+      "nonEmptyLines": 67,
+      "functions": [
+        {
+          "name": "initDB",
+          "startLine": 38,
+          "endLine": 73,
+          "params": []
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "initDB",
+          "callee": "require",
+          "lineNumber": 39
+        },
+        {
+          "caller": "initDB",
+          "callee": "fs.readFileSync",
+          "lineNumber": 40
+        },
+        {
+          "caller": "initDB",
+          "callee": "path.join",
+          "lineNumber": 41
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.exec",
+          "lineNumber": 44
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare('SELECT * FROM employees WHERE login = ?').get",
+          "lineNumber": 47
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare",
+          "lineNumber": 47
+        },
+        {
+          "caller": "initDB",
+          "callee": "bcrypt.hashSync",
+          "lineNumber": 49
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare(\r\n      'INSERT INTO employees (login, password_hash, full_name) VALUES (?, ?, ?)'\r\n    ).run",
+          "lineNumber": 50
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare",
+          "lineNumber": 50
+        },
+        {
+          "caller": "initDB",
+          "callee": "console.log",
+          "lineNumber": 53
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare('SELECT COUNT(*) as count FROM cars').get",
+          "lineNumber": 57
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare",
+          "lineNumber": 57
+        },
+        {
+          "caller": "initDB",
+          "callee": "db.prepare",
+          "lineNumber": 67
+        },
+        {
+          "caller": "initDB",
+          "callee": "cars.forEach",
+          "lineNumber": 70
+        },
+        {
+          "caller": "initDB",
+          "callee": "insert.run",
+          "lineNumber": 70
+        },
+        {
+          "caller": "initDB",
+          "callee": "console.log",
+          "lineNumber": 71
+        }
+      ],
+      "metrics": {
+        "importCount": 6,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/routes/auth.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 48,
+      "nonEmptyLines": 39,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/routes/cars.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 35,
+      "nonEmptyLines": 29,
+      "metrics": {
+        "importCount": 2,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0
+      }
+    }
+  ]
+}

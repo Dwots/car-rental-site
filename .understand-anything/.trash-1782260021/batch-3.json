@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/migrations/001_create_tables.sql",
+      "type": "table",
+      "name": "001_create_tables.sql",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "summary": "Начальная SQL-миграция, создающая базовую схему SQLite-базы для системы проката автомобилей: сотрудники, клиенты, автомобили, заказы и журнал действий со связями по внешним ключам.",
+      "tags": ["database", "migration", "schema-definition", "sqlite", "data-model"],
+      "complexity": "moderate",
+      "languageNotes": "Использует синтаксис SQLite: AUTOINCREMENT, CURRENT_TIMESTAMP по умолчанию и IF NOT EXISTS для идемпотентного создания таблиц. JSON-снимки и contract_html хранятся как TEXT для денормализованного хранения данных заказа."
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "table",
+      "name": "employees",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [1, 7],
+      "summary": "Таблица сотрудников с уникальным логином и хешем пароля для JWT-аутентификации.",
+      "tags": ["database", "data-model", "authentication", "users"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "table",
+      "name": "clients",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [9, 17],
+      "summary": "Таблица клиентов с паспортными данными, контактами и номером водительского удостоверения для оформления договоров аренды.",
+      "tags": ["database", "data-model", "customers"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "table",
+      "name": "cars",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [19, 30],
+      "summary": "Таблица автомобилей с характеристиками, уникальными регистрационным номером и VIN, тарифами за день и час, а также статусом доступности.",
+      "tags": ["database", "data-model", "inventory", "pricing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:orders",
+      "type": "table",
+      "name": "orders",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [32, 52],
+      "summary": "Центральная таблица заказов аренды, связывающая сотрудника, клиента и автомобиль; хранит расчёт стоимости, статус синхронизации и денормализованные снимки данных (JSON) и HTML-договор.",
+      "tags": ["database", "data-model", "orders", "foreign-keys", "denormalization"],
+      "complexity": "moderate",
+      "languageNotes": "Поля synced и is_saved_to_db поддерживают офлайн-первый PWA-сценарий; client_snapshot_json и car_snapshot_json сохраняют состояние сущностей на момент оформления заказа."
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:action_logs",
+      "type": "table",
+      "name": "action_logs",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [54, 63],
+      "summary": "Таблица аудита действий сотрудников с типом сущности, идентификатором и JSON-деталями для отслеживания изменений в системе.",
+      "tags": ["database", "data-model", "audit-log", "monitoring"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:orders",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:action_logs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:action_logs",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ]
+}

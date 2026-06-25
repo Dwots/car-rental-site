@@ -1,0 +1,7 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "server/migrations/001_create_tables.sql", "language": "sql", "sizeLines": 63, "fileCategory": "data"}
+  ],
+  "batchImportData": {"server/migrations/001_create_tables.sql": []}
+}

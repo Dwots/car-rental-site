@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Минимальный файл README проекта, содержащий одну строку с описанием: «Сайт по аренде машин.»",
+      "tags": ["documentation", "entry-point", "overview"],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "server/package.json",
+      "summary": "Манифест npm для backend-части: задаёт зависимости (Express 5, better-sqlite3, jsonwebtoken, bcryptjs, cors, dotenv), скрипты запуска (start/dev через nodemon) и точку входа index.js в режиме CommonJS.",
+      "tags": ["configuration", "build-system", "backend", "dependencies"],
+      "complexity": "simple",
+      "languageNotes": "Поле \"type\": \"commonjs\" указывает на использование CommonJS-модулей; скрипт dev использует nodemon для автоперезапуска."
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:server/package.json",
+      "target": "file:server/index.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:server/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

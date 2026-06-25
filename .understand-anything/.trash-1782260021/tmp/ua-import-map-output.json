@@ -1,0 +1,88 @@
+{
+  "scriptCompleted": true,
+  "stats": {
+    "filesScanned": 49,
+    "filesWithImports": 7,
+    "totalEdges": 22
+  },
+  "importMap": {
+    ".understand-anything/.understandignore": [],
+    ".understand-anything/config.json": [],
+    "client/css/main.css": [],
+    "client/css/print.css": [],
+    "client/js/api/auth.js": [],
+    "client/js/api/cars.js": [],
+    "client/js/api/clients.js": [],
+    "client/js/api/config.js": [],
+    "client/js/api/logs.js": [],
+    "client/js/api/orders.js": [],
+    "client/js/pages/cars.js": [],
+    "client/js/pages/contract.js": [],
+    "client/js/pages/login.js": [],
+    "client/js/pages/logs.js": [],
+    "client/js/pages/new-order.js": [],
+    "client/js/pages/return.js": [],
+    "client/js/pages/search.js": [],
+    "client/js/utils/auth-guard.js": [],
+    "client/js/utils/crypto.js": [],
+    "client/js/utils/format.js": [],
+    "client/js/utils/offline-db.js": [],
+    "client/js/utils/storage.js": [],
+    "client/js/utils/sw-register.js": [],
+    "client/js/utils/sync.js": [],
+    "client/pages/cars.html": [],
+    "client/pages/contract.html": [],
+    "client/pages/login.html": [],
+    "client/pages/logs.html": [],
+    "client/pages/new-order.html": [],
+    "client/pages/return.html": [],
+    "client/pages/search.html": [],
+    "client/sw.js": [],
+    "docs/FULL_VERIFICATION.md": [],
+    "docs/IMPLEMENTATION_GUIDE.md": [],
+    "docs/tz-implementation-plan.md": [],
+    "README.md": [],
+    "server/db.js": [],
+    "server/index.js": [
+      "server/db.js",
+      "server/routes/auth.js",
+      "server/routes/cars.js",
+      "server/routes/clients.js",
+      "server/routes/logs.js",
+      "server/routes/orders.js"
+    ],
+    "server/middleware/auth.js": [],
+    "server/migrations/001_create_tables.sql": [],
+    "server/package.json": [],
+    "server/routes/auth.js": [
+      "server/db.js",
+      "server/utils/audit.js"
+    ],
+    "server/routes/cars.js": [
+      "server/db.js",
+      "server/middleware/auth.js"
+    ],
+    "server/routes/clients.js": [
+      "server/db.js",
+      "server/middleware/auth.js",
+      "server/utils/audit.js",
+      "server/utils/encrypt.js"
+    ],
+    "server/routes/logs.js": [
+      "server/db.js",
+      "server/middleware/auth.js",
+      "server/utils/audit.js"
+    ],
+    "server/routes/orders.js": [
+      "server/db.js",
+      "server/middleware/auth.js",
+      "server/utils/audit.js",
+      "server/utils/encrypt.js"
+    ],
+    "server/utils/audit.js": [
+      "server/db.js"
+    ],
+    "server/utils/encrypt.js": [],
+    "task_text/Задача от  20.1  апреля.odt": []
+  }
+}

@@ -1,0 +1,681 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/css/main.css",
+      "type": "file",
+      "name": "main.css",
+      "filePath": "client/css/main.css",
+      "summary": "Основная таблица стилей клиентского интерфейса: переменные темы, layout, навигация, таблицы, карточки, формы, статус-бейджи и адаптивная вёрстка PWA.",
+      "tags": ["stylesheet", "ui", "theme", "responsive", "markup"],
+      "complexity": "complex",
+      "languageNotes": "Использует CSS custom properties (--text-secondary, --accent и т.п.) для единой темизации всех страниц."
+    },
+    {
+      "id": "file:client/css/print.css",
+      "type": "file",
+      "name": "print.css",
+      "filePath": "client/css/print.css",
+      "summary": "Стили для печати: скрывает навигацию и интерактивные элементы, оформляя страницу договора под печатный бланк.",
+      "tags": ["stylesheet", "print", "contract", "markup"],
+      "complexity": "simple",
+      "languageNotes": "Применяется через @media print для подготовки документа договора к печати."
+    },
+    {
+      "id": "file:client/js/api/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "client/js/api/auth.js",
+      "summary": "API-обёртка авторизации: отправляет логин и пароль на бэкенд через общий apiRequest и возвращает токен с данными сотрудника.",
+      "tags": ["api-wrapper", "auth", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "client/js/api/cars.js",
+      "summary": "API-обёртка для автомобилей: получение полного списка и списка доступных машин через apiRequest.",
+      "tags": ["api-wrapper", "cars", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/clients.js",
+      "type": "file",
+      "name": "clients.js",
+      "filePath": "client/js/api/clients.js",
+      "summary": "API-обёртка для клиентов: поиск по паспорту и создание клиента с предварительным шифрованием персональных данных через encryptText.",
+      "tags": ["api-wrapper", "clients", "encryption", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "client/js/api/config.js",
+      "summary": "Базовый HTTP-слой клиента: функция apiRequest с подстановкой JWT-токена, обработкой ответов и сброса авторизации при 401; помощники чтения и удаления токена.",
+      "tags": ["api-client", "http", "auth", "config"],
+      "complexity": "moderate",
+      "languageNotes": "Центральная точка для всех fetch-запросов; при ответе 401 чистит токен через removeAuthToken."
+    },
+    {
+      "id": "file:client/js/api/logs.js",
+      "type": "file",
+      "name": "logs.js",
+      "filePath": "client/js/api/logs.js",
+      "summary": "API-обёртка для журнала действий: запрашивает логи аудита с сервера через apiRequest.",
+      "tags": ["api-wrapper", "logs", "audit", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/orders.js",
+      "type": "file",
+      "name": "orders.js",
+      "filePath": "client/js/api/orders.js",
+      "summary": "API-обёртка для заказов: создание, получение, возврат, отметка о печати и поиск заказов по паспорту клиента.",
+      "tags": ["api-wrapper", "orders", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/pages/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "client/js/pages/cars.js",
+      "summary": "Контроллер страницы автопарка: загружает список машин и рендерит таблицу с ценами и статусами, используя утилиты форматирования.",
+      "tags": ["page-controller", "cars", "rendering", "client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/contract.js",
+      "type": "file",
+      "name": "contract.js",
+      "filePath": "client/js/pages/contract.js",
+      "summary": "Контроллер страницы договора: загружает заказ (с сервера или из offline-кэша), нормализует данные, рендерит печатную форму договора и генерирует штрихкод заказа.",
+      "tags": ["page-controller", "contract", "rendering", "offline", "barcode"],
+      "complexity": "complex",
+      "languageNotes": "Поддерживает offline-режим: при недоступности сети читает заказ из IndexedDB-кэша через getCachedOrder; генерирует штрихкод через библиотеку JsBarcode."
+    },
+    {
+      "id": "file:client/js/pages/login.js",
+      "type": "file",
+      "name": "login.js",
+      "filePath": "client/js/pages/login.js",
+      "summary": "Контроллер страницы входа: обрабатывает форму авторизации, вызывает loginRequest, сохраняет токен через saveAuth и редиректит на страницу нового заказа.",
+      "tags": ["page-controller", "auth", "login", "client"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/pages/logs.js",
+      "type": "file",
+      "name": "logs.js",
+      "filePath": "client/js/pages/logs.js",
+      "summary": "Контроллер страницы журнала аудита: загружает логи через getLogs и рендерит таблицу с локализованными подписями действий и экранированием HTML.",
+      "tags": ["page-controller", "logs", "audit", "rendering", "client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/new-order.js",
+      "type": "file",
+      "name": "new-order.js",
+      "filePath": "client/js/pages/new-order.js",
+      "summary": "Контроллер оформления нового заказа: валидация паспорта/телефона/водительского удостоверения, поиск или создание клиента, выбор машины, расчёт цены и offline-очередь заказов в IndexedDB.",
+      "tags": ["page-controller", "orders", "validation", "offline", "client"],
+      "complexity": "complex",
+      "languageNotes": "Поддерживает offline-сценарий: формирует локальные заказы (makeLocalId), кладёт их в очередь savePendingOrder и блокирует уже занятые машины из локальной очереди."
+    },
+    {
+      "id": "file:client/js/pages/return.js",
+      "type": "file",
+      "name": "return.js",
+      "filePath": "client/js/pages/return.js",
+      "summary": "Контроллер страницы возврата авто: находит заказ по номеру, показывает детали и выполняет возврат через returnOrder с записью offline-лога.",
+      "tags": ["page-controller", "orders", "return", "client"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/search.js",
+      "type": "file",
+      "name": "search.js",
+      "filePath": "client/js/pages/search.js",
+      "summary": "Контроллер страницы поиска: ищет заказы по номеру или паспорту клиента, объединяя данные с сервера, offline-кэша и локальной очереди, и рендерит карточки заказов.",
+      "tags": ["page-controller", "search", "orders", "offline", "client"],
+      "complexity": "complex",
+      "languageNotes": "При недоступности сети объединяет результаты из getCachedOrders и getPendingOrders, помечая несинхронизированные заказы предупреждением."
+    },
+    {
+      "id": "file:client/js/utils/auth-guard.js",
+      "type": "file",
+      "name": "auth-guard.js",
+      "filePath": "client/js/utils/auth-guard.js",
+      "summary": "Гвард авторизации: при отсутствии токена перенаправляет на страницу входа, отображает имя сотрудника, настраивает кнопку выхода и подсветку активного пункта меню.",
+      "tags": ["auth", "guard", "navigation", "client"],
+      "complexity": "simple",
+      "languageNotes": "Самовызывающаяся IIFE, подключаемая на каждой защищённой странице до загрузки контента."
+    },
+    {
+      "id": "file:client/js/utils/crypto.js",
+      "type": "file",
+      "name": "crypto.js",
+      "filePath": "client/js/utils/crypto.js",
+      "summary": "Утилиты клиентского шифрования персональных данных через Web Crypto API (AES-GCM): преобразование hex, импорт ключа и encryptText для шифрования полей клиента.",
+      "tags": ["crypto", "encryption", "security", "utility"],
+      "complexity": "moderate",
+      "languageNotes": "Использует crypto.subtle (AES-GCM) с ключом FRONTEND_ENCRYPT_KEY; IV генерируется через crypto.getRandomValues и склеивается с шифротекстом в hex."
+    },
+    {
+      "id": "file:client/js/utils/format.js",
+      "type": "file",
+      "name": "format.js",
+      "filePath": "client/js/utils/format.js",
+      "summary": "Набор утилит форматирования и валидации: цены (Intl), даты, длительности, плюрализация, подписи и классы статусов, форматирование и проверка водительского удостоверения.",
+      "tags": ["utility", "formatting", "validation", "i18n", "client"],
+      "complexity": "moderate",
+      "languageNotes": "pluralize реализует русские правила склонения; formatPrice использует Intl.NumberFormat('ru-RU') в рублях."
+    },
+    {
+      "id": "file:client/js/utils/offline-db.js",
+      "type": "file",
+      "name": "offline-db.js",
+      "filePath": "client/js/utils/offline-db.js",
+      "summary": "Offline-хранилище на IndexedDB: низкоуровневые операции CRUD по object stores и высокоуровневые помощники для кэша заказов, клиентов, машин, очереди отложенных заказов и offline-логов.",
+      "tags": ["offline", "indexeddb", "storage", "cache", "utility"],
+      "complexity": "complex",
+      "languageNotes": "Обрабатывает превышение квоты (isQuotaError) с автоочисткой кэша; разделяет данные на постоянные (pending) и кэшируемые (CACHE_STORES) хранилища."
+    },
+    {
+      "id": "file:client/js/utils/storage.js",
+      "type": "file",
+      "name": "storage.js",
+      "filePath": "client/js/utils/storage.js",
+      "summary": "Управление сессией в localStorage/sessionStorage: сохранение токена и данных сотрудника, их чтение, очистка авторизации и сброс прикладных данных при смене пользователя.",
+      "tags": ["storage", "auth", "session", "utility"],
+      "complexity": "moderate",
+      "languageNotes": "Выбирает localStorage или sessionStorage в зависимости от флага 'запомнить меня'; при смене сотрудника очищает прикладные кэши."
+    },
+    {
+      "id": "file:client/js/utils/sw-register.js",
+      "type": "file",
+      "name": "sw-register.js",
+      "filePath": "client/js/utils/sw-register.js",
+      "summary": "Регистрация service worker для PWA: подключает sw.js при загрузке окна для поддержки offline-режима.",
+      "tags": ["service-worker", "pwa", "registration", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/utils/sync.js",
+      "type": "file",
+      "name": "sync.js",
+      "filePath": "client/js/utils/sync.js",
+      "summary": "Синхронизация offline-данных при восстановлении сети: отправляет отложенные заказы и offline-логи на сервер, создаёт клиентов, разрешает конфликты по машинам и чистит синхронизированные записи.",
+      "tags": ["sync", "offline", "orders", "background-sync", "client"],
+      "complexity": "complex",
+      "languageNotes": "Обрабатывает конфликты занятой машины (isCarConflict) и диспатчит window-события о прогрессе синхронизации; опирается на IndexedDB-очередь из offline-db.js."
+    },
+    {
+      "id": "file:client/sw.js",
+      "type": "file",
+      "name": "sw.js",
+      "filePath": "client/sw.js",
+      "summary": "Service worker PWA: кэширует статические ресурсы (app shell), обслуживает запросы из кэша при offline и управляет жизненным циклом install/activate/fetch.",
+      "tags": ["service-worker", "pwa", "offline", "caching", "client"],
+      "complexity": "moderate",
+      "languageNotes": "Реализует стратегию app-shell кэширования с версионированием кэша и очисткой устаревших версий при activate."
+    },
+    {
+      "id": "function:client/js/api/config.js:apiRequest",
+      "type": "function",
+      "name": "apiRequest",
+      "filePath": "client/js/api/config.js",
+      "lineRange": [14, 49],
+      "summary": "Универсальная обёртка над fetch: добавляет JWT-токен и заголовки, сериализует тело, обрабатывает ошибки и сбрасывает авторизацию при ответе 401.",
+      "tags": ["http", "api-client", "auth", "fetch"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/api/config.js:removeAuthToken",
+      "type": "function",
+      "name": "removeAuthToken",
+      "filePath": "client/js/api/config.js",
+      "lineRange": [7, 12],
+      "summary": "Удаляет JWT-токен и связанные данные из localStorage и sessionStorage при выходе или истечении сессии.",
+      "tags": ["auth", "storage", "cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/api/clients.js:createClient",
+      "type": "function",
+      "name": "createClient",
+      "filePath": "client/js/api/clients.js",
+      "lineRange": [5, 14],
+      "summary": "Создаёт клиента на сервере, предварительно шифруя персональные поля через encryptText перед отправкой.",
+      "tags": ["api-wrapper", "clients", "encryption"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:renderContract",
+      "type": "function",
+      "name": "renderContract",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [155, 292],
+      "summary": "Формирует HTML печатной формы договора аренды на основе данных заказа с форматированием дат, длительности, цен и статусов.",
+      "tags": ["rendering", "contract", "template"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:loadServerOrder",
+      "type": "function",
+      "name": "loadServerOrder",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [89, 99],
+      "summary": "Загружает заказ с сервера и кэширует его; при недоступности сети возвращает заказ из offline-кэша.",
+      "tags": ["orders", "offline", "data-loading"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:normalizeOrder",
+      "type": "function",
+      "name": "normalizeOrder",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [101, 122],
+      "summary": "Приводит данные заказа из разных источников (сервер, кэш, локальная очередь) к единому виду для отображения.",
+      "tags": ["normalization", "orders", "data-model"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:generateBarcode",
+      "type": "function",
+      "name": "generateBarcode",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [294, 309],
+      "summary": "Генерирует штрихкод заказа в SVG через библиотеку JsBarcode с обработкой ошибок.",
+      "tags": ["barcode", "rendering", "contract"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:setupPrint",
+      "type": "function",
+      "name": "setupPrint",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [128, 153],
+      "summary": "Настраивает печать договора: вставляет дополнительный HTML-контент в документ перед вызовом печати.",
+      "tags": ["print", "contract", "dom"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/logs.js:getActionLabel",
+      "type": "function",
+      "name": "getActionLabel",
+      "filePath": "client/js/pages/logs.js",
+      "lineRange": [55, 74],
+      "summary": "Возвращает локализованную русскую подпись для кода действия из журнала аудита.",
+      "tags": ["i18n", "logs", "mapping"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/logs.js:escapeHtml",
+      "type": "function",
+      "name": "escapeHtml",
+      "filePath": "client/js/pages/logs.js",
+      "lineRange": [89, 96],
+      "summary": "Экранирует спецсимволы HTML для безопасного вывода данных журнала в таблицу.",
+      "tags": ["security", "escaping", "xss-prevention"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/crypto.js:encryptText",
+      "type": "function",
+      "name": "encryptText",
+      "filePath": "client/js/utils/crypto.js",
+      "lineRange": [22, 28],
+      "summary": "Шифрует строку алгоритмом AES-GCM через Web Crypto API и возвращает hex-строку IV вместе с шифротекстом.",
+      "tags": ["crypto", "encryption", "aes-gcm", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/crypto.js:importKey",
+      "type": "function",
+      "name": "importKey",
+      "filePath": "client/js/utils/crypto.js",
+      "lineRange": [17, 20],
+      "summary": "Импортирует ключ AES-GCM из FRONTEND_ENCRYPT_KEY для операций шифрования через crypto.subtle.",
+      "tags": ["crypto", "key-management", "security"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatPrice",
+      "type": "function",
+      "name": "formatPrice",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [1, 7],
+      "summary": "Форматирует число как цену в рублях через Intl.NumberFormat с локалью ru-RU.",
+      "tags": ["formatting", "i18n", "currency"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDate",
+      "type": "function",
+      "name": "formatDate",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [15, 25],
+      "summary": "Форматирует строку даты в локализованное представление даты и времени для отображения пользователю.",
+      "tags": ["formatting", "date", "i18n"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDuration",
+      "type": "function",
+      "name": "formatDuration",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [33, 37],
+      "summary": "Форматирует длительность аренды (часы/дни) с корректным русским склонением через pluralize.",
+      "tags": ["formatting", "i18n", "duration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:pluralize",
+      "type": "function",
+      "name": "pluralize",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [39, 45],
+      "summary": "Выбирает правильную форму существительного по числу согласно русским правилам склонения.",
+      "tags": ["i18n", "pluralization", "utility"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "function",
+      "name": "getStatusLabel",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [47, 57],
+      "summary": "Возвращает локализованную русскую подпись для кода статуса заказа или машины.",
+      "tags": ["i18n", "status", "mapping"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:getStatusClass",
+      "type": "function",
+      "name": "getStatusClass",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [59, 69],
+      "summary": "Возвращает CSS-класс статус-бейджа в зависимости от кода статуса для визуального оформления.",
+      "tags": ["status", "styling", "mapping"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDriverLicense",
+      "type": "function",
+      "name": "formatDriverLicense",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [76, 86],
+      "summary": "Форматирует номер водительского удостоверения в стандартный вид с разбивкой на группы.",
+      "tags": ["formatting", "validation", "driver-license"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/format.js:validateDriverLicense",
+      "type": "function",
+      "name": "validateDriverLicense",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [88, 104],
+      "summary": "Проверяет корректность номера водительского удостоверения по шаблону и возвращает результат валидации.",
+      "tags": ["validation", "driver-license", "utility"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:openDb",
+      "type": "function",
+      "name": "openDb",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [10, 34],
+      "summary": "Открывает базу IndexedDB и при обновлении версии создаёт необходимые object stores для кэша и очереди.",
+      "tags": ["indexeddb", "offline", "initialization"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:put",
+      "type": "function",
+      "name": "put",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [36, 45],
+      "summary": "Записывает значение в указанный object store IndexedDB в рамках транзакции readwrite.",
+      "tags": ["indexeddb", "offline", "write"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:putWithCacheCleanup",
+      "type": "function",
+      "name": "putWithCacheCleanup",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [47, 58],
+      "summary": "Записывает значение в кэш и при превышении квоты IndexedDB очищает кэш и повторяет запись.",
+      "tags": ["indexeddb", "offline", "cache", "quota"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:replaceStore",
+      "type": "function",
+      "name": "replaceStore",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [108, 119],
+      "summary": "Полностью заменяет содержимое object store: очищает и записывает новый набор значений в одной транзакции.",
+      "tags": ["indexeddb", "offline", "bulk-write"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:saveCachedCars",
+      "type": "function",
+      "name": "saveCachedCars",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [130, 138],
+      "summary": "Кэширует список машин в IndexedDB с обработкой превышения квоты через очистку кэша.",
+      "tags": ["indexeddb", "offline", "cars", "cache"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:markCachedCarStatus",
+      "type": "function",
+      "name": "markCachedCarStatus",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [142, 149],
+      "summary": "Обновляет статус машины в кэше IndexedDB (например, помечает занятой при offline-заказе).",
+      "tags": ["indexeddb", "offline", "cars", "status"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "function",
+      "name": "saveOfflineLog",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [151, 164],
+      "summary": "Сохраняет offline-запись журнала аудита с данными сотрудника и временной меткой для последующей синхронизации.",
+      "tags": ["indexeddb", "offline", "logs", "audit"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:saveAuth",
+      "type": "function",
+      "name": "saveAuth",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [1, 22],
+      "summary": "Сохраняет JWT-токен и данные сотрудника в localStorage или sessionStorage с учётом флага 'запомнить меня' и очисткой прежних данных.",
+      "tags": ["storage", "auth", "session"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:getEmployee",
+      "type": "function",
+      "name": "getEmployee",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [28, 34],
+      "summary": "Читает и десериализует данные текущего сотрудника из localStorage или sessionStorage.",
+      "tags": ["storage", "auth", "session"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:clearAuth",
+      "type": "function",
+      "name": "clearAuth",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [36, 41],
+      "summary": "Очищает токен и данные сотрудника из обоих хранилищ при выходе из системы.",
+      "tags": ["storage", "auth", "cleanup"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:clearAppStorage",
+      "type": "function",
+      "name": "clearAppStorage",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [43, 49],
+      "summary": "Сбрасывает прикладные кэши и временные данные приложения при смене пользователя.",
+      "tags": ["storage", "cleanup", "cache"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:syncPendingOrders",
+      "type": "function",
+      "name": "syncPendingOrders",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [1, 78],
+      "summary": "Синхронизирует отложенные offline-заказы с сервером: создаёт клиентов и заказы, обрабатывает конфликты машин и диспатчит события о прогрессе.",
+      "tags": ["sync", "offline", "orders", "background-sync"],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:syncOfflineLogs",
+      "type": "function",
+      "name": "syncOfflineLogs",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [80, 99],
+      "summary": "Отправляет накопленные offline-логи журнала аудита на сервер и удаляет успешно синхронизированные записи.",
+      "tags": ["sync", "offline", "logs", "audit"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:cleanupSyncedPendingOrder",
+      "type": "function",
+      "name": "cleanupSyncedPendingOrder",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [112, 124],
+      "summary": "Завершает обработку синхронизированного локального заказа: кэширует серверную версию и удаляет запись из очереди.",
+      "tags": ["sync", "offline", "cleanup", "orders"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {"source": "file:client/js/api/auth.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/api/cars.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/api/clients.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/api/clients.js", "target": "function:client/js/utils/crypto.js:encryptText", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/api/logs.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/api/orders.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/api/config.js", "target": "function:client/js/api/config.js:apiRequest", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/api/config.js", "target": "function:client/js/api/config.js:removeAuthToken", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/api/clients.js", "target": "function:client/js/api/clients.js:createClient", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/pages/contract.js:renderContract", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/pages/contract.js:loadServerOrder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/pages/contract.js:normalizeOrder", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/pages/contract.js:generateBarcode", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/pages/contract.js:setupPrint", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/pages/logs.js", "target": "function:client/js/pages/logs.js:getActionLabel", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/pages/logs.js", "target": "function:client/js/pages/logs.js:escapeHtml", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/utils/crypto.js", "target": "function:client/js/utils/crypto.js:encryptText", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/crypto.js", "target": "function:client/js/utils/crypto.js:importKey", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatDate", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatDuration", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:pluralize", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:getStatusLabel", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:getStatusClass", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatDriverLicense", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:validateDriverLicense", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:openDb", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:put", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:putWithCacheCleanup", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:replaceStore", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:saveCachedCars", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:markCachedCarStatus", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:saveAuth", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:getEmployee", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:clearAuth", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:clearAppStorage", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/utils/sync.js:syncPendingOrders", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/utils/sync.js:syncOfflineLogs", "type": "contains", "direction": "forward", "weight": 1.0},
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/utils/sync.js:cleanupSyncedPendingOrder", "type": "contains", "direction": "forward", "weight": 1.0},
+
+    {"source": "file:client/js/api/config.js", "target": "function:client/js/api/config.js:apiRequest", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/crypto.js", "target": "function:client/js/utils/crypto.js:encryptText", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/format.js", "target": "function:client/js/utils/format.js:formatDate", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:saveAuth", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/storage.js", "target": "function:client/js/utils/storage.js:getEmployee", "type": "exports", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "exports", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/cars.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/cars.js", "target": "function:client/js/utils/format.js:getStatusClass", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/cars.js", "target": "function:client/js/utils/format.js:getStatusLabel", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/cars.js", "target": "file:client/js/api/cars.js", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:client/js/pages/contract.js", "target": "file:client/js/api/orders.js", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "depends_on", "direction": "forward", "weight": 0.6},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/utils/format.js:formatDate", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/utils/format.js:formatDuration", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/contract.js", "target": "function:client/js/utils/format.js:getStatusClass", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/login.js", "target": "file:client/js/api/auth.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/login.js", "target": "function:client/js/utils/storage.js:saveAuth", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/logs.js", "target": "file:client/js/api/logs.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/logs.js", "target": "function:client/js/utils/format.js:formatDate", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/new-order.js", "target": "file:client/js/api/cars.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/api/clients.js:createClient", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/offline-db.js:markCachedCarStatus", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/format.js:formatDriverLicense", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/format.js:validateDriverLicense", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/new-order.js", "target": "function:client/js/utils/storage.js:getEmployee", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/return.js", "target": "file:client/js/api/orders.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/return.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/return.js", "target": "function:client/js/utils/format.js:formatDate", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/return.js", "target": "function:client/js/utils/format.js:formatDuration", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/return.js", "target": "function:client/js/utils/format.js:formatPrice", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/return.js", "target": "function:client/js/utils/format.js:getStatusLabel", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/pages/search.js", "target": "file:client/js/api/orders.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/search.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/search.js", "target": "function:client/js/utils/format.js:formatDate", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/search.js", "target": "function:client/js/utils/format.js:formatDuration", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/pages/search.js", "target": "function:client/js/utils/format.js:getStatusLabel", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/utils/auth-guard.js", "target": "function:client/js/utils/storage.js:getEmployee", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/auth-guard.js", "target": "function:client/js/utils/storage.js:clearAuth", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "function:client/js/api/config.js:apiRequest", "target": "function:client/js/api/config.js:removeAuthToken", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:client/js/utils/crypto.js:encryptText", "target": "function:client/js/utils/crypto.js:importKey", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "function:client/js/utils/format.js:formatDuration", "target": "function:client/js/utils/format.js:pluralize", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/utils/offline-db.js", "target": "function:client/js/utils/storage.js:getEmployee", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/api/clients.js:createClient", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/sync.js", "target": "file:client/js/api/orders.js", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/api/config.js:apiRequest", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/utils/offline-db.js:saveOfflineLog", "type": "calls", "direction": "forward", "weight": 0.8},
+    {"source": "file:client/js/utils/sync.js", "target": "function:client/js/utils/offline-db.js:markCachedCarStatus", "type": "calls", "direction": "forward", "weight": 0.8},
+
+    {"source": "file:client/js/utils/sw-register.js", "target": "file:client/sw.js", "type": "depends_on", "direction": "forward", "weight": 0.6},
+
+    {"source": "file:client/sw.js", "target": "file:client/css/main.css", "type": "depends_on", "direction": "forward", "weight": 0.6}
+  ]
+}

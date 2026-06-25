@@ -33,3 +33,4 @@ router.get('/:id', authMiddleware, (req, res) => {
 })
 
 module.exports = router
+  

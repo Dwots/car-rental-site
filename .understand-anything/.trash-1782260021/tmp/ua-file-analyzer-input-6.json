@@ -1,0 +1,29 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "client/css/main.css", "language": "css", "sizeLines": 522, "fileCategory": "markup"},
+    {"path": "client/css/print.css", "language": "css", "sizeLines": 53, "fileCategory": "markup"},
+    {"path": "client/js/api/auth.js", "language": "javascript", "sizeLines": 3, "fileCategory": "code"},
+    {"path": "client/js/api/cars.js", "language": "javascript", "sizeLines": 8, "fileCategory": "code"},
+    {"path": "client/js/api/clients.js", "language": "javascript", "sizeLines": 14, "fileCategory": "code"},
+    {"path": "client/js/api/config.js", "language": "javascript", "sizeLines": 49, "fileCategory": "code"},
+    {"path": "client/js/api/logs.js", "language": "javascript", "sizeLines": 3, "fileCategory": "code"},
+    {"path": "client/js/api/orders.js", "language": "javascript", "sizeLines": 19, "fileCategory": "code"},
+    {"path": "client/js/pages/cars.js", "language": "javascript", "sizeLines": 59, "fileCategory": "code"},
+    {"path": "client/js/pages/contract.js", "language": "javascript", "sizeLines": 309, "fileCategory": "code"},
+    {"path": "client/js/pages/login.js", "language": "javascript", "sizeLines": 41, "fileCategory": "code"},
+    {"path": "client/js/pages/logs.js", "language": "javascript", "sizeLines": 96, "fileCategory": "code"},
+    {"path": "client/js/pages/new-order.js", "language": "javascript", "sizeLines": 558, "fileCategory": "code"},
+    {"path": "client/js/pages/return.js", "language": "javascript", "sizeLines": 118, "fileCategory": "code"},
+    {"path": "client/js/pages/search.js", "language": "javascript", "sizeLines": 266, "fileCategory": "code"},
+    {"path": "client/js/utils/auth-guard.js", "language": "javascript", "sizeLines": 33, "fileCategory": "code"},
+    {"path": "client/js/utils/crypto.js", "language": "javascript", "sizeLines": 27, "fileCategory": "code"},
+    {"path": "client/js/utils/format.js", "language": "javascript", "sizeLines": 103, "fileCategory": "code"},
+    {"path": "client/js/utils/offline-db.js", "language": "javascript", "sizeLines": 167, "fileCategory": "code"},
+    {"path": "client/js/utils/storage.js", "language": "javascript", "sizeLines": 49, "fileCategory": "code"},
+    {"path": "client/js/utils/sw-register.js", "language": "javascript", "sizeLines": 16, "fileCategory": "code"},
+    {"path": "client/js/utils/sync.js", "language": "javascript", "sizeLines": 124, "fileCategory": "code"},
+    {"path": "client/sw.js", "language": "javascript", "sizeLines": 98, "fileCategory": "code"}
+  ],
+  "batchImportData": {"client/css/main.css":[],"client/css/print.css":[],"client/js/api/auth.js":[],"client/js/api/cars.js":[],"client/js/api/clients.js":[],"client/js/api/config.js":[],"client/js/api/logs.js":[],"client/js/api/orders.js":[],"client/js/pages/cars.js":[],"client/js/pages/contract.js":[],"client/js/pages/login.js":[],"client/js/pages/logs.js":[],"client/js/pages/new-order.js":[],"client/js/pages/return.js":[],"client/js/pages/search.js":[],"client/js/utils/auth-guard.js":[],"client/js/utils/crypto.js":[],"client/js/utils/format.js":[],"client/js/utils/offline-db.js":[],"client/js/utils/storage.js":[],"client/js/utils/sw-register.js":[],"client/js/utils/sync.js":[],"client/sw.js":[]}
+}

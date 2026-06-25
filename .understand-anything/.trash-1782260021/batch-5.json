@@ -1,0 +1,218 @@
+{
+  "nodes": [
+    {
+      "id": "document:docs/FULL_VERIFICATION.md",
+      "type": "document",
+      "name": "FULL_VERIFICATION.md",
+      "filePath": "docs/FULL_VERIFICATION.md",
+      "summary": "Полное пошаговое руководство по проверке проекта AutoRent: подготовка окружения и БД, запуск, проверка схемы, онлайн- и офлайн-сценарии заказа, печать договора, поиск, возврат, автосинхронизация и проверка шифрования данных.",
+      "tags": ["documentation", "verification", "testing-guide", "offline", "checklist"],
+      "complexity": "complex",
+      "languageNotes": "Документ построен как пронумерованный чек-лист из 16 разделов с командами оболочки, SQL-запросами и curl-вызовами для ручной верификации."
+    },
+    {
+      "id": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "type": "document",
+      "name": "IMPLEMENTATION_GUIDE.md",
+      "filePath": "docs/IMPLEMENTATION_GUIDE.md",
+      "summary": "Руководство по реализации, описывающее доведение приложения AutoRent до нового ТЗ: серверная схема, аудит действий, маршруты синхронизации логов, шифрование клиентов, заказы, API-обертка, IndexedDB, синхронизация, договор, поиск, возврат и Service Worker.",
+      "tags": ["documentation", "implementation-guide", "architecture", "offline", "encryption"],
+      "complexity": "complex",
+      "languageNotes": "Структурировано как 17 разделов с фрагментами кода сервера и клиента, описывающими целевую архитектуру и порядок подключения скриптов."
+    },
+    {
+      "id": "document:docs/tz-implementation-plan.md",
+      "type": "document",
+      "name": "tz-implementation-plan.md",
+      "filePath": "docs/tz-implementation-plan.md",
+      "summary": "План доведения проекта до технического задания: изменения схемы БД, серверное логирование, флаг сохранения заказов, клиентский IndexedDB, API-обертка, синхронизация, договор, офлайн-поиск, дополнительное шифрование и сценарии проверки работы.",
+      "tags": ["documentation", "planning", "roadmap", "offline", "database"],
+      "complexity": "complex",
+      "languageNotes": "Документ-план из 20 разделов, завершающийся минимальным порядком реализации и набором сценариев приемочной проверки."
+    }
+  ],
+  "edges": [
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/api/logs.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/sw.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/search.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/return.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/new-order.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/pages/search.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "document:docs/FULL_VERIFICATION.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ]
+}

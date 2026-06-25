@@ -1,0 +1,63 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 7,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "client/pages/cars.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 94,
+      "nonEmptyLines": 89,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/contract.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 188,
+      "nonEmptyLines": 169,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/login.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 41,
+      "nonEmptyLines": 38,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/logs.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 89,
+      "nonEmptyLines": 84,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/new-order.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 117,
+      "nonEmptyLines": 110,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/return.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 77,
+      "nonEmptyLines": 73,
+      "metrics": {}
+    },
+    {
+      "path": "client/pages/search.html",
+      "language": "html",
+      "fileCategory": "markup",
+      "totalLines": 126,
+      "nonEmptyLines": 115,
+      "metrics": {}
+    }
+  ]
+}

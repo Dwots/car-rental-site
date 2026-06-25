@@ -1,0 +1,250 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "files": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "client/css/main.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/css/print.css",
+      "language": "css",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/js/api/auth.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/cars.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/clients.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/config.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/logs.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/orders.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/cars.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/contract.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/login.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/logs.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/new-order.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/return.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/search.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/auth-guard.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/crypto.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/format.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/offline-db.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/storage.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/sw-register.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/sync.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/pages/cars.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/contract.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/login.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/logs.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/new-order.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/return.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/search.html",
+      "language": "html",
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/sw.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/FULL_VERIFICATION.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_GUIDE.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/tz-implementation-plan.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "fileCategory": "docs"
+    },
+    {
+      "path": "server/db.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/index.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/middleware/auth.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/migrations/001_create_tables.sql",
+      "language": "sql",
+      "fileCategory": "data"
+    },
+    {
+      "path": "server/package.json",
+      "language": "json",
+      "fileCategory": "config"
+    },
+    {
+      "path": "server/routes/auth.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/cars.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/clients.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/logs.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/orders.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/utils/audit.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/utils/encrypt.js",
+      "language": "javascript",
+      "fileCategory": "code"
+    },
+    {
+      "path": "task_text/Задача от  20.1  апреля.odt",
+      "language": "odt",
+      "fileCategory": "code"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "client/pages/cars.html", "language": "html", "sizeLines": 94, "fileCategory": "markup"},
+    {"path": "client/pages/contract.html", "language": "html", "sizeLines": 188, "fileCategory": "markup"},
+    {"path": "client/pages/login.html", "language": "html", "sizeLines": 41, "fileCategory": "markup"},
+    {"path": "client/pages/logs.html", "language": "html", "sizeLines": 89, "fileCategory": "markup"},
+    {"path": "client/pages/new-order.html", "language": "html", "sizeLines": 117, "fileCategory": "markup"},
+    {"path": "client/pages/return.html", "language": "html", "sizeLines": 77, "fileCategory": "markup"},
+    {"path": "client/pages/search.html", "language": "html", "sizeLines": 126, "fileCategory": "markup"}
+  ],
+  "batchImportData": {"client/pages/cars.html":[],"client/pages/contract.html":[],"client/pages/login.html":[],"client/pages/logs.html":[],"client/pages/new-order.html":[],"client/pages/return.html":[],"client/pages/search.html":[]}
+}

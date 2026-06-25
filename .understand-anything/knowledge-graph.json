@@ -1,0 +1,3303 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "car-rental-site",
+    "languages": [
+      "javascript",
+      "html",
+      "css",
+      "sql",
+      "markdown",
+      "json"
+    ],
+    "frameworks": [
+      "Express"
+    ],
+    "description": "Веб-приложение для управления арендой автомобилей: PWA-клиент на vanilla JS (service worker, offline IndexedDB, синхронизация) и backend на Express 5 + better-sqlite3 с JWT-аутентификацией.",
+    "analyzedAt": "2026-06-24T00:12:43.257Z",
+    "gitCommitHash": "14603392f396d559be1e91f0d3f9f307c6ceb7a9"
+  },
+  "nodes": [
+    {
+      "id": "file:server/middleware/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "server/middleware/auth.js",
+      "summary": "Express middleware для JWT-аутентификации: извлекает Bearer-токен из заголовка Authorization, проверяет его и помещает данные сотрудника в req.employee.",
+      "tags": [
+        "middleware",
+        "authentication",
+        "jwt",
+        "security"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Использует jwt.verify с обработкой ошибок; возвращает 401 при отсутствии токена и 403 при невалидном."
+    },
+    {
+      "id": "function:server/middleware/auth.js:authMiddleware",
+      "type": "function",
+      "name": "authMiddleware",
+      "filePath": "server/middleware/auth.js",
+      "lineRange": [
+        4,
+        19
+      ],
+      "summary": "Проверяет JWT из заголовка Authorization, при успехе записывает payload в req.employee и вызывает next(), иначе отвечает кодом 401 или 403.",
+      "tags": [
+        "middleware",
+        "jwt",
+        "authorization",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/routes/clients.js",
+      "type": "file",
+      "name": "clients.js",
+      "filePath": "server/routes/clients.js",
+      "summary": "Express-роутер для работы с клиентами: поиск клиента по расшифрованному паспорту и создание нового клиента с шифрованием персональных данных.",
+      "tags": [
+        "api-handler",
+        "router",
+        "clients",
+        "encryption"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Персональные данные (паспорт, телефон, адрес, права) хранятся в зашифрованном виде; поиск выполняется перебором всех записей с расшифровкой."
+    },
+    {
+      "id": "file:server/routes/logs.js",
+      "type": "file",
+      "name": "logs.js",
+      "filePath": "server/routes/logs.js",
+      "summary": "Express-роутер аудит-логов: выдаёт последние записи действий с данными сотрудника и принимает пакет действий, совершённых в офлайн-режиме, для синхронизации.",
+      "tags": [
+        "api-handler",
+        "router",
+        "audit",
+        "logging"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:server/routes/orders.js",
+      "type": "file",
+      "name": "orders.js",
+      "filePath": "server/routes/orders.js",
+      "summary": "Express-роутер заказов аренды: создание заказа со снимками клиента и автомобиля, поиск по паспорту и id, возврат автомобиля и фиксация печати договора.",
+      "tags": [
+        "api-handler",
+        "router",
+        "orders",
+        "business-logic"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Каждое действие фиксируется через logAction; зашифрованные поля клиента расшифровываются в mapOrder; время формируется в московском часовом поясе для SQLite."
+    },
+    {
+      "id": "function:server/routes/orders.js:mapOrder",
+      "type": "function",
+      "name": "mapOrder",
+      "filePath": "server/routes/orders.js",
+      "lineRange": [
+        22,
+        32
+      ],
+      "summary": "Преобразует строку заказа из БД в API-представление: расшифровывает персональные данные клиента и приводит числовые флаги к булевым значениям.",
+      "tags": [
+        "serialization",
+        "encryption",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/routes/orders.js:getOrderWithDetails",
+      "type": "function",
+      "name": "getOrderWithDetails",
+      "filePath": "server/routes/orders.js",
+      "lineRange": [
+        34,
+        53
+      ],
+      "summary": "Возвращает заказ по id с присоединёнными данными клиента, автомобиля и сотрудника через SQL JOIN.",
+      "tags": [
+        "database",
+        "query",
+        "orders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/utils/audit.js",
+      "type": "file",
+      "name": "audit.js",
+      "filePath": "server/utils/audit.js",
+      "summary": "Утилита аудита: функция logAction записывает действие сотрудника в таблицу action_logs с типом сущности, идентификатором и деталями в формате JSON.",
+      "tags": [
+        "utility",
+        "audit",
+        "logging",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/audit.js:logAction",
+      "type": "function",
+      "name": "logAction",
+      "filePath": "server/utils/audit.js",
+      "lineRange": [
+        3,
+        14
+      ],
+      "summary": "Вставляет запись о действии сотрудника в таблицу action_logs, сериализуя детали через JSON.stringify.",
+      "tags": [
+        "audit",
+        "logging",
+        "database",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/utils/encrypt.js",
+      "type": "file",
+      "name": "encrypt.js",
+      "filePath": "server/utils/encrypt.js",
+      "summary": "Утилита симметричного шифрования персональных данных на основе AES (crypto) со случайным IV; экспортирует функции encrypt и decrypt.",
+      "tags": [
+        "utility",
+        "encryption",
+        "security",
+        "crypto"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Использует встроенный модуль crypto с createCipheriv/createDecipheriv и случайным IV, хранимым вместе с шифротекстом."
+    },
+    {
+      "id": "function:server/utils/encrypt.js:encrypt",
+      "type": "function",
+      "name": "encrypt",
+      "filePath": "server/utils/encrypt.js",
+      "lineRange": [
+        7,
+        13
+      ],
+      "summary": "Шифрует строку симметричным алгоритмом со случайным IV и возвращает результат в виде iv:ciphertext.",
+      "tags": [
+        "encryption",
+        "crypto",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/utils/encrypt.js:decrypt",
+      "type": "function",
+      "name": "decrypt",
+      "filePath": "server/utils/encrypt.js",
+      "lineRange": [
+        15,
+        26
+      ],
+      "summary": "Расшифровывает строку формата iv:ciphertext, разбивая её на IV и зашифрованную часть и восстанавливая исходный текст.",
+      "tags": [
+        "decryption",
+        "crypto",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/db.js",
+      "type": "file",
+      "name": "db.js",
+      "filePath": "server/db.js",
+      "summary": "Инициализирует подключение к базе данных better-sqlite3, включает режим WAL для производительности и экспортирует единый экземпляр БД для всего сервера.",
+      "tags": [
+        "database",
+        "singleton",
+        "service",
+        "configuration"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Синглтон-модуль: единственный экземпляр Database переиспользуется во всех роутах через require."
+    },
+    {
+      "id": "file:server/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/index.js",
+      "summary": "Точка входа Express-сервера: настраивает CORS и статику, монтирует все API-роуты, инициализирует схему БД и тестовые данные, запускает прослушивание порта.",
+      "tags": [
+        "entry-point",
+        "service",
+        "middleware",
+        "api-handler",
+        "database"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Функция initDB выполняет миграции из SQL-файла и сидинг тестовых данных (сотрудник admin и парк автомобилей) при старте."
+    },
+    {
+      "id": "file:server/routes/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "server/routes/auth.js",
+      "summary": "Express-роутер аутентификации: обрабатывает POST /api/auth/login, проверяет пароль через bcrypt и выдаёт JWT-токен со сроком действия 8 часов.",
+      "tags": [
+        "api-handler",
+        "security",
+        "validation",
+        "service"
+      ],
+      "complexity": "simple",
+      "languageNotes": "JWT подписывается секретом из process.env.JWT_SECRET; вход сотрудника логируется через logAction."
+    },
+    {
+      "id": "file:server/routes/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "server/routes/cars.js",
+      "summary": "Express-роутер для автомобилей: предоставляет защищённые authMiddleware эндпоинты для списка машин, доступных машин и получения автомобиля по id.",
+      "tags": [
+        "api-handler",
+        "middleware",
+        "data-model",
+        "service"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/index.js:initDB",
+      "type": "function",
+      "name": "initDB",
+      "filePath": "server/index.js",
+      "lineRange": [
+        38,
+        73
+      ],
+      "summary": "Применяет SQL-миграцию для создания таблиц и наполняет БД тестовыми данными: создаёт сотрудника admin с bcrypt-хешем пароля и парк из шести автомобилей, если они отсутствуют.",
+      "tags": [
+        "database",
+        "migration",
+        "initialization",
+        "seed"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:server/routes/auth.js:POST-/api/auth/login",
+      "type": "endpoint",
+      "name": "POST /api/auth/login",
+      "filePath": "server/routes/auth.js",
+      "lineRange": [
+        10,
+        46
+      ],
+      "summary": "Эндпоинт входа сотрудника: валидирует логин и пароль, сверяет bcrypt-хеш, возвращает JWT-токен и данные сотрудника.",
+      "tags": [
+        "api-handler",
+        "security",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars",
+      "type": "endpoint",
+      "name": "GET /api/cars",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [
+        7,
+        18
+      ],
+      "summary": "Возвращает список автомобилей с опциональной фильтрацией по статусу через query-параметр.",
+      "tags": [
+        "api-handler",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars/available",
+      "type": "endpoint",
+      "name": "GET /api/cars/available",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [
+        21,
+        26
+      ],
+      "summary": "Возвращает только автомобили со статусом available.",
+      "tags": [
+        "api-handler",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars/:id",
+      "type": "endpoint",
+      "name": "GET /api/cars/:id",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [
+        29,
+        33
+      ],
+      "summary": "Возвращает автомобиль по идентификатору или ошибку 404, если он не найден.",
+      "tags": [
+        "api-handler",
+        "data-model"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:server/migrations/001_create_tables.sql",
+      "type": "table",
+      "name": "001_create_tables.sql",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "summary": "Начальная SQL-миграция, создающая базовую схему SQLite-базы для системы проката автомобилей: сотрудники, клиенты, автомобили, заказы и журнал действий со связями по внешним ключам.",
+      "tags": [
+        "database",
+        "migration",
+        "schema-definition",
+        "sqlite",
+        "data-model"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует синтаксис SQLite: AUTOINCREMENT, CURRENT_TIMESTAMP по умолчанию и IF NOT EXISTS для идемпотентного создания таблиц. JSON-снимки и contract_html хранятся как TEXT для денормализованного хранения данных заказа."
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "table",
+      "name": "employees",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [
+        1,
+        7
+      ],
+      "summary": "Таблица сотрудников с уникальным логином и хешем пароля для JWT-аутентификации.",
+      "tags": [
+        "database",
+        "data-model",
+        "authentication",
+        "users"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "table",
+      "name": "clients",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [
+        9,
+        17
+      ],
+      "summary": "Таблица клиентов с паспортными данными, контактами и номером водительского удостоверения для оформления договоров аренды.",
+      "tags": [
+        "database",
+        "data-model",
+        "customers"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "table",
+      "name": "cars",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [
+        19,
+        30
+      ],
+      "summary": "Таблица автомобилей с характеристиками, уникальными регистрационным номером и VIN, тарифами за день и час, а также статусом доступности.",
+      "tags": [
+        "database",
+        "data-model",
+        "inventory",
+        "pricing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:orders",
+      "type": "table",
+      "name": "orders",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [
+        32,
+        52
+      ],
+      "summary": "Центральная таблица заказов аренды, связывающая сотрудника, клиента и автомобиль; хранит расчёт стоимости, статус синхронизации и денормализованные снимки данных (JSON) и HTML-договор.",
+      "tags": [
+        "database",
+        "data-model",
+        "orders",
+        "foreign-keys",
+        "denormalization"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Поля synced и is_saved_to_db поддерживают офлайн-первый PWA-сценарий; client_snapshot_json и car_snapshot_json сохраняют состояние сущностей на момент оформления заказа."
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:action_logs",
+      "type": "table",
+      "name": "action_logs",
+      "filePath": "server/migrations/001_create_tables.sql",
+      "lineRange": [
+        54,
+        63
+      ],
+      "summary": "Таблица аудита действий сотрудников с типом сущности, идентификатором и JSON-деталями для отслеживания изменений в системе.",
+      "tags": [
+        "database",
+        "data-model",
+        "audit-log",
+        "monitoring"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/pages/cars.html",
+      "type": "file",
+      "name": "cars.html",
+      "filePath": "client/pages/cars.html",
+      "summary": "Страница каталога автомобилей CRM с боковой навигацией, кнопками фильтрации по статусу (доступен, в аренде, обслуживание) и таблицей автопарка. Загружает контроллер pages/cars.js и общий набор API/утилитарных модулей.",
+      "tags": [
+        "component",
+        "page",
+        "data-table",
+        "ui",
+        "vanilla-js"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Статическая HTML-разметка; динамика реализована подключаемыми скриптами, рендеринг строк таблицы выполняется в cars.js."
+    },
+    {
+      "id": "file:client/pages/contract.html",
+      "type": "file",
+      "name": "contract.html",
+      "filePath": "client/pages/contract.html",
+      "summary": "Страница печати договора аренды: формирует документ с номером заказа, штрих-кодом (через библиотеку JsBarcode) и блоками подписей. Содержит обширные встроенные стили и подключает print.css для печати.",
+      "tags": [
+        "component",
+        "page",
+        "print",
+        "barcode",
+        "ui"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Использует внешнюю CDN-библиотеку JsBarcode и отдельный print.css; большой блок встроенного CSS для верстки печатного документа."
+    },
+    {
+      "id": "file:client/pages/login.html",
+      "type": "file",
+      "name": "login.html",
+      "filePath": "client/pages/login.html",
+      "summary": "Страница входа в CRM с формой логина и пароля. Минимальный набор скриптов (config, auth, storage, регистрация service worker и контроллер login.js) без боковой навигации.",
+      "tags": [
+        "component",
+        "page",
+        "auth",
+        "form",
+        "ui"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Единственная страница без layout-сайдбара; форма обрабатывается контроллером login.js через api/auth.js."
+    },
+    {
+      "id": "file:client/pages/logs.html",
+      "type": "file",
+      "name": "logs.html",
+      "filePath": "client/pages/logs.html",
+      "summary": "Страница журнала действий сотрудников и офлайн-синхронизаций с кнопкой обновления и таблицей событий (дата, действие, сотрудник, объект, детали). Управляется контроллером pages/logs.js.",
+      "tags": [
+        "component",
+        "page",
+        "data-table",
+        "audit-log",
+        "ui"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/pages/new-order.html",
+      "type": "file",
+      "name": "new-order.html",
+      "filePath": "client/pages/new-order.html",
+      "summary": "Многошаговая форма оформления нового заказа аренды: выбор клиента по паспорту, выбор автомобиля, указание срока и автоматический расчёт стоимости. Управляется контроллером pages/new-order.js.",
+      "tags": [
+        "component",
+        "page",
+        "form",
+        "wizard",
+        "ui"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Трёхшаговый мастер; динамическая подгрузка списка автомобилей и расчёт цены выполняются в new-order.js."
+    },
+    {
+      "id": "file:client/pages/return.html",
+      "type": "file",
+      "name": "return.html",
+      "filePath": "client/pages/return.html",
+      "summary": "Страница возврата автомобиля: поиск заказа по номеру и оформление возврата с выводом деталей и сообщения об успехе. Управляется контроллером pages/return.js.",
+      "tags": [
+        "component",
+        "page",
+        "form",
+        "ui",
+        "vanilla-js"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/pages/search.html",
+      "type": "file",
+      "name": "search.html",
+      "filePath": "client/pages/search.html",
+      "summary": "Страница поиска заказа с переключением между поиском по номеру заказа и по паспорту клиента. Содержит встроенный скрипт switchTab для смены режима и контроллер pages/search.js для выполнения поиска.",
+      "tags": [
+        "component",
+        "page",
+        "search",
+        "ui",
+        "vanilla-js"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Содержит встроенную функцию switchTab, переключающую режим ввода (номер заказа / паспорт) и подсказки; поддерживает ввод штрих-кода сканером."
+    },
+    {
+      "id": "document:docs/FULL_VERIFICATION.md",
+      "type": "document",
+      "name": "FULL_VERIFICATION.md",
+      "filePath": "docs/FULL_VERIFICATION.md",
+      "summary": "Полное пошаговое руководство по проверке проекта AutoRent: подготовка окружения и БД, запуск, проверка схемы, онлайн- и офлайн-сценарии заказа, печать договора, поиск, возврат, автосинхронизация и проверка шифрования данных.",
+      "tags": [
+        "documentation",
+        "verification",
+        "testing-guide",
+        "offline",
+        "checklist"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Документ построен как пронумерованный чек-лист из 16 разделов с командами оболочки, SQL-запросами и curl-вызовами для ручной верификации."
+    },
+    {
+      "id": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "type": "document",
+      "name": "IMPLEMENTATION_GUIDE.md",
+      "filePath": "docs/IMPLEMENTATION_GUIDE.md",
+      "summary": "Руководство по реализации, описывающее доведение приложения AutoRent до нового ТЗ: серверная схема, аудит действий, маршруты синхронизации логов, шифрование клиентов, заказы, API-обертка, IndexedDB, синхронизация, договор, поиск, возврат и Service Worker.",
+      "tags": [
+        "documentation",
+        "implementation-guide",
+        "architecture",
+        "offline",
+        "encryption"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Структурировано как 17 разделов с фрагментами кода сервера и клиента, описывающими целевую архитектуру и порядок подключения скриптов."
+    },
+    {
+      "id": "document:docs/tz-implementation-plan.md",
+      "type": "document",
+      "name": "tz-implementation-plan.md",
+      "filePath": "docs/tz-implementation-plan.md",
+      "summary": "План доведения проекта до технического задания: изменения схемы БД, серверное логирование, флаг сохранения заказов, клиентский IndexedDB, API-обертка, синхронизация, договор, офлайн-поиск, дополнительное шифрование и сценарии проверки работы.",
+      "tags": [
+        "documentation",
+        "planning",
+        "roadmap",
+        "offline",
+        "database"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Документ-план из 20 разделов, завершающийся минимальным порядком реализации и набором сценариев приемочной проверки."
+    },
+    {
+      "id": "file:client/css/main.css",
+      "type": "file",
+      "name": "main.css",
+      "filePath": "client/css/main.css",
+      "summary": "Основная таблица стилей клиентского интерфейса: переменные темы, layout, навигация, таблицы, карточки, формы, статус-бейджи и адаптивная вёрстка PWA.",
+      "tags": [
+        "stylesheet",
+        "ui",
+        "theme",
+        "responsive",
+        "markup"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Использует CSS custom properties (--text-secondary, --accent и т.п.) для единой темизации всех страниц."
+    },
+    {
+      "id": "file:client/css/print.css",
+      "type": "file",
+      "name": "print.css",
+      "filePath": "client/css/print.css",
+      "summary": "Стили для печати: скрывает навигацию и интерактивные элементы, оформляя страницу договора под печатный бланк.",
+      "tags": [
+        "stylesheet",
+        "print",
+        "contract",
+        "markup"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Применяется через @media print для подготовки документа договора к печати."
+    },
+    {
+      "id": "file:client/js/api/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "client/js/api/auth.js",
+      "summary": "API-обёртка авторизации: отправляет логин и пароль на бэкенд через общий apiRequest и возвращает токен с данными сотрудника.",
+      "tags": [
+        "api-wrapper",
+        "auth",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "client/js/api/cars.js",
+      "summary": "API-обёртка для автомобилей: получение полного списка и списка доступных машин через apiRequest.",
+      "tags": [
+        "api-wrapper",
+        "cars",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/clients.js",
+      "type": "file",
+      "name": "clients.js",
+      "filePath": "client/js/api/clients.js",
+      "summary": "API-обёртка для клиентов: поиск по паспорту и создание клиента с предварительным шифрованием персональных данных через encryptText.",
+      "tags": [
+        "api-wrapper",
+        "clients",
+        "encryption",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/config.js",
+      "type": "file",
+      "name": "config.js",
+      "filePath": "client/js/api/config.js",
+      "summary": "Базовый HTTP-слой клиента: функция apiRequest с подстановкой JWT-токена, обработкой ответов и сброса авторизации при 401; помощники чтения и удаления токена.",
+      "tags": [
+        "api-client",
+        "http",
+        "auth",
+        "config"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Центральная точка для всех fetch-запросов; при ответе 401 чистит токен через removeAuthToken."
+    },
+    {
+      "id": "file:client/js/api/logs.js",
+      "type": "file",
+      "name": "logs.js",
+      "filePath": "client/js/api/logs.js",
+      "summary": "API-обёртка для журнала действий: запрашивает логи аудита с сервера через apiRequest.",
+      "tags": [
+        "api-wrapper",
+        "logs",
+        "audit",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/api/orders.js",
+      "type": "file",
+      "name": "orders.js",
+      "filePath": "client/js/api/orders.js",
+      "summary": "API-обёртка для заказов: создание, получение, возврат, отметка о печати и поиск заказов по паспорту клиента.",
+      "tags": [
+        "api-wrapper",
+        "orders",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/pages/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "client/js/pages/cars.js",
+      "summary": "Контроллер страницы автопарка: загружает список машин и рендерит таблицу с ценами и статусами, используя утилиты форматирования.",
+      "tags": [
+        "page-controller",
+        "cars",
+        "rendering",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/contract.js",
+      "type": "file",
+      "name": "contract.js",
+      "filePath": "client/js/pages/contract.js",
+      "summary": "Контроллер страницы договора: загружает заказ (с сервера или из offline-кэша), нормализует данные, рендерит печатную форму договора и генерирует штрихкод заказа.",
+      "tags": [
+        "page-controller",
+        "contract",
+        "rendering",
+        "offline",
+        "barcode"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Поддерживает offline-режим: при недоступности сети читает заказ из IndexedDB-кэша через getCachedOrder; генерирует штрихкод через библиотеку JsBarcode."
+    },
+    {
+      "id": "file:client/js/pages/login.js",
+      "type": "file",
+      "name": "login.js",
+      "filePath": "client/js/pages/login.js",
+      "summary": "Контроллер страницы входа: обрабатывает форму авторизации, вызывает loginRequest, сохраняет токен через saveAuth и редиректит на страницу нового заказа.",
+      "tags": [
+        "page-controller",
+        "auth",
+        "login",
+        "client"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/pages/logs.js",
+      "type": "file",
+      "name": "logs.js",
+      "filePath": "client/js/pages/logs.js",
+      "summary": "Контроллер страницы журнала аудита: загружает логи через getLogs и рендерит таблицу с локализованными подписями действий и экранированием HTML.",
+      "tags": [
+        "page-controller",
+        "logs",
+        "audit",
+        "rendering",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/new-order.js",
+      "type": "file",
+      "name": "new-order.js",
+      "filePath": "client/js/pages/new-order.js",
+      "summary": "Контроллер оформления нового заказа: валидация паспорта/телефона/водительского удостоверения, поиск или создание клиента, выбор машины, расчёт цены и offline-очередь заказов в IndexedDB.",
+      "tags": [
+        "page-controller",
+        "orders",
+        "validation",
+        "offline",
+        "client"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Поддерживает offline-сценарий: формирует локальные заказы (makeLocalId), кладёт их в очередь savePendingOrder и блокирует уже занятые машины из локальной очереди."
+    },
+    {
+      "id": "file:client/js/pages/return.js",
+      "type": "file",
+      "name": "return.js",
+      "filePath": "client/js/pages/return.js",
+      "summary": "Контроллер страницы возврата авто: находит заказ по номеру, показывает детали и выполняет возврат через returnOrder с записью offline-лога.",
+      "tags": [
+        "page-controller",
+        "orders",
+        "return",
+        "client"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/js/pages/search.js",
+      "type": "file",
+      "name": "search.js",
+      "filePath": "client/js/pages/search.js",
+      "summary": "Контроллер страницы поиска: ищет заказы по номеру или паспорту клиента, объединяя данные с сервера, offline-кэша и локальной очереди, и рендерит карточки заказов.",
+      "tags": [
+        "page-controller",
+        "search",
+        "orders",
+        "offline",
+        "client"
+      ],
+      "complexity": "complex",
+      "languageNotes": "При недоступности сети объединяет результаты из getCachedOrders и getPendingOrders, помечая несинхронизированные заказы предупреждением."
+    },
+    {
+      "id": "file:client/js/utils/auth-guard.js",
+      "type": "file",
+      "name": "auth-guard.js",
+      "filePath": "client/js/utils/auth-guard.js",
+      "summary": "Гвард авторизации: при отсутствии токена перенаправляет на страницу входа, отображает имя сотрудника, настраивает кнопку выхода и подсветку активного пункта меню.",
+      "tags": [
+        "auth",
+        "guard",
+        "navigation",
+        "client"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Самовызывающаяся IIFE, подключаемая на каждой защищённой странице до загрузки контента."
+    },
+    {
+      "id": "file:client/js/utils/crypto.js",
+      "type": "file",
+      "name": "crypto.js",
+      "filePath": "client/js/utils/crypto.js",
+      "summary": "Утилиты клиентского шифрования персональных данных через Web Crypto API (AES-GCM): преобразование hex, импорт ключа и encryptText для шифрования полей клиента.",
+      "tags": [
+        "crypto",
+        "encryption",
+        "security",
+        "utility"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Использует crypto.subtle (AES-GCM) с ключом FRONTEND_ENCRYPT_KEY; IV генерируется через crypto.getRandomValues и склеивается с шифротекстом в hex."
+    },
+    {
+      "id": "file:client/js/utils/format.js",
+      "type": "file",
+      "name": "format.js",
+      "filePath": "client/js/utils/format.js",
+      "summary": "Набор утилит форматирования и валидации: цены (Intl), даты, длительности, плюрализация, подписи и классы статусов, форматирование и проверка водительского удостоверения.",
+      "tags": [
+        "utility",
+        "formatting",
+        "validation",
+        "i18n",
+        "client"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "pluralize реализует русские правила склонения; formatPrice использует Intl.NumberFormat('ru-RU') в рублях."
+    },
+    {
+      "id": "file:client/js/utils/offline-db.js",
+      "type": "file",
+      "name": "offline-db.js",
+      "filePath": "client/js/utils/offline-db.js",
+      "summary": "Offline-хранилище на IndexedDB: низкоуровневые операции CRUD по object stores и высокоуровневые помощники для кэша заказов, клиентов, машин, очереди отложенных заказов и offline-логов.",
+      "tags": [
+        "offline",
+        "indexeddb",
+        "storage",
+        "cache",
+        "utility"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Обрабатывает превышение квоты (isQuotaError) с автоочисткой кэша; разделяет данные на постоянные (pending) и кэшируемые (CACHE_STORES) хранилища."
+    },
+    {
+      "id": "file:client/js/utils/storage.js",
+      "type": "file",
+      "name": "storage.js",
+      "filePath": "client/js/utils/storage.js",
+      "summary": "Управление сессией в localStorage/sessionStorage: сохранение токена и данных сотрудника, их чтение, очистка авторизации и сброс прикладных данных при смене пользователя.",
+      "tags": [
+        "storage",
+        "auth",
+        "session",
+        "utility"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Выбирает localStorage или sessionStorage в зависимости от флага 'запомнить меня'; при смене сотрудника очищает прикладные кэши."
+    },
+    {
+      "id": "file:client/js/utils/sw-register.js",
+      "type": "file",
+      "name": "sw-register.js",
+      "filePath": "client/js/utils/sw-register.js",
+      "summary": "Регистрация service worker для PWA: подключает sw.js при загрузке окна для поддержки offline-режима.",
+      "tags": [
+        "service-worker",
+        "pwa",
+        "registration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/js/utils/sync.js",
+      "type": "file",
+      "name": "sync.js",
+      "filePath": "client/js/utils/sync.js",
+      "summary": "Синхронизация offline-данных при восстановлении сети: отправляет отложенные заказы и offline-логи на сервер, создаёт клиентов, разрешает конфликты по машинам и чистит синхронизированные записи.",
+      "tags": [
+        "sync",
+        "offline",
+        "orders",
+        "background-sync",
+        "client"
+      ],
+      "complexity": "complex",
+      "languageNotes": "Обрабатывает конфликты занятой машины (isCarConflict) и диспатчит window-события о прогрессе синхронизации; опирается на IndexedDB-очередь из offline-db.js."
+    },
+    {
+      "id": "file:client/sw.js",
+      "type": "file",
+      "name": "sw.js",
+      "filePath": "client/sw.js",
+      "summary": "Service worker PWA: кэширует статические ресурсы (app shell), обслуживает запросы из кэша при offline и управляет жизненным циклом install/activate/fetch.",
+      "tags": [
+        "service-worker",
+        "pwa",
+        "offline",
+        "caching",
+        "client"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Реализует стратегию app-shell кэширования с версионированием кэша и очисткой устаревших версий при activate."
+    },
+    {
+      "id": "function:client/js/api/config.js:apiRequest",
+      "type": "function",
+      "name": "apiRequest",
+      "filePath": "client/js/api/config.js",
+      "lineRange": [
+        14,
+        49
+      ],
+      "summary": "Универсальная обёртка над fetch: добавляет JWT-токен и заголовки, сериализует тело, обрабатывает ошибки и сбрасывает авторизацию при ответе 401.",
+      "tags": [
+        "http",
+        "api-client",
+        "auth",
+        "fetch"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/api/config.js:removeAuthToken",
+      "type": "function",
+      "name": "removeAuthToken",
+      "filePath": "client/js/api/config.js",
+      "lineRange": [
+        7,
+        12
+      ],
+      "summary": "Удаляет JWT-токен и связанные данные из localStorage и sessionStorage при выходе или истечении сессии.",
+      "tags": [
+        "auth",
+        "storage",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/api/clients.js:createClient",
+      "type": "function",
+      "name": "createClient",
+      "filePath": "client/js/api/clients.js",
+      "lineRange": [
+        5,
+        14
+      ],
+      "summary": "Создаёт клиента на сервере, предварительно шифруя персональные поля через encryptText перед отправкой.",
+      "tags": [
+        "api-wrapper",
+        "clients",
+        "encryption"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:renderContract",
+      "type": "function",
+      "name": "renderContract",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [
+        155,
+        292
+      ],
+      "summary": "Формирует HTML печатной формы договора аренды на основе данных заказа с форматированием дат, длительности, цен и статусов.",
+      "tags": [
+        "rendering",
+        "contract",
+        "template"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:loadServerOrder",
+      "type": "function",
+      "name": "loadServerOrder",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [
+        89,
+        99
+      ],
+      "summary": "Загружает заказ с сервера и кэширует его; при недоступности сети возвращает заказ из offline-кэша.",
+      "tags": [
+        "orders",
+        "offline",
+        "data-loading"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:normalizeOrder",
+      "type": "function",
+      "name": "normalizeOrder",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [
+        101,
+        122
+      ],
+      "summary": "Приводит данные заказа из разных источников (сервер, кэш, локальная очередь) к единому виду для отображения.",
+      "tags": [
+        "normalization",
+        "orders",
+        "data-model"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:generateBarcode",
+      "type": "function",
+      "name": "generateBarcode",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [
+        294,
+        309
+      ],
+      "summary": "Генерирует штрихкод заказа в SVG через библиотеку JsBarcode с обработкой ошибок.",
+      "tags": [
+        "barcode",
+        "rendering",
+        "contract"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/pages/contract.js:setupPrint",
+      "type": "function",
+      "name": "setupPrint",
+      "filePath": "client/js/pages/contract.js",
+      "lineRange": [
+        128,
+        153
+      ],
+      "summary": "Настраивает печать договора: вставляет дополнительный HTML-контент в документ перед вызовом печати.",
+      "tags": [
+        "print",
+        "contract",
+        "dom"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/logs.js:getActionLabel",
+      "type": "function",
+      "name": "getActionLabel",
+      "filePath": "client/js/pages/logs.js",
+      "lineRange": [
+        55,
+        74
+      ],
+      "summary": "Возвращает локализованную русскую подпись для кода действия из журнала аудита.",
+      "tags": [
+        "i18n",
+        "logs",
+        "mapping"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/pages/logs.js:escapeHtml",
+      "type": "function",
+      "name": "escapeHtml",
+      "filePath": "client/js/pages/logs.js",
+      "lineRange": [
+        89,
+        96
+      ],
+      "summary": "Экранирует спецсимволы HTML для безопасного вывода данных журнала в таблицу.",
+      "tags": [
+        "security",
+        "escaping",
+        "xss-prevention"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/crypto.js:encryptText",
+      "type": "function",
+      "name": "encryptText",
+      "filePath": "client/js/utils/crypto.js",
+      "lineRange": [
+        22,
+        28
+      ],
+      "summary": "Шифрует строку алгоритмом AES-GCM через Web Crypto API и возвращает hex-строку IV вместе с шифротекстом.",
+      "tags": [
+        "crypto",
+        "encryption",
+        "aes-gcm",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/crypto.js:importKey",
+      "type": "function",
+      "name": "importKey",
+      "filePath": "client/js/utils/crypto.js",
+      "lineRange": [
+        17,
+        20
+      ],
+      "summary": "Импортирует ключ AES-GCM из FRONTEND_ENCRYPT_KEY для операций шифрования через crypto.subtle.",
+      "tags": [
+        "crypto",
+        "key-management",
+        "security"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatPrice",
+      "type": "function",
+      "name": "formatPrice",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        1,
+        7
+      ],
+      "summary": "Форматирует число как цену в рублях через Intl.NumberFormat с локалью ru-RU.",
+      "tags": [
+        "formatting",
+        "i18n",
+        "currency"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDate",
+      "type": "function",
+      "name": "formatDate",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        15,
+        25
+      ],
+      "summary": "Форматирует строку даты в локализованное представление даты и времени для отображения пользователю.",
+      "tags": [
+        "formatting",
+        "date",
+        "i18n"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDuration",
+      "type": "function",
+      "name": "formatDuration",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        33,
+        37
+      ],
+      "summary": "Форматирует длительность аренды (часы/дни) с корректным русским склонением через pluralize.",
+      "tags": [
+        "formatting",
+        "i18n",
+        "duration"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:pluralize",
+      "type": "function",
+      "name": "pluralize",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        39,
+        45
+      ],
+      "summary": "Выбирает правильную форму существительного по числу согласно русским правилам склонения.",
+      "tags": [
+        "i18n",
+        "pluralization",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "function",
+      "name": "getStatusLabel",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        47,
+        57
+      ],
+      "summary": "Возвращает локализованную русскую подпись для кода статуса заказа или машины.",
+      "tags": [
+        "i18n",
+        "status",
+        "mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:getStatusClass",
+      "type": "function",
+      "name": "getStatusClass",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        59,
+        69
+      ],
+      "summary": "Возвращает CSS-класс статус-бейджа в зависимости от кода статуса для визуального оформления.",
+      "tags": [
+        "status",
+        "styling",
+        "mapping"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/format.js:formatDriverLicense",
+      "type": "function",
+      "name": "formatDriverLicense",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        76,
+        86
+      ],
+      "summary": "Форматирует номер водительского удостоверения в стандартный вид с разбивкой на группы.",
+      "tags": [
+        "formatting",
+        "validation",
+        "driver-license"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/format.js:validateDriverLicense",
+      "type": "function",
+      "name": "validateDriverLicense",
+      "filePath": "client/js/utils/format.js",
+      "lineRange": [
+        88,
+        104
+      ],
+      "summary": "Проверяет корректность номера водительского удостоверения по шаблону и возвращает результат валидации.",
+      "tags": [
+        "validation",
+        "driver-license",
+        "utility"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:openDb",
+      "type": "function",
+      "name": "openDb",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        10,
+        34
+      ],
+      "summary": "Открывает базу IndexedDB и при обновлении версии создаёт необходимые object stores для кэша и очереди.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "initialization"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:put",
+      "type": "function",
+      "name": "put",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        36,
+        45
+      ],
+      "summary": "Записывает значение в указанный object store IndexedDB в рамках транзакции readwrite.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "write"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:putWithCacheCleanup",
+      "type": "function",
+      "name": "putWithCacheCleanup",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        47,
+        58
+      ],
+      "summary": "Записывает значение в кэш и при превышении квоты IndexedDB очищает кэш и повторяет запись.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "cache",
+        "quota"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:replaceStore",
+      "type": "function",
+      "name": "replaceStore",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        108,
+        119
+      ],
+      "summary": "Полностью заменяет содержимое object store: очищает и записывает новый набор значений в одной транзакции.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "bulk-write"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:saveCachedCars",
+      "type": "function",
+      "name": "saveCachedCars",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        130,
+        138
+      ],
+      "summary": "Кэширует список машин в IndexedDB с обработкой превышения квоты через очистку кэша.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "cars",
+        "cache"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:markCachedCarStatus",
+      "type": "function",
+      "name": "markCachedCarStatus",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        142,
+        149
+      ],
+      "summary": "Обновляет статус машины в кэше IndexedDB (например, помечает занятой при offline-заказе).",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "cars",
+        "status"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "function",
+      "name": "saveOfflineLog",
+      "filePath": "client/js/utils/offline-db.js",
+      "lineRange": [
+        151,
+        164
+      ],
+      "summary": "Сохраняет offline-запись журнала аудита с данными сотрудника и временной меткой для последующей синхронизации.",
+      "tags": [
+        "indexeddb",
+        "offline",
+        "logs",
+        "audit"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:saveAuth",
+      "type": "function",
+      "name": "saveAuth",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [
+        1,
+        22
+      ],
+      "summary": "Сохраняет JWT-токен и данные сотрудника в localStorage или sessionStorage с учётом флага 'запомнить меня' и очисткой прежних данных.",
+      "tags": [
+        "storage",
+        "auth",
+        "session"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:getEmployee",
+      "type": "function",
+      "name": "getEmployee",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [
+        28,
+        34
+      ],
+      "summary": "Читает и десериализует данные текущего сотрудника из localStorage или sessionStorage.",
+      "tags": [
+        "storage",
+        "auth",
+        "session"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:clearAuth",
+      "type": "function",
+      "name": "clearAuth",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [
+        36,
+        41
+      ],
+      "summary": "Очищает токен и данные сотрудника из обоих хранилищ при выходе из системы.",
+      "tags": [
+        "storage",
+        "auth",
+        "cleanup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/storage.js:clearAppStorage",
+      "type": "function",
+      "name": "clearAppStorage",
+      "filePath": "client/js/utils/storage.js",
+      "lineRange": [
+        43,
+        49
+      ],
+      "summary": "Сбрасывает прикладные кэши и временные данные приложения при смене пользователя.",
+      "tags": [
+        "storage",
+        "cleanup",
+        "cache"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:syncPendingOrders",
+      "type": "function",
+      "name": "syncPendingOrders",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [
+        1,
+        78
+      ],
+      "summary": "Синхронизирует отложенные offline-заказы с сервером: создаёт клиентов и заказы, обрабатывает конфликты машин и диспатчит события о прогрессе.",
+      "tags": [
+        "sync",
+        "offline",
+        "orders",
+        "background-sync"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:syncOfflineLogs",
+      "type": "function",
+      "name": "syncOfflineLogs",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [
+        80,
+        99
+      ],
+      "summary": "Отправляет накопленные offline-логи журнала аудита на сервер и удаляет успешно синхронизированные записи.",
+      "tags": [
+        "sync",
+        "offline",
+        "logs",
+        "audit"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:client/js/utils/sync.js:cleanupSyncedPendingOrder",
+      "type": "function",
+      "name": "cleanupSyncedPendingOrder",
+      "filePath": "client/js/utils/sync.js",
+      "lineRange": [
+        112,
+        124
+      ],
+      "summary": "Завершает обработку синхронизированного локального заказа: кэширует серверную версию и удаляет запись из очереди.",
+      "tags": [
+        "sync",
+        "offline",
+        "cleanup",
+        "orders"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Минимальный файл README проекта, содержащий одну строку с описанием: «Сайт по аренде машин.»",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "overview"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:server/package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "server/package.json",
+      "summary": "Манифест npm для backend-части: задаёт зависимости (Express 5, better-sqlite3, jsonwebtoken, bcryptjs, cors, dotenv), скрипты запуска (start/dev через nodemon) и точку входа index.js в режиме CommonJS.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "backend",
+        "dependencies"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Поле \"type\": \"commonjs\" указывает на использование CommonJS-модулей; скрипт dev использует nodemon для автоперезапуска."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/middleware/auth.js",
+      "target": "function:server/middleware/auth.js:authMiddleware",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/middleware/auth.js",
+      "target": "function:server/middleware/auth.js:authMiddleware",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "file:server/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "file:server/utils/audit.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "file:server/utils/encrypt.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "function:server/utils/encrypt.js:encrypt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "function:server/utils/encrypt.js:decrypt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/clients.js",
+      "target": "function:server/utils/audit.js:logAction",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/logs.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/logs.js",
+      "target": "file:server/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/logs.js",
+      "target": "file:server/utils/audit.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/logs.js",
+      "target": "function:server/utils/audit.js:logAction",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "file:server/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "file:server/utils/audit.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "file:server/utils/encrypt.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "function:server/routes/orders.js:mapOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "function:server/routes/orders.js:getOrderWithDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:server/routes/orders.js:mapOrder",
+      "target": "function:server/utils/encrypt.js:decrypt",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/routes/orders.js",
+      "target": "function:server/utils/audit.js:logAction",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/utils/audit.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/utils/audit.js",
+      "target": "function:server/utils/audit.js:logAction",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/utils/audit.js",
+      "target": "function:server/utils/audit.js:logAction",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/utils/encrypt.js",
+      "target": "function:server/utils/encrypt.js:encrypt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/utils/encrypt.js",
+      "target": "function:server/utils/encrypt.js:decrypt",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/utils/encrypt.js",
+      "target": "function:server/utils/encrypt.js:encrypt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/utils/encrypt.js",
+      "target": "function:server/utils/encrypt.js:decrypt",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/cars.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/clients.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/logs.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/orders.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/utils/audit.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "file:server/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "function:server/index.js:initDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "endpoint:server/routes/auth.js:POST-/api/auth/login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars/available",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars/:id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "function:server/index.js:initDB",
+      "target": "file:server/db.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/utils/audit.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:orders",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/migrations/001_create_tables.sql",
+      "target": "table:server/migrations/001_create_tables.sql:action_logs",
+      "type": "migrates",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:clients",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:orders",
+      "target": "table:server/migrations/001_create_tables.sql:cars",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "table:server/migrations/001_create_tables.sql:action_logs",
+      "target": "table:server/migrations/001_create_tables.sql:employees",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/pages/cars.html",
+      "target": "file:client/js/pages/cars.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/cars.html",
+      "target": "file:client/js/api/cars.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/cars.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/cars.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/cars.html",
+      "target": "file:client/js/utils/format.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/contract.html",
+      "target": "file:client/js/pages/contract.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/contract.html",
+      "target": "file:client/js/api/orders.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/contract.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/contract.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/contract.html",
+      "target": "file:client/css/print.css",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/login.html",
+      "target": "file:client/js/pages/login.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/login.html",
+      "target": "file:client/js/api/auth.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/login.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/login.html",
+      "target": "file:client/js/utils/storage.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/login.html",
+      "target": "file:client/js/utils/sw-register.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/logs.html",
+      "target": "file:client/js/pages/logs.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/logs.html",
+      "target": "file:client/js/api/logs.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/logs.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/logs.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/logs.html",
+      "target": "file:client/js/utils/sync.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/pages/new-order.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/api/clients.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/api/cars.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/api/orders.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/new-order.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/return.html",
+      "target": "file:client/js/pages/return.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/return.html",
+      "target": "file:client/js/api/orders.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/return.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/return.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/search.html",
+      "target": "file:client/js/pages/search.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/search.html",
+      "target": "file:client/js/api/orders.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/search.html",
+      "target": "file:client/js/api/clients.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/search.html",
+      "target": "file:client/js/api/config.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/pages/search.html",
+      "target": "file:client/js/utils/auth-guard.js",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/FULL_VERIFICATION.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/api/logs.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/sw.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/search.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/return.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "file:client/js/pages/new-order.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:server/migrations/001_create_tables.sql",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:server/index.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/offline-db.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/sync.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/utils/crypto.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/pages/contract.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "file:client/js/pages/search.js",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/tz-implementation-plan.md",
+      "target": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "target": "document:docs/FULL_VERIFICATION.md",
+      "type": "related",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:client/js/api/auth.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/cars.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/clients.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/clients.js",
+      "target": "function:client/js/utils/crypto.js:encryptText",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/logs.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/orders.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/api/config.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/api/config.js",
+      "target": "function:client/js/api/config.js:removeAuthToken",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/api/clients.js",
+      "target": "function:client/js/api/clients.js:createClient",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/pages/contract.js:renderContract",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/pages/contract.js:loadServerOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/pages/contract.js:normalizeOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/pages/contract.js:generateBarcode",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/pages/contract.js:setupPrint",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/logs.js",
+      "target": "function:client/js/pages/logs.js:getActionLabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/pages/logs.js",
+      "target": "function:client/js/pages/logs.js:escapeHtml",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/crypto.js",
+      "target": "function:client/js/utils/crypto.js:encryptText",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/crypto.js",
+      "target": "function:client/js/utils/crypto.js:importKey",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatDuration",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:pluralize",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:getStatusClass",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatDriverLicense",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:validateDriverLicense",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:openDb",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:put",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:putWithCacheCleanup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:replaceStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:saveCachedCars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:markCachedCarStatus",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:saveAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:getEmployee",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:clearAuth",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:clearAppStorage",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/utils/sync.js:syncPendingOrders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/utils/sync.js:syncOfflineLogs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/utils/sync.js:cleanupSyncedPendingOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:client/js/api/config.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/crypto.js",
+      "target": "function:client/js/utils/crypto.js:encryptText",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/format.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:saveAuth",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/storage.js",
+      "target": "function:client/js/utils/storage.js:getEmployee",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/cars.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/cars.js",
+      "target": "function:client/js/utils/format.js:getStatusClass",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/cars.js",
+      "target": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/cars.js",
+      "target": "file:client/js/api/cars.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "file:client/js/api/orders.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/utils/format.js:formatDuration",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/contract.js",
+      "target": "function:client/js/utils/format.js:getStatusClass",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/login.js",
+      "target": "file:client/js/api/auth.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/login.js",
+      "target": "function:client/js/utils/storage.js:saveAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/logs.js",
+      "target": "file:client/js/api/logs.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/logs.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "file:client/js/api/cars.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/api/clients.js:createClient",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/offline-db.js:markCachedCarStatus",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/format.js:formatDriverLicense",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/format.js:validateDriverLicense",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/new-order.js",
+      "target": "function:client/js/utils/storage.js:getEmployee",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "file:client/js/api/orders.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "function:client/js/utils/format.js:formatDuration",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "function:client/js/utils/format.js:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/return.js",
+      "target": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/search.js",
+      "target": "file:client/js/api/orders.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/search.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/search.js",
+      "target": "function:client/js/utils/format.js:formatDate",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/search.js",
+      "target": "function:client/js/utils/format.js:formatDuration",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/pages/search.js",
+      "target": "function:client/js/utils/format.js:getStatusLabel",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/auth-guard.js",
+      "target": "function:client/js/utils/storage.js:getEmployee",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/auth-guard.js",
+      "target": "function:client/js/utils/storage.js:clearAuth",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/js/api/config.js:apiRequest",
+      "target": "function:client/js/api/config.js:removeAuthToken",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/js/utils/crypto.js:encryptText",
+      "target": "function:client/js/utils/crypto.js:importKey",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "function:client/js/utils/format.js:formatDuration",
+      "target": "function:client/js/utils/format.js:pluralize",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/offline-db.js",
+      "target": "function:client/js/utils/storage.js:getEmployee",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/api/clients.js:createClient",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "file:client/js/api/orders.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/api/config.js:apiRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/utils/offline-db.js:saveOfflineLog",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sync.js",
+      "target": "function:client/js/utils/offline-db.js:markCachedCarStatus",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:client/js/utils/sw-register.js",
+      "target": "file:client/sw.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:client/sw.js",
+      "target": "file:client/css/main.css",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:server/package.json",
+      "target": "file:server/index.js",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "config:server/package.json",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:api",
+      "name": "Серверный API-слой",
+      "description": "Express-роутеры и REST-эндпоинты бэкенда (аутентификация, автомобили, клиенты, заказы, аудит-логи) плюс точка входа сервера, монтирующая все маршруты.",
+      "nodeIds": [
+        "file:server/index.js",
+        "file:server/routes/auth.js",
+        "file:server/routes/cars.js",
+        "file:server/routes/clients.js",
+        "file:server/routes/logs.js",
+        "file:server/routes/orders.js",
+        "endpoint:server/routes/auth.js:POST-/api/auth/login",
+        "endpoint:server/routes/cars.js:GET-/api/cars",
+        "endpoint:server/routes/cars.js:GET-/api/cars/available",
+        "endpoint:server/routes/cars.js:GET-/api/cars/:id"
+      ]
+    },
+    {
+      "id": "layer:infrastructure",
+      "name": "Серверная инфраструктура",
+      "description": "Сквозные серверные службы: JWT-middleware, singleton-подключение к better-sqlite3 и утилиты аудита и AES-шифрования, от которых зависят все роутеры.",
+      "nodeIds": [
+        "file:server/middleware/auth.js",
+        "file:server/db.js",
+        "file:server/utils/audit.js",
+        "file:server/utils/encrypt.js"
+      ]
+    },
+    {
+      "id": "layer:data",
+      "name": "Слой данных",
+      "description": "SQL-миграция схемы SQLite и определения таблиц (сотрудники, клиенты, автомобили, заказы, журнал действий) со связями по внешним ключам.",
+      "nodeIds": [
+        "file:server/migrations/001_create_tables.sql",
+        "table:server/migrations/001_create_tables.sql:employees",
+        "table:server/migrations/001_create_tables.sql:clients",
+        "table:server/migrations/001_create_tables.sql:cars",
+        "table:server/migrations/001_create_tables.sql:orders",
+        "table:server/migrations/001_create_tables.sql:action_logs"
+      ]
+    },
+    {
+      "id": "layer:ui",
+      "name": "Клиентский UI-слой",
+      "description": "HTML-страницы CRM и их vanilla-JS контроллеры (каталог авто, договор, вход, журнал, новый заказ, возврат, поиск), отвечающие за рендеринг и взаимодействие с пользователем.",
+      "nodeIds": [
+        "file:client/pages/cars.html",
+        "file:client/pages/contract.html",
+        "file:client/pages/login.html",
+        "file:client/pages/logs.html",
+        "file:client/pages/new-order.html",
+        "file:client/pages/return.html",
+        "file:client/pages/search.html",
+        "file:client/js/pages/cars.js",
+        "file:client/js/pages/contract.js",
+        "file:client/js/pages/login.js",
+        "file:client/js/pages/logs.js",
+        "file:client/js/pages/new-order.js",
+        "file:client/js/pages/return.js",
+        "file:client/js/pages/search.js"
+      ]
+    },
+    {
+      "id": "layer:client-api",
+      "name": "Клиентский API-слой",
+      "description": "API-обёртки фронтенда вокруг общего apiRequest с подстановкой JWT: авторизация, автомобили, клиенты, заказы и логи для обмена данными с бэкендом.",
+      "nodeIds": [
+        "file:client/js/api/auth.js",
+        "file:client/js/api/cars.js",
+        "file:client/js/api/clients.js",
+        "file:client/js/api/config.js",
+        "file:client/js/api/logs.js",
+        "file:client/js/api/orders.js"
+      ]
+    },
+    {
+      "id": "layer:client-utility",
+      "name": "Клиентские утилиты и offline/PWA",
+      "description": "Сквозные клиентские модули: гвард авторизации, шифрование (Web Crypto), форматирование, хранилище сессии, IndexedDB-кэш, фоновая синхронизация и service worker для offline-режима PWA.",
+      "nodeIds": [
+        "file:client/js/utils/auth-guard.js",
+        "file:client/js/utils/crypto.js",
+        "file:client/js/utils/format.js",
+        "file:client/js/utils/offline-db.js",
+        "file:client/js/utils/storage.js",
+        "file:client/js/utils/sw-register.js",
+        "file:client/js/utils/sync.js",
+        "file:client/sw.js"
+      ]
+    },
+    {
+      "id": "layer:styles",
+      "name": "Слой стилей",
+      "description": "Таблицы стилей клиента: основная адаптивная тема интерфейса и стили печатного бланка договора.",
+      "nodeIds": [
+        "file:client/css/main.css",
+        "file:client/css/print.css"
+      ]
+    },
+    {
+      "id": "layer:documentation",
+      "name": "Документация и конфигурация",
+      "description": "Проектная документация (руководства по реализации, проверке и план под ТЗ, README) и npm-манифест бэкенда с зависимостями и скриптами запуска.",
+      "nodeIds": [
+        "document:README.md",
+        "document:docs/FULL_VERIFICATION.md",
+        "document:docs/IMPLEMENTATION_GUIDE.md",
+        "document:docs/tz-implementation-plan.md",
+        "config:server/package.json"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Обзор проекта и план реализации",
+      "description": "README проекта почти пустой («Сайт по аренде машин.»), поэтому настоящая дорожная карта живёт в папке docs. IMPLEMENTATION_GUIDE.md и tz-implementation-plan.md описывают архитектуру AutoRent целиком: серверная схема БД, аудит действий, шифрование клиентов, заказы, API-обёртки, IndexedDB, фоновая синхронизация, договор и Service Worker. Прочитайте их как карту перед погружением — каждый следующий шаг тура раскрывает один из этих блоков в коде.",
+      "nodeIds": [
+        "document:README.md",
+        "document:docs/IMPLEMENTATION_GUIDE.md",
+        "document:docs/tz-implementation-plan.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Точка входа сервера",
+      "description": "server/index.js — корень всего бэкенда и старт BFS-обхода зависимостей. Он настраивает CORS и раздачу статики клиента, монтирует все API-роуты (auth, cars, clients, orders, logs), инициализирует схему БД с тестовыми данными и запускает прослушивание порта. Манифест package.json фиксирует стек (Express 5, better-sqlite3, jsonwebtoken, bcryptjs) и задаёт именно этот файл точкой входа в режиме CommonJS.",
+      "nodeIds": [
+        "file:server/index.js",
+        "config:server/package.json"
+      ],
+      "languageLesson": "Express 5 монтирует роутеры через app.use('/api/...', router). В CommonJS модули подключаются через require/module.exports — в отличие от ESM, импорт синхронный, что и позволяет index.js собрать всё дерево зависимостей при первом запуске."
+    },
+    {
+      "order": 3,
+      "title": "Подключение к базе данных",
+      "description": "На глубине 1 от точки входа находится server/db.js — самый востребованный серверный модуль (fan-in 7). Он создаёт единственный экземпляр подключения к better-sqlite3, включает режим WAL для производительности и экспортирует его как singleton. Каждый роутер из следующих шагов импортирует именно этот экземпляр, поэтому понимание db.js — ключ ко всему слою данных.",
+      "nodeIds": [
+        "file:server/db.js"
+      ],
+      "languageLesson": "better-sqlite3 работает синхронно (db.prepare(...).get()/all()/run()), без коллбэков и промисов. Режим WAL (Write-Ahead Logging) позволяет читать БД одновременно с записью, что ускоряет работу при множестве запросов."
+    },
+    {
+      "order": 4,
+      "title": "Схема базы данных",
+      "description": "Миграция 001_create_tables.sql задаёт фундамент данных всего приложения: сотрудники (логин и bcrypt-хеш для входа), клиенты (паспорт и контакты), автомобили (тарифы и статус), заказы и журнал действий. Центральная таблица orders связывает сотрудника, клиента и автомобиль внешними ключами и дополнительно хранит денормализованные JSON-снимки и HTML-договор — это пригодится для offline-режима в дальнейшем. Таблица action_logs — основа аудита из следующих шагов.",
+      "nodeIds": [
+        "file:server/migrations/001_create_tables.sql",
+        "table:server/migrations/001_create_tables.sql:orders",
+        "table:server/migrations/001_create_tables.sql:employees",
+        "table:server/migrations/001_create_tables.sql:clients",
+        "table:server/migrations/001_create_tables.sql:cars"
+      ],
+      "languageLesson": "Внешние ключи (FOREIGN KEY) в SQLite связывают таблицы, но проверка ссылочной целостности включается прагмой PRAGMA foreign_keys = ON. Денормализованные снимки (JSON-колонки) намеренно дублируют данные, чтобы заказ оставался читаемым даже при изменении исходных записей."
+    },
+    {
+      "order": 5,
+      "title": "Сквозные службы: middleware, аудит, шифрование",
+      "description": "На глубине 2 обхода лежат три инфраструктурных модуля, от которых зависят почти все роутеры. middleware/auth.js извлекает Bearer-токен, проверяет JWT и кладёт сотрудника в req.employee. utils/audit.js функцией logAction пишет каждое действие в таблицу action_logs. utils/encrypt.js симметрично шифрует персональные данные через AES со случайным IV. Эти три кирпича обеспечивают безопасность и прослеживаемость на сервере.",
+      "nodeIds": [
+        "file:server/middleware/auth.js",
+        "file:server/utils/audit.js",
+        "file:server/utils/encrypt.js"
+      ],
+      "languageLesson": "Express-middleware — это функция (req, res, next): она либо передаёт управление дальше через next(), либо завершает запрос (например, 401 при невалидном токене). AES с случайным IV даёт разный шифротекст для одинаковых данных, поэтому IV хранят рядом с зашифрованным значением."
+    },
+    {
+      "order": 6,
+      "title": "Аутентификация: вход и выдача JWT",
+      "description": "Опираясь на db.js и audit.js из предыдущих шагов, роутер auth.js реализует POST /api/auth/login: проверяет пароль bcrypt-сравнением с хешем из таблицы employees и выдаёт JWT со сроком 8 часов. Это входная точка пользовательского сценария — без валидного токена middleware из шага 5 не пропустит ни один защищённый эндпоинт.",
+      "nodeIds": [
+        "file:server/routes/auth.js",
+        "endpoint:server/routes/auth.js:POST-/api/auth/login"
+      ],
+      "languageLesson": "bcrypt намеренно медленный и хранит соль внутри хеша, поэтому сравнение делается через bcrypt.compare, а не прямым сравнением строк. JWT подписывается секретом сервера: клиент не может подделать токен, но и сервер не хранит сессию — вся информация внутри самого токена."
+    },
+    {
+      "order": 7,
+      "title": "Защищённый CRUD: автомобили и заказы",
+      "description": "Роутеры cars.js и orders.js показывают типичный поток запроса. cars.js за authMiddleware отдаёт список машин, доступные машины и авто по id. orders.js — сердце бизнес-логики: создаёт заказ со снимками клиента и автомобиля, ищет по паспорту и id, оформляет возврат и фиксирует печать договора, по пути расшифровывая данные (encrypt.js) и логируя действия (audit.js). Вместе с clients.js эти роутеры образуют самый плотно связанный кластер сервера.",
+      "nodeIds": [
+        "file:server/routes/cars.js",
+        "file:server/routes/orders.js",
+        "file:server/routes/clients.js",
+        "endpoint:server/routes/cars.js:GET-/api/cars/available"
+      ],
+      "languageLesson": "Денормализованные снимки в заказе (JSON.stringify клиента и машины при создании) — это паттерн «event sourcing lite»: заказ фиксирует состояние на момент сделки, поэтому последующее изменение тарифа или данных клиента не искажает уже оформленный договор."
+    },
+    {
+      "order": 8,
+      "title": "Переход на клиент: вход и базовый HTTP-слой",
+      "description": "Теперь пересекаем границу к фронтенду. Страница login.html и контроллер login.js вызывают API-обёртку api/auth.js, которая, как и все остальные, работает поверх api/config.js. config.js (fan-in 7) — фундамент клиентского сетевого слоя: функция apiRequest подставляет JWT-токен в каждый запрос и сбрасывает авторизацию при ответе 401. После успешного входа токен сохраняется через storage.js.",
+      "nodeIds": [
+        "file:client/pages/login.html",
+        "file:client/js/pages/login.js",
+        "file:client/js/api/auth.js",
+        "file:client/js/api/config.js",
+        "file:client/js/utils/storage.js"
+      ],
+      "languageLesson": "В этом проекте нет сборщика и модулей ES — скрипты подключаются тегами <script> по порядку, а функции живут в глобальной области. Поэтому config.js должен загружаться раньше api-обёрток, которые от него зависят: порядок <script> в HTML и есть граф зависимостей."
+    },
+    {
+      "order": 9,
+      "title": "Страница и её контроллер: каталог авто",
+      "description": "На примере каталога видно общую структуру UI-слоя: cars.html описывает разметку и боковую навигацию, а контроллер cars.js загружает машины через api/cars.js и рендерит таблицу. Утилита auth-guard.js (fan-in 6) подключена почти к каждой защищённой странице: при отсутствии токена она редиректит на вход, показывает имя сотрудника и подсвечивает активный пункт меню. format.js даёт форматирование цен, дат и статусов.",
+      "nodeIds": [
+        "file:client/pages/cars.html",
+        "file:client/js/pages/cars.js",
+        "file:client/js/api/cars.js",
+        "file:client/js/utils/auth-guard.js",
+        "file:client/js/utils/format.js"
+      ],
+      "languageLesson": "format.js использует Intl.NumberFormat и Intl.DateTimeFormat — встроенную в браузер локализацию, без сторонних библиотек. Функция formatDuration через pluralize выбирает правильную форму слова («1 день», «2 дня», «5 дней») по правилам русского языка."
+    },
+    {
+      "order": 10,
+      "title": "Оформление заказа и клиентское шифрование",
+      "description": "new-order.html и new-order.js — самый функциональный сценарий клиента: многошаговая форма с валидацией паспорта, телефона и водительского удостоверения, поиском или созданием клиента, выбором машины и расчётом цены. Создание клиента идёт через api/clients.js, который перед отправкой шифрует персональные данные через crypto.js (Web Crypto API, AES-GCM) — клиентское шифрование зеркалит серверное из шага 5. Здесь же впервые появляется offline-очередь заказов в IndexedDB.",
+      "nodeIds": [
+        "file:client/pages/new-order.html",
+        "file:client/js/pages/new-order.js",
+        "file:client/js/api/clients.js",
+        "file:client/js/utils/crypto.js"
+      ],
+      "languageLesson": "Web Crypto API (crypto.subtle) асинхронен и возвращает промисы, а ключи импортируются через importKey. AES-GCM, в отличие от серверного AES-CBC, даёт аутентифицированное шифрование: тег целостности позволяет обнаружить подмену шифротекста."
+    },
+    {
+      "order": 11,
+      "title": "Offline-хранилище и сценарии поиска/возврата",
+      "description": "offline-db.js (на IndexedDB) — основа PWA-устойчивости: кэш заказов, клиентов и машин плюс очередь отложенных заказов и offline-логов. Контроллеры search.js и return.js демонстрируют гибридную логику: поиск объединяет данные с сервера, из offline-кэша и из локальной очереди, а возврат при отсутствии сети пишет offline-лог. contract.js завершает сценарий — печатает договор, беря заказ с сервера или из кэша, и генерирует штрихкод.",
+      "nodeIds": [
+        "file:client/js/utils/offline-db.js",
+        "file:client/js/pages/search.js",
+        "file:client/js/pages/return.js",
+        "file:client/js/pages/contract.js"
+      ],
+      "languageLesson": "IndexedDB — асинхронная браузерная БД с object stores (аналог таблиц) и транзакциями. Здесь она играет роль локального буфера: операции, сделанные offline, складываются в очередь, чтобы быть отправленными на сервер, когда сеть вернётся."
+    },
+    {
+      "order": 12,
+      "title": "PWA: Service Worker и фоновая синхронизация",
+      "description": "Финальный аккорд — offline-возможности PWA. sw.js кэширует app shell (статические ресурсы) и обслуживает запросы из кэша при отсутствии сети, а sw-register.js подключает его при загрузке окна. sync.js при восстановлении сети отправляет отложенные заказы и offline-логи на сервер (роуты orders и logs из шагов 6-7), создаёт накопленных клиентов и разрешает конфликты по статусам машин. Документ FULL_VERIFICATION.md даёт пошаговый сценарий проверки всей этой связки online/offline.",
+      "nodeIds": [
+        "file:client/sw.js",
+        "file:client/js/utils/sw-register.js",
+        "file:client/js/utils/sync.js",
+        "file:server/routes/logs.js",
+        "document:docs/FULL_VERIFICATION.md"
+      ],
+      "languageLesson": "Service Worker — фоновый скрипт-прокси между страницей и сетью с жизненным циклом install → activate → fetch. Он работает в отдельном потоке без доступа к DOM, поэтому общение со страницей идёт через сообщения, а кэширование — через Cache API."
+    }
+  ]
+}

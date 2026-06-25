@@ -25,7 +25,7 @@ app.get('/favicon.ico', (req, res) => {
   res.status(204).end()
 })
 
-// Раздавать фронтенд
+// Чтобы раздавать фронтенд
 app.use(express.static(path.join(__dirname, '../client')))
 
 app.use('/api/auth', authRoutes)

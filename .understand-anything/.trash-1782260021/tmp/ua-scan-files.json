@@ -1,0 +1,322 @@
+{
+  "scriptCompleted": true,
+  "files": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/config.json",
+      "language": "json",
+      "sizeLines": 1,
+      "fileCategory": "config"
+    },
+    {
+      "path": "client/css/main.css",
+      "language": "css",
+      "sizeLines": 522,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/css/print.css",
+      "language": "css",
+      "sizeLines": 53,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/js/api/auth.js",
+      "language": "javascript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/cars.js",
+      "language": "javascript",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/clients.js",
+      "language": "javascript",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/config.js",
+      "language": "javascript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/logs.js",
+      "language": "javascript",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/api/orders.js",
+      "language": "javascript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/cars.js",
+      "language": "javascript",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/contract.js",
+      "language": "javascript",
+      "sizeLines": 309,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/login.js",
+      "language": "javascript",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/logs.js",
+      "language": "javascript",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/new-order.js",
+      "language": "javascript",
+      "sizeLines": 558,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/return.js",
+      "language": "javascript",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/pages/search.js",
+      "language": "javascript",
+      "sizeLines": 266,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/auth-guard.js",
+      "language": "javascript",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/crypto.js",
+      "language": "javascript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/format.js",
+      "language": "javascript",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/offline-db.js",
+      "language": "javascript",
+      "sizeLines": 167,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/storage.js",
+      "language": "javascript",
+      "sizeLines": 49,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/sw-register.js",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/js/utils/sync.js",
+      "language": "javascript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "client/pages/cars.html",
+      "language": "html",
+      "sizeLines": 94,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/contract.html",
+      "language": "html",
+      "sizeLines": 188,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/login.html",
+      "language": "html",
+      "sizeLines": 41,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/logs.html",
+      "language": "html",
+      "sizeLines": 89,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/new-order.html",
+      "language": "html",
+      "sizeLines": 117,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/return.html",
+      "language": "html",
+      "sizeLines": 77,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/pages/search.html",
+      "language": "html",
+      "sizeLines": 126,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "client/sw.js",
+      "language": "javascript",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "docs/FULL_VERIFICATION.md",
+      "language": "markdown",
+      "sizeLines": 658,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 550,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/tz-implementation-plan.md",
+      "language": "markdown",
+      "sizeLines": 503,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 0,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "server/db.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/index.js",
+      "language": "javascript",
+      "sizeLines": 80,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/middleware/auth.js",
+      "language": "javascript",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/migrations/001_create_tables.sql",
+      "language": "sql",
+      "sizeLines": 63,
+      "fileCategory": "data"
+    },
+    {
+      "path": "server/package.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    },
+    {
+      "path": "server/routes/auth.js",
+      "language": "javascript",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/cars.js",
+      "language": "javascript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/clients.js",
+      "language": "javascript",
+      "sizeLines": 89,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/logs.js",
+      "language": "javascript",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/routes/orders.js",
+      "language": "javascript",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/utils/audit.js",
+      "language": "javascript",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "server/utils/encrypt.js",
+      "language": "javascript",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "task_text/Задача от  20.1  апреля.odt",
+      "language": "odt",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    }
+  ],
+  "totalFiles": 49,
+  "filteredByIgnore": 4,
+  "estimatedComplexity": "moderate",
+  "stats": {
+    "filesScanned": 49,
+    "byCategory": {
+      "code": 33,
+      "config": 2,
+      "markup": 9,
+      "docs": 4,
+      "data": 1
+    },
+    "byLanguage": {
+      "unknown": 1,
+      "json": 2,
+      "css": 2,
+      "javascript": 31,
+      "html": 7,
+      "markdown": 4,
+      "sql": 1,
+      "odt": 1
+    }
+  }
+}

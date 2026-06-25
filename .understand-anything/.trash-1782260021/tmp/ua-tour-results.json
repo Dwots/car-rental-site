@@ -1,0 +1,719 @@
+{
+  "scriptCompleted": true,
+  "entryPointCandidates": [
+    {
+      "id": "file:server/index.js",
+      "score": 5,
+      "name": "index.js",
+      "summary": "Точка входа Express-сервера: настраивает CORS и статику, монтирует все API-роуты, инициализирует схему БД и тестовые данные, запускает прослушивание порта."
+    },
+    {
+      "id": "document:README.md",
+      "score": 5,
+      "name": "README.md",
+      "summary": "Минимальный файл README проекта, содержащий одну строку с описанием: «Сайт по аренде машин.»"
+    },
+    {
+      "id": "file:server/routes/cars.js",
+      "score": 2,
+      "name": "cars.js",
+      "summary": "Express-роутер для автомобилей: предоставляет защищённые authMiddleware эндпоинты для списка машин, доступных машин и получения автомобиля по id."
+    },
+    {
+      "id": "file:client/pages/cars.html",
+      "score": 2,
+      "name": "cars.html",
+      "summary": "Страница каталога автомобилей CRM с боковой навигацией, кнопками фильтрации по статусу (доступен, в аренде, обслуживание) и таблицей автопарка. Загружает контроллер pages/cars.js и общий набор API/утилитарных модулей."
+    },
+    {
+      "id": "file:client/pages/contract.html",
+      "score": 2,
+      "name": "contract.html",
+      "summary": "Страница печати договора аренды: формирует документ с номером заказа, штрих-кодом (через библиотеку JsBarcode) и блоками подписей. Содержит обширные встроенные стили и подключает print.css для печати."
+    }
+  ],
+  "fanInRanking": [
+    {
+      "id": "file:client/js/api/orders.js",
+      "fanIn": 8,
+      "name": "orders.js"
+    },
+    {
+      "id": "file:server/db.js",
+      "fanIn": 7,
+      "name": "db.js"
+    },
+    {
+      "id": "file:client/js/api/config.js",
+      "fanIn": 7,
+      "name": "config.js"
+    },
+    {
+      "id": "file:client/js/utils/auth-guard.js",
+      "fanIn": 6,
+      "name": "auth-guard.js"
+    },
+    {
+      "id": "file:server/utils/audit.js",
+      "fanIn": 5,
+      "name": "audit.js"
+    },
+    {
+      "id": "file:server/middleware/auth.js",
+      "fanIn": 4,
+      "name": "auth.js"
+    },
+    {
+      "id": "file:server/index.js",
+      "fanIn": 4,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/js/api/cars.js",
+      "fanIn": 4,
+      "name": "cars.js"
+    },
+    {
+      "id": "file:client/js/pages/contract.js",
+      "fanIn": 4,
+      "name": "contract.js"
+    },
+    {
+      "id": "file:client/js/utils/sync.js",
+      "fanIn": 4,
+      "name": "sync.js"
+    },
+    {
+      "id": "file:server/migrations/001_create_tables.sql",
+      "fanIn": 3,
+      "name": "001_create_tables.sql"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:employees",
+      "fanIn": 3,
+      "name": "employees"
+    },
+    {
+      "id": "file:client/js/api/logs.js",
+      "fanIn": 3,
+      "name": "logs.js"
+    },
+    {
+      "id": "file:client/js/pages/search.js",
+      "fanIn": 3,
+      "name": "search.js"
+    },
+    {
+      "id": "file:client/js/utils/crypto.js",
+      "fanIn": 3,
+      "name": "crypto.js"
+    },
+    {
+      "id": "file:client/js/utils/offline-db.js",
+      "fanIn": 3,
+      "name": "offline-db.js"
+    },
+    {
+      "id": "file:server/utils/encrypt.js",
+      "fanIn": 2,
+      "name": "encrypt.js"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:clients",
+      "fanIn": 2,
+      "name": "clients"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:cars",
+      "fanIn": 2,
+      "name": "cars"
+    },
+    {
+      "id": "file:client/js/api/auth.js",
+      "fanIn": 2,
+      "name": "auth.js"
+    }
+  ],
+  "fanOutRanking": [
+    {
+      "id": "document:docs/IMPLEMENTATION_GUIDE.md",
+      "fanOut": 12,
+      "name": "IMPLEMENTATION_GUIDE.md"
+    },
+    {
+      "id": "document:docs/tz-implementation-plan.md",
+      "fanOut": 8,
+      "name": "tz-implementation-plan.md"
+    },
+    {
+      "id": "file:server/index.js",
+      "fanOut": 6,
+      "name": "index.js"
+    },
+    {
+      "id": "file:client/pages/new-order.html",
+      "fanOut": 6,
+      "name": "new-order.html"
+    },
+    {
+      "id": "document:docs/FULL_VERIFICATION.md",
+      "fanOut": 6,
+      "name": "FULL_VERIFICATION.md"
+    },
+    {
+      "id": "file:server/routes/cars.js",
+      "fanOut": 5,
+      "name": "cars.js"
+    },
+    {
+      "id": "file:server/migrations/001_create_tables.sql",
+      "fanOut": 5,
+      "name": "001_create_tables.sql"
+    },
+    {
+      "id": "file:client/pages/cars.html",
+      "fanOut": 5,
+      "name": "cars.html"
+    },
+    {
+      "id": "file:client/pages/contract.html",
+      "fanOut": 5,
+      "name": "contract.html"
+    },
+    {
+      "id": "file:client/pages/login.html",
+      "fanOut": 5,
+      "name": "login.html"
+    },
+    {
+      "id": "file:client/pages/logs.html",
+      "fanOut": 5,
+      "name": "logs.html"
+    },
+    {
+      "id": "file:client/pages/search.html",
+      "fanOut": 5,
+      "name": "search.html"
+    },
+    {
+      "id": "file:server/routes/clients.js",
+      "fanOut": 4,
+      "name": "clients.js"
+    },
+    {
+      "id": "file:server/routes/orders.js",
+      "fanOut": 4,
+      "name": "orders.js"
+    },
+    {
+      "id": "file:server/routes/auth.js",
+      "fanOut": 4,
+      "name": "auth.js"
+    },
+    {
+      "id": "file:client/pages/return.html",
+      "fanOut": 4,
+      "name": "return.html"
+    },
+    {
+      "id": "file:server/routes/logs.js",
+      "fanOut": 3,
+      "name": "logs.js"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:orders",
+      "fanOut": 3,
+      "name": "orders"
+    },
+    {
+      "id": "file:server/utils/audit.js",
+      "fanOut": 1,
+      "name": "audit.js"
+    },
+    {
+      "id": "table:server/migrations/001_create_tables.sql:action_logs",
+      "fanOut": 1,
+      "name": "action_logs"
+    }
+  ],
+  "bfsTraversal": {
+    "startNode": "file:server/index.js",
+    "order": [
+      "file:server/index.js",
+      "file:server/db.js",
+      "file:server/routes/auth.js",
+      "file:server/routes/cars.js",
+      "file:server/routes/clients.js",
+      "file:server/routes/logs.js",
+      "file:server/routes/orders.js",
+      "file:server/utils/audit.js",
+      "file:server/middleware/auth.js",
+      "file:server/utils/encrypt.js"
+    ],
+    "depthMap": {
+      "file:server/index.js": 0,
+      "file:server/db.js": 1,
+      "file:server/routes/auth.js": 1,
+      "file:server/routes/cars.js": 1,
+      "file:server/routes/clients.js": 1,
+      "file:server/routes/logs.js": 1,
+      "file:server/routes/orders.js": 1,
+      "file:server/utils/audit.js": 2,
+      "file:server/middleware/auth.js": 2,
+      "file:server/utils/encrypt.js": 2
+    },
+    "byDepth": {
+      "0": [
+        "file:server/index.js"
+      ],
+      "1": [
+        "file:server/db.js",
+        "file:server/routes/auth.js",
+        "file:server/routes/cars.js",
+        "file:server/routes/clients.js",
+        "file:server/routes/logs.js",
+        "file:server/routes/orders.js"
+      ],
+      "2": [
+        "file:server/utils/audit.js",
+        "file:server/middleware/auth.js",
+        "file:server/utils/encrypt.js"
+      ]
+    }
+  },
+  "nonCodeFiles": {
+    "documentation": [
+      {
+        "id": "document:docs/FULL_VERIFICATION.md",
+        "name": "FULL_VERIFICATION.md",
+        "type": "document",
+        "summary": "Полное пошаговое руководство по проверке проекта AutoRent: подготовка окружения и БД, запуск, проверка схемы, онлайн- и офлайн-сценарии заказа, печать договора, поиск, возврат, автосинхронизация и проверка шифрования данных."
+      },
+      {
+        "id": "document:docs/IMPLEMENTATION_GUIDE.md",
+        "name": "IMPLEMENTATION_GUIDE.md",
+        "type": "document",
+        "summary": "Руководство по реализации, описывающее доведение приложения AutoRent до нового ТЗ: серверная схема, аудит действий, маршруты синхронизации логов, шифрование клиентов, заказы, API-обертка, IndexedDB, синхронизация, договор, поиск, возврат и Service Worker."
+      },
+      {
+        "id": "document:docs/tz-implementation-plan.md",
+        "name": "tz-implementation-plan.md",
+        "type": "document",
+        "summary": "План доведения проекта до технического задания: изменения схемы БД, серверное логирование, флаг сохранения заказов, клиентский IndexedDB, API-обертка, синхронизация, договор, офлайн-поиск, дополнительное шифрование и сценарии проверки работы."
+      },
+      {
+        "id": "document:README.md",
+        "name": "README.md",
+        "type": "document",
+        "summary": "Минимальный файл README проекта, содержащий одну строку с описанием: «Сайт по аренде машин.»"
+      }
+    ],
+    "infrastructure": [],
+    "data": [
+      {
+        "id": "endpoint:server/routes/auth.js:POST-/api/auth/login",
+        "name": "POST /api/auth/login",
+        "type": "endpoint",
+        "summary": "Эндпоинт входа сотрудника: валидирует логин и пароль, сверяет bcrypt-хеш, возвращает JWT-токен и данные сотрудника."
+      },
+      {
+        "id": "endpoint:server/routes/cars.js:GET-/api/cars",
+        "name": "GET /api/cars",
+        "type": "endpoint",
+        "summary": "Возвращает список автомобилей с опциональной фильтрацией по статусу через query-параметр."
+      },
+      {
+        "id": "endpoint:server/routes/cars.js:GET-/api/cars/available",
+        "name": "GET /api/cars/available",
+        "type": "endpoint",
+        "summary": "Возвращает только автомобили со статусом available."
+      },
+      {
+        "id": "endpoint:server/routes/cars.js:GET-/api/cars/:id",
+        "name": "GET /api/cars/:id",
+        "type": "endpoint",
+        "summary": "Возвращает автомобиль по идентификатору или ошибку 404, если он не найден."
+      },
+      {
+        "id": "file:server/migrations/001_create_tables.sql",
+        "name": "001_create_tables.sql",
+        "type": "table",
+        "summary": "Начальная SQL-миграция, создающая базовую схему SQLite-базы для системы проката автомобилей: сотрудники, клиенты, автомобили, заказы и журнал действий со связями по внешним ключам."
+      },
+      {
+        "id": "table:server/migrations/001_create_tables.sql:employees",
+        "name": "employees",
+        "type": "table",
+        "summary": "Таблица сотрудников с уникальным логином и хешем пароля для JWT-аутентификации."
+      },
+      {
+        "id": "table:server/migrations/001_create_tables.sql:clients",
+        "name": "clients",
+        "type": "table",
+        "summary": "Таблица клиентов с паспортными данными, контактами и номером водительского удостоверения для оформления договоров аренды."
+      },
+      {
+        "id": "table:server/migrations/001_create_tables.sql:cars",
+        "name": "cars",
+        "type": "table",
+        "summary": "Таблица автомобилей с характеристиками, уникальными регистрационным номером и VIN, тарифами за день и час, а также статусом доступности."
+      },
+      {
+        "id": "table:server/migrations/001_create_tables.sql:orders",
+        "name": "orders",
+        "type": "table",
+        "summary": "Центральная таблица заказов аренды, связывающая сотрудника, клиента и автомобиль; хранит расчёт стоимости, статус синхронизации и денормализованные снимки данных (JSON) и HTML-договор."
+      },
+      {
+        "id": "table:server/migrations/001_create_tables.sql:action_logs",
+        "name": "action_logs",
+        "type": "table",
+        "summary": "Таблица аудита действий сотрудников с типом сущности, идентификатором и JSON-деталями для отслеживания изменений в системе."
+      }
+    ],
+    "config": [
+      {
+        "id": "config:server/package.json",
+        "name": "package.json",
+        "type": "config",
+        "summary": "Манифест npm для backend-части: задаёт зависимости (Express 5, better-sqlite3, jsonwebtoken, bcryptjs, cors, dotenv), скрипты запуска (start/dev через nodemon) и точку входа index.js в режиме CommonJS."
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "nodes": [
+        "file:server/routes/auth.js",
+        "file:server/utils/audit.js",
+        "file:server/db.js",
+        "file:server/index.js",
+        "file:server/routes/clients.js"
+      ],
+      "edgeCount": 9
+    }
+  ],
+  "layers": {
+    "count": 8,
+    "list": [
+      {
+        "id": "layer:api",
+        "name": "Серверный API-слой",
+        "description": "Express-роутеры и REST-эндпоинты бэкенда (аутентификация, автомобили, клиенты, заказы, аудит-логи) плюс точка входа сервера, монтирующая все маршруты."
+      },
+      {
+        "id": "layer:infrastructure",
+        "name": "Серверная инфраструктура",
+        "description": "Сквозные серверные службы: JWT-middleware, singleton-подключение к better-sqlite3 и утилиты аудита и AES-шифрования, от которых зависят все роутеры."
+      },
+      {
+        "id": "layer:data",
+        "name": "Слой данных",
+        "description": "SQL-миграция схемы SQLite и определения таблиц (сотрудники, клиенты, автомобили, заказы, журнал действий) со связями по внешним ключам."
+      },
+      {
+        "id": "layer:ui",
+        "name": "Клиентский UI-слой",
+        "description": "HTML-страницы CRM и их vanilla-JS контроллеры (каталог авто, договор, вход, журнал, новый заказ, возврат, поиск), отвечающие за рендеринг и взаимодействие с пользователем."
+      },
+      {
+        "id": "layer:client-api",
+        "name": "Клиентский API-слой",
+        "description": "API-обёртки фронтенда вокруг общего apiRequest с подстановкой JWT: авторизация, автомобили, клиенты, заказы и логи для обмена данными с бэкендом."
+      },
+      {
+        "id": "layer:client-utility",
+        "name": "Клиентские утилиты и offline/PWA",
+        "description": "Сквозные клиентские модули: гвард авторизации, шифрование (Web Crypto), форматирование, хранилище сессии, IndexedDB-кэш, фоновая синхронизация и service worker для offline-режима PWA."
+      },
+      {
+        "id": "layer:styles",
+        "name": "Слой стилей",
+        "description": "Таблицы стилей клиента: основная адаптивная тема интерфейса и стили печатного бланка договора."
+      },
+      {
+        "id": "layer:documentation",
+        "name": "Документация и конфигурация",
+        "description": "Проектная документация (руководства по реализации, проверке и план под ТЗ, README) и npm-манифест бэкенда с зависимостями и скриптами запуска."
+      }
+    ]
+  },
+  "nodeSummaryIndex": {
+    "file:server/middleware/auth.js": {
+      "name": "auth.js",
+      "type": "file",
+      "summary": "Express middleware для JWT-аутентификации: извлекает Bearer-токен из заголовка Authorization, проверяет его и помещает данные сотрудника в req.employee."
+    },
+    "file:server/routes/clients.js": {
+      "name": "clients.js",
+      "type": "file",
+      "summary": "Express-роутер для работы с клиентами: поиск клиента по расшифрованному паспорту и создание нового клиента с шифрованием персональных данных."
+    },
+    "file:server/routes/logs.js": {
+      "name": "logs.js",
+      "type": "file",
+      "summary": "Express-роутер аудит-логов: выдаёт последние записи действий с данными сотрудника и принимает пакет действий, совершённых в офлайн-режиме, для синхронизации."
+    },
+    "file:server/routes/orders.js": {
+      "name": "orders.js",
+      "type": "file",
+      "summary": "Express-роутер заказов аренды: создание заказа со снимками клиента и автомобиля, поиск по паспорту и id, возврат автомобиля и фиксация печати договора."
+    },
+    "file:server/utils/audit.js": {
+      "name": "audit.js",
+      "type": "file",
+      "summary": "Утилита аудита: функция logAction записывает действие сотрудника в таблицу action_logs с типом сущности, идентификатором и деталями в формате JSON."
+    },
+    "file:server/utils/encrypt.js": {
+      "name": "encrypt.js",
+      "type": "file",
+      "summary": "Утилита симметричного шифрования персональных данных на основе AES (crypto) со случайным IV; экспортирует функции encrypt и decrypt."
+    },
+    "file:server/db.js": {
+      "name": "db.js",
+      "type": "file",
+      "summary": "Инициализирует подключение к базе данных better-sqlite3, включает режим WAL для производительности и экспортирует единый экземпляр БД для всего сервера."
+    },
+    "file:server/index.js": {
+      "name": "index.js",
+      "type": "file",
+      "summary": "Точка входа Express-сервера: настраивает CORS и статику, монтирует все API-роуты, инициализирует схему БД и тестовые данные, запускает прослушивание порта."
+    },
+    "file:server/routes/auth.js": {
+      "name": "auth.js",
+      "type": "file",
+      "summary": "Express-роутер аутентификации: обрабатывает POST /api/auth/login, проверяет пароль через bcrypt и выдаёт JWT-токен со сроком действия 8 часов."
+    },
+    "file:server/routes/cars.js": {
+      "name": "cars.js",
+      "type": "file",
+      "summary": "Express-роутер для автомобилей: предоставляет защищённые authMiddleware эндпоинты для списка машин, доступных машин и получения автомобиля по id."
+    },
+    "endpoint:server/routes/auth.js:POST-/api/auth/login": {
+      "name": "POST /api/auth/login",
+      "type": "endpoint",
+      "summary": "Эндпоинт входа сотрудника: валидирует логин и пароль, сверяет bcrypt-хеш, возвращает JWT-токен и данные сотрудника."
+    },
+    "endpoint:server/routes/cars.js:GET-/api/cars": {
+      "name": "GET /api/cars",
+      "type": "endpoint",
+      "summary": "Возвращает список автомобилей с опциональной фильтрацией по статусу через query-параметр."
+    },
+    "endpoint:server/routes/cars.js:GET-/api/cars/available": {
+      "name": "GET /api/cars/available",
+      "type": "endpoint",
+      "summary": "Возвращает только автомобили со статусом available."
+    },
+    "endpoint:server/routes/cars.js:GET-/api/cars/:id": {
+      "name": "GET /api/cars/:id",
+      "type": "endpoint",
+      "summary": "Возвращает автомобиль по идентификатору или ошибку 404, если он не найден."
+    },
+    "file:server/migrations/001_create_tables.sql": {
+      "name": "001_create_tables.sql",
+      "type": "table",
+      "summary": "Начальная SQL-миграция, создающая базовую схему SQLite-базы для системы проката автомобилей: сотрудники, клиенты, автомобили, заказы и журнал действий со связями по внешним ключам."
+    },
+    "table:server/migrations/001_create_tables.sql:employees": {
+      "name": "employees",
+      "type": "table",
+      "summary": "Таблица сотрудников с уникальным логином и хешем пароля для JWT-аутентификации."
+    },
+    "table:server/migrations/001_create_tables.sql:clients": {
+      "name": "clients",
+      "type": "table",
+      "summary": "Таблица клиентов с паспортными данными, контактами и номером водительского удостоверения для оформления договоров аренды."
+    },
+    "table:server/migrations/001_create_tables.sql:cars": {
+      "name": "cars",
+      "type": "table",
+      "summary": "Таблица автомобилей с характеристиками, уникальными регистрационным номером и VIN, тарифами за день и час, а также статусом доступности."
+    },
+    "table:server/migrations/001_create_tables.sql:orders": {
+      "name": "orders",
+      "type": "table",
+      "summary": "Центральная таблица заказов аренды, связывающая сотрудника, клиента и автомобиль; хранит расчёт стоимости, статус синхронизации и денормализованные снимки данных (JSON) и HTML-договор."
+    },
+    "table:server/migrations/001_create_tables.sql:action_logs": {
+      "name": "action_logs",
+      "type": "table",
+      "summary": "Таблица аудита действий сотрудников с типом сущности, идентификатором и JSON-деталями для отслеживания изменений в системе."
+    },
+    "file:client/pages/cars.html": {
+      "name": "cars.html",
+      "type": "file",
+      "summary": "Страница каталога автомобилей CRM с боковой навигацией, кнопками фильтрации по статусу (доступен, в аренде, обслуживание) и таблицей автопарка. Загружает контроллер pages/cars.js и общий набор API/утилитарных модулей."
+    },
+    "file:client/pages/contract.html": {
+      "name": "contract.html",
+      "type": "file",
+      "summary": "Страница печати договора аренды: формирует документ с номером заказа, штрих-кодом (через библиотеку JsBarcode) и блоками подписей. Содержит обширные встроенные стили и подключает print.css для печати."
+    },
+    "file:client/pages/login.html": {
+      "name": "login.html",
+      "type": "file",
+      "summary": "Страница входа в CRM с формой логина и пароля. Минимальный набор скриптов (config, auth, storage, регистрация service worker и контроллер login.js) без боковой навигации."
+    },
+    "file:client/pages/logs.html": {
+      "name": "logs.html",
+      "type": "file",
+      "summary": "Страница журнала действий сотрудников и офлайн-синхронизаций с кнопкой обновления и таблицей событий (дата, действие, сотрудник, объект, детали). Управляется контроллером pages/logs.js."
+    },
+    "file:client/pages/new-order.html": {
+      "name": "new-order.html",
+      "type": "file",
+      "summary": "Многошаговая форма оформления нового заказа аренды: выбор клиента по паспорту, выбор автомобиля, указание срока и автоматический расчёт стоимости. Управляется контроллером pages/new-order.js."
+    },
+    "file:client/pages/return.html": {
+      "name": "return.html",
+      "type": "file",
+      "summary": "Страница возврата автомобиля: поиск заказа по номеру и оформление возврата с выводом деталей и сообщения об успехе. Управляется контроллером pages/return.js."
+    },
+    "file:client/pages/search.html": {
+      "name": "search.html",
+      "type": "file",
+      "summary": "Страница поиска заказа с переключением между поиском по номеру заказа и по паспорту клиента. Содержит встроенный скрипт switchTab для смены режима и контроллер pages/search.js для выполнения поиска."
+    },
+    "document:docs/FULL_VERIFICATION.md": {
+      "name": "FULL_VERIFICATION.md",
+      "type": "document",
+      "summary": "Полное пошаговое руководство по проверке проекта AutoRent: подготовка окружения и БД, запуск, проверка схемы, онлайн- и офлайн-сценарии заказа, печать договора, поиск, возврат, автосинхронизация и проверка шифрования данных."
+    },
+    "document:docs/IMPLEMENTATION_GUIDE.md": {
+      "name": "IMPLEMENTATION_GUIDE.md",
+      "type": "document",
+      "summary": "Руководство по реализации, описывающее доведение приложения AutoRent до нового ТЗ: серверная схема, аудит действий, маршруты синхронизации логов, шифрование клиентов, заказы, API-обертка, IndexedDB, синхронизация, договор, поиск, возврат и Service Worker."
+    },
+    "document:docs/tz-implementation-plan.md": {
+      "name": "tz-implementation-plan.md",
+      "type": "document",
+      "summary": "План доведения проекта до технического задания: изменения схемы БД, серверное логирование, флаг сохранения заказов, клиентский IndexedDB, API-обертка, синхронизация, договор, офлайн-поиск, дополнительное шифрование и сценарии проверки работы."
+    },
+    "file:client/css/main.css": {
+      "name": "main.css",
+      "type": "file",
+      "summary": "Основная таблица стилей клиентского интерфейса: переменные темы, layout, навигация, таблицы, карточки, формы, статус-бейджи и адаптивная вёрстка PWA."
+    },
+    "file:client/css/print.css": {
+      "name": "print.css",
+      "type": "file",
+      "summary": "Стили для печати: скрывает навигацию и интерактивные элементы, оформляя страницу договора под печатный бланк."
+    },
+    "file:client/js/api/auth.js": {
+      "name": "auth.js",
+      "type": "file",
+      "summary": "API-обёртка авторизации: отправляет логин и пароль на бэкенд через общий apiRequest и возвращает токен с данными сотрудника."
+    },
+    "file:client/js/api/cars.js": {
+      "name": "cars.js",
+      "type": "file",
+      "summary": "API-обёртка для автомобилей: получение полного списка и списка доступных машин через apiRequest."
+    },
+    "file:client/js/api/clients.js": {
+      "name": "clients.js",
+      "type": "file",
+      "summary": "API-обёртка для клиентов: поиск по паспорту и создание клиента с предварительным шифрованием персональных данных через encryptText."
+    },
+    "file:client/js/api/config.js": {
+      "name": "config.js",
+      "type": "file",
+      "summary": "Базовый HTTP-слой клиента: функция apiRequest с подстановкой JWT-токена, обработкой ответов и сброса авторизации при 401; помощники чтения и удаления токена."
+    },
+    "file:client/js/api/logs.js": {
+      "name": "logs.js",
+      "type": "file",
+      "summary": "API-обёртка для журнала действий: запрашивает логи аудита с сервера через apiRequest."
+    },
+    "file:client/js/api/orders.js": {
+      "name": "orders.js",
+      "type": "file",
+      "summary": "API-обёртка для заказов: создание, получение, возврат, отметка о печати и поиск заказов по паспорту клиента."
+    },
+    "file:client/js/pages/cars.js": {
+      "name": "cars.js",
+      "type": "file",
+      "summary": "Контроллер страницы автопарка: загружает список машин и рендерит таблицу с ценами и статусами, используя утилиты форматирования."
+    },
+    "file:client/js/pages/contract.js": {
+      "name": "contract.js",
+      "type": "file",
+      "summary": "Контроллер страницы договора: загружает заказ (с сервера или из offline-кэша), нормализует данные, рендерит печатную форму договора и генерирует штрихкод заказа."
+    },
+    "file:client/js/pages/login.js": {
+      "name": "login.js",
+      "type": "file",
+      "summary": "Контроллер страницы входа: обрабатывает форму авторизации, вызывает loginRequest, сохраняет токен через saveAuth и редиректит на страницу нового заказа."
+    },
+    "file:client/js/pages/logs.js": {
+      "name": "logs.js",
+      "type": "file",
+      "summary": "Контроллер страницы журнала аудита: загружает логи через getLogs и рендерит таблицу с локализованными подписями действий и экранированием HTML."
+    },
+    "file:client/js/pages/new-order.js": {
+      "name": "new-order.js",
+      "type": "file",
+      "summary": "Контроллер оформления нового заказа: валидация паспорта/телефона/водительского удостоверения, поиск или создание клиента, выбор машины, расчёт цены и offline-очередь заказов в IndexedDB."
+    },
+    "file:client/js/pages/return.js": {
+      "name": "return.js",
+      "type": "file",
+      "summary": "Контроллер страницы возврата авто: находит заказ по номеру, показывает детали и выполняет возврат через returnOrder с записью offline-лога."
+    },
+    "file:client/js/pages/search.js": {
+      "name": "search.js",
+      "type": "file",
+      "summary": "Контроллер страницы поиска: ищет заказы по номеру или паспорту клиента, объединяя данные с сервера, offline-кэша и локальной очереди, и рендерит карточки заказов."
+    },
+    "file:client/js/utils/auth-guard.js": {
+      "name": "auth-guard.js",
+      "type": "file",
+      "summary": "Гвард авторизации: при отсутствии токена перенаправляет на страницу входа, отображает имя сотрудника, настраивает кнопку выхода и подсветку активного пункта меню."
+    },
+    "file:client/js/utils/crypto.js": {
+      "name": "crypto.js",
+      "type": "file",
+      "summary": "Утилиты клиентского шифрования персональных данных через Web Crypto API (AES-GCM): преобразование hex, импорт ключа и encryptText для шифрования полей клиента."
+    },
+    "file:client/js/utils/format.js": {
+      "name": "format.js",
+      "type": "file",
+      "summary": "Набор утилит форматирования и валидации: цены (Intl), даты, длительности, плюрализация, подписи и классы статусов, форматирование и проверка водительского удостоверения."
+    },
+    "file:client/js/utils/offline-db.js": {
+      "name": "offline-db.js",
+      "type": "file",
+      "summary": "Offline-хранилище на IndexedDB: низкоуровневые операции CRUD по object stores и высокоуровневые помощники для кэша заказов, клиентов, машин, очереди отложенных заказов и offline-логов."
+    },
+    "file:client/js/utils/storage.js": {
+      "name": "storage.js",
+      "type": "file",
+      "summary": "Управление сессией в localStorage/sessionStorage: сохранение токена и данных сотрудника, их чтение, очистка авторизации и сброс прикладных данных при смене пользователя."
+    },
+    "file:client/js/utils/sw-register.js": {
+      "name": "sw-register.js",
+      "type": "file",
+      "summary": "Регистрация service worker для PWA: подключает sw.js при загрузке окна для поддержки offline-режима."
+    },
+    "file:client/js/utils/sync.js": {
+      "name": "sync.js",
+      "type": "file",
+      "summary": "Синхронизация offline-данных при восстановлении сети: отправляет отложенные заказы и offline-логи на сервер, создаёт клиентов, разрешает конфликты по машинам и чистит синхронизированные записи."
+    },
+    "file:client/sw.js": {
+      "name": "sw.js",
+      "type": "file",
+      "summary": "Service worker PWA: кэширует статические ресурсы (app shell), обслуживает запросы из кэша при offline и управляет жизненным циклом install/activate/fetch."
+    },
+    "document:README.md": {
+      "name": "README.md",
+      "type": "document",
+      "summary": "Минимальный файл README проекта, содержащий одну строку с описанием: «Сайт по аренде машин.»"
+    },
+    "config:server/package.json": {
+      "name": "package.json",
+      "type": "config",
+      "summary": "Манифест npm для backend-части: задаёт зависимости (Express 5, better-sqlite3, jsonwebtoken, bcryptjs, cors, dotenv), скрипты запуска (start/dev через nodemon) и точку входа index.js в режиме CommonJS."
+    }
+  },
+  "totalNodes": 55,
+  "totalEdges": 210
+}

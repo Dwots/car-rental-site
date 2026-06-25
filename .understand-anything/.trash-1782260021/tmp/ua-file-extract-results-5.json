@@ -1,0 +1,460 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 3,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "docs/FULL_VERIFICATION.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 658,
+      "nonEmptyLines": 455,
+      "sections": [
+        {
+          "heading": "Полная Проверка Проекта",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Подготовка",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "1.1. Включить Node 24",
+          "level": 3,
+          "line": 9
+        },
+        {
+          "heading": "1.2. Полностью пересоздать БД",
+          "level": 3,
+          "line": 31
+        },
+        {
+          "heading": "1.3. Очистить локальные данные браузера",
+          "level": 3,
+          "line": 41
+        },
+        {
+          "heading": "1.4. Если При Входе Пишет `The quota has been exceeded`",
+          "level": 3,
+          "line": 57
+        },
+        {
+          "heading": "2. Запуск",
+          "level": 2,
+          "line": 78
+        },
+        {
+          "heading": "3. Проверка Схемы БД",
+          "level": 2,
+          "line": 109
+        },
+        {
+          "heading": "4. Вход Сотрудника И Идентификация",
+          "level": 2,
+          "line": 157
+        },
+        {
+          "heading": "5. Онлайн-Сценарий Заказа",
+          "level": 2,
+          "line": 185
+        },
+        {
+          "heading": "5.1. Создать или найти клиента",
+          "level": 3,
+          "line": 187
+        },
+        {
+          "heading": "5.2. Проверить список доступных автомобилей",
+          "level": 3,
+          "line": 231
+        },
+        {
+          "heading": "5.3. Проверить расчет стоимости",
+          "level": 3,
+          "line": 246
+        },
+        {
+          "heading": "5.4. Оформить заказ",
+          "level": 3,
+          "line": 258
+        },
+        {
+          "heading": "6. Проверка Печати Договора",
+          "level": 2,
+          "line": 295
+        },
+        {
+          "heading": "7. Поиск Заказа",
+          "level": 2,
+          "line": 318
+        },
+        {
+          "heading": "7.1. Поиск по номеру заказа",
+          "level": 3,
+          "line": 320
+        },
+        {
+          "heading": "7.2. Поиск по паспорту",
+          "level": 3,
+          "line": 338
+        },
+        {
+          "heading": "8. Возврат Автомобиля",
+          "level": 2,
+          "line": 349
+        },
+        {
+          "heading": "9. Офлайн-Режим",
+          "level": 2,
+          "line": 370
+        },
+        {
+          "heading": "9.1. Подготовить кэш для офлайна",
+          "level": 3,
+          "line": 374
+        },
+        {
+          "heading": "9.2. Создать офлайн-заказ",
+          "level": 3,
+          "line": 393
+        },
+        {
+          "heading": "10. Автосинхронизация После Возврата Сети",
+          "level": 2,
+          "line": 442
+        },
+        {
+          "heading": "11. Офлайн-Поиск",
+          "level": 2,
+          "line": 485
+        },
+        {
+          "heading": "11.1. Поиск кэшированного серверного заказа",
+          "level": 3,
+          "line": 487
+        },
+        {
+          "heading": "11.2. Поиск локального несинхронизированного заказа",
+          "level": 3,
+          "line": 499
+        },
+        {
+          "heading": "12. Проверка Защиты От Подделки Сотрудника",
+          "level": 2,
+          "line": 511
+        },
+        {
+          "heading": "13. Проверка Шифрования Данных",
+          "level": 2,
+          "line": 548
+        },
+        {
+          "heading": "13.1. Передача с фронта",
+          "level": 3,
+          "line": 550
+        },
+        {
+          "heading": "13.2. Хранение в БД",
+          "level": 3,
+          "line": 563
+        },
+        {
+          "heading": "13.3. Расшифровка при работе приложения",
+          "level": 3,
+          "line": 577
+        },
+        {
+          "heading": "14. Проверка API Без UI",
+          "level": 2,
+          "line": 587
+        },
+        {
+          "heading": "15. Что Рассказать На Защите",
+          "level": 2,
+          "line": 621
+        },
+        {
+          "heading": "16. Финальный Чек-Лист",
+          "level": 2,
+          "line": 636
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 34
+      }
+    },
+    {
+      "path": "docs/IMPLEMENTATION_GUIDE.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 550,
+      "nonEmptyLines": 396,
+      "sections": [
+        {
+          "heading": "IMPLEMENTATION GUIDE: доведение AutoRent до нового ТЗ",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "1. Что Должно Получиться",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "2. Серверная Схема",
+          "level": 2,
+          "line": 26
+        },
+        {
+          "heading": "3. Аудит Действий",
+          "level": 2,
+          "line": 43
+        },
+        {
+          "heading": "4. Маршрут Синхронизации Логов",
+          "level": 2,
+          "line": 76
+        },
+        {
+          "heading": "5. Клиенты И Шифрование",
+          "level": 2,
+          "line": 110
+        },
+        {
+          "heading": "6. Заказы",
+          "level": 2,
+          "line": 141
+        },
+        {
+          "heading": "7. Базовая API-Обертка",
+          "level": 2,
+          "line": 190
+        },
+        {
+          "heading": "8. IndexedDB",
+          "level": 2,
+          "line": 206
+        },
+        {
+          "heading": "9. Синхронизация",
+          "level": 2,
+          "line": 247
+        },
+        {
+          "heading": "10. Новый Заказ",
+          "level": 2,
+          "line": 277
+        },
+        {
+          "heading": "11. Договор И Печать",
+          "level": 2,
+          "line": 299
+        },
+        {
+          "heading": "12. Поиск",
+          "level": 2,
+          "line": 332
+        },
+        {
+          "heading": "13. Возврат",
+          "level": 2,
+          "line": 360
+        },
+        {
+          "heading": "14. Service Worker",
+          "level": 2,
+          "line": 371
+        },
+        {
+          "heading": "15. Порядок Подключения Скриптов",
+          "level": 2,
+          "line": 392
+        },
+        {
+          "heading": "16. Проверка",
+          "level": 2,
+          "line": 410
+        },
+        {
+          "heading": "16.1. Синтаксис",
+          "level": 3,
+          "line": 412
+        },
+        {
+          "heading": "16.2. Запуск",
+          "level": 3,
+          "line": 421
+        },
+        {
+          "heading": "16.3. Проверка API",
+          "level": 3,
+          "line": 441
+        },
+        {
+          "heading": "16.4. Онлайн-Заказ",
+          "level": 3,
+          "line": 453
+        },
+        {
+          "heading": "16.5. Печать",
+          "level": 3,
+          "line": 476
+        },
+        {
+          "heading": "16.6. Офлайн-Заказ",
+          "level": 3,
+          "line": 487
+        },
+        {
+          "heading": "16.7. Синхронизация",
+          "level": 3,
+          "line": 501
+        },
+        {
+          "heading": "16.8. Офлайн-Поиск",
+          "level": 3,
+          "line": 515
+        },
+        {
+          "heading": "16.9. Возврат",
+          "level": 3,
+          "line": 527
+        },
+        {
+          "heading": "17. Частые Ошибки",
+          "level": 2,
+          "line": 541
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 27
+      }
+    },
+    {
+      "path": "docs/tz-implementation-plan.md",
+      "language": "markdown",
+      "fileCategory": "docs",
+      "totalLines": 503,
+      "nonEmptyLines": 376,
+      "sections": [
+        {
+          "heading": "План доведения проекта до ТЗ",
+          "level": 1,
+          "line": 1
+        },
+        {
+          "heading": "Что Нужно Добавить",
+          "level": 2,
+          "line": 7
+        },
+        {
+          "heading": "Сервер: Изменения БД",
+          "level": 2,
+          "line": 49
+        },
+        {
+          "heading": "Сервер: Логирование",
+          "level": 2,
+          "line": 108
+        },
+        {
+          "heading": "Сервер: Заказы И Флаг Сохранения",
+          "level": 2,
+          "line": 156
+        },
+        {
+          "heading": "Клиент: IndexedDB",
+          "level": 2,
+          "line": 187
+        },
+        {
+          "heading": "Клиент: API-Обертка Для Сети",
+          "level": 2,
+          "line": 221
+        },
+        {
+          "heading": "Клиент: Синхронизация",
+          "level": 2,
+          "line": 244
+        },
+        {
+          "heading": "Клиент: Договор И Печать",
+          "level": 2,
+          "line": 271
+        },
+        {
+          "heading": "Клиент: Офлайн-Поиск",
+          "level": 2,
+          "line": 313
+        },
+        {
+          "heading": "Клиент: Дополнительное Шифрование",
+          "level": 2,
+          "line": 330
+        },
+        {
+          "heading": "Проверка Работы",
+          "level": 2,
+          "line": 344
+        },
+        {
+          "heading": "1. Обычный онлайн-заказ",
+          "level": 3,
+          "line": 346
+        },
+        {
+          "heading": "2. Возврат",
+          "level": 3,
+          "line": 383
+        },
+        {
+          "heading": "3. Блокировка Печати Для Офлайн-Заказа",
+          "level": 3,
+          "line": 402
+        },
+        {
+          "heading": "4. Автосинхронизация После Восстановления Сети",
+          "level": 3,
+          "line": 429
+        },
+        {
+          "heading": "5. Офлайн-Поиск",
+          "level": 3,
+          "line": 445
+        },
+        {
+          "heading": "6. Проверка Неподделываемости Сотрудника",
+          "level": 3,
+          "line": 459
+        },
+        {
+          "heading": "7. Проверка Защиты Данных В БД",
+          "level": 3,
+          "line": 476
+        },
+        {
+          "heading": "Минимальный Порядок Реализации",
+          "level": 2,
+          "line": 491
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "sectionCount": 20
+      }
+    }
+  ]
+}

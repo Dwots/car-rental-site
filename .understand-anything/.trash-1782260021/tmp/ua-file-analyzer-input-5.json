@@ -1,0 +1,9 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "docs/FULL_VERIFICATION.md", "language": "markdown", "sizeLines": 658, "fileCategory": "docs"},
+    {"path": "docs/IMPLEMENTATION_GUIDE.md", "language": "markdown", "sizeLines": 550, "fileCategory": "docs"},
+    {"path": "docs/tz-implementation-plan.md", "language": "markdown", "sizeLines": 503, "fileCategory": "docs"}
+  ],
+  "batchImportData": {"docs/FULL_VERIFICATION.md":[],"docs/IMPLEMENTATION_GUIDE.md":[],"docs/tz-implementation-plan.md":[]}
+}

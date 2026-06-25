@@ -1,0 +1,12 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "server/middleware/auth.js", "language": "javascript", "sizeLines": 21, "fileCategory": "code"},
+    {"path": "server/routes/clients.js", "language": "javascript", "sizeLines": 89, "fileCategory": "code"},
+    {"path": "server/routes/logs.js", "language": "javascript", "sizeLines": 64, "fileCategory": "code"},
+    {"path": "server/routes/orders.js", "language": "javascript", "sizeLines": 223, "fileCategory": "code"},
+    {"path": "server/utils/audit.js", "language": "javascript", "sizeLines": 16, "fileCategory": "code"},
+    {"path": "server/utils/encrypt.js", "language": "javascript", "sizeLines": 28, "fileCategory": "code"}
+  ],
+  "batchImportData": {"server/middleware/auth.js":[],"server/routes/clients.js":["server/db.js","server/middleware/auth.js","server/utils/audit.js","server/utils/encrypt.js"],"server/routes/logs.js":["server/db.js","server/middleware/auth.js","server/utils/audit.js"],"server/routes/orders.js":["server/db.js","server/middleware/auth.js","server/utils/audit.js","server/utils/encrypt.js"],"server/utils/audit.js":["server/db.js"],"server/utils/encrypt.js":[]}
+}

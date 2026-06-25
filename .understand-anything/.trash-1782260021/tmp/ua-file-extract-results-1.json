@@ -1,0 +1,399 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 6,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "server/middleware/auth.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 21,
+      "nonEmptyLines": 17,
+      "functions": [
+        {
+          "name": "authMiddleware",
+          "startLine": 4,
+          "endLine": 19,
+          "params": [
+            "req",
+            "res",
+            "next"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "authMiddleware",
+          "callee": "authHeader.split",
+          "lineNumber": 6
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "res.status(401).json",
+          "lineNumber": 9
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "res.status",
+          "lineNumber": 9
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "jwt.verify",
+          "lineNumber": 13
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "next",
+          "lineNumber": 15
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "res.status(403).json",
+          "lineNumber": 17
+        },
+        {
+          "caller": "authMiddleware",
+          "callee": "res.status",
+          "lineNumber": 17
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/routes/clients.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 89,
+      "nonEmptyLines": 74,
+      "functions": [
+        {
+          "name": "maskPassport",
+          "startLine": 8,
+          "endLine": 11,
+          "params": [
+            "passport"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "maskPassport",
+          "callee": "String(passport).replace",
+          "lineNumber": 9
+        },
+        {
+          "caller": "maskPassport",
+          "callee": "String",
+          "lineNumber": 9
+        },
+        {
+          "caller": "maskPassport",
+          "callee": "digits.slice",
+          "lineNumber": 10
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/routes/logs.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 64,
+      "nonEmptyLines": 55,
+      "functions": [
+        {
+          "name": "parseDetails",
+          "startLine": 55,
+          "endLine": 62,
+          "params": [
+            "value"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "parseDetails",
+          "callee": "JSON.parse",
+          "lineNumber": 58
+        }
+      ],
+      "metrics": {
+        "importCount": 3,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/routes/orders.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 223,
+      "nonEmptyLines": 191,
+      "functions": [
+        {
+          "name": "getMoscowTime",
+          "startLine": 9,
+          "endLine": 11,
+          "params": []
+        },
+        {
+          "name": "toBool",
+          "startLine": 13,
+          "endLine": 15,
+          "params": [
+            "value"
+          ]
+        },
+        {
+          "name": "maskPassport",
+          "startLine": 17,
+          "endLine": 20,
+          "params": [
+            "passport"
+          ]
+        },
+        {
+          "name": "mapOrder",
+          "startLine": 22,
+          "endLine": 32,
+          "params": [
+            "order"
+          ]
+        },
+        {
+          "name": "getOrderWithDetails",
+          "startLine": 34,
+          "endLine": 53,
+          "params": [
+            "id"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "getMoscowTime",
+          "callee": "new Date().toLocaleString",
+          "lineNumber": 10
+        },
+        {
+          "caller": "toBool",
+          "callee": "Boolean",
+          "lineNumber": 14
+        },
+        {
+          "caller": "toBool",
+          "callee": "Number",
+          "lineNumber": 14
+        },
+        {
+          "caller": "maskPassport",
+          "callee": "String(passport).replace",
+          "lineNumber": 18
+        },
+        {
+          "caller": "maskPassport",
+          "callee": "String",
+          "lineNumber": 18
+        },
+        {
+          "caller": "maskPassport",
+          "callee": "digits.slice",
+          "lineNumber": 19
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "decrypt",
+          "lineNumber": 25
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "decrypt",
+          "lineNumber": 26
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "decrypt",
+          "lineNumber": 27
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "decrypt",
+          "lineNumber": 28
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "toBool",
+          "lineNumber": 29
+        },
+        {
+          "caller": "mapOrder",
+          "callee": "toBool",
+          "lineNumber": 30
+        },
+        {
+          "caller": "getOrderWithDetails",
+          "callee": "db.prepare(`\r\n    SELECT\r\n      o.*,\r\n      c.full_name as client_name,\r\n      c.phone as client_phone,\r\n      c.address as client_address,\r\n      c.passport as client_passport,\r\n      c.driver_license as client_driver_license,\r\n      car.brand, car.model, car.year,\r\n      car.reg_number, car.vin, car.color,\r\n      car.price_per_day, car.price_per_hour,\r\n      e.full_name as employee_name\r\n    FROM orders o\r\n    JOIN clients c ON o.client_id = c.id\r\n    JOIN cars car ON o.car_id = car.id\r\n    JOIN employees e ON o.employee_id = e.id\r\n    WHERE o.id = ?\r\n  `).get",
+          "lineNumber": 35
+        },
+        {
+          "caller": "getOrderWithDetails",
+          "callee": "db.prepare",
+          "lineNumber": 35
+        }
+      ],
+      "metrics": {
+        "importCount": 4,
+        "exportCount": 0,
+        "functionCount": 5,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/utils/audit.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 16,
+      "nonEmptyLines": 14,
+      "functions": [
+        {
+          "name": "logAction",
+          "startLine": 3,
+          "endLine": 14,
+          "params": [
+            "employeeId",
+            "action",
+            "entityType"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "logAction",
+          "callee": "db.prepare(`\r\n    INSERT INTO action_logs (employee_id, action, entity_type, entity_id, details_json)\r\n    VALUES (?, ?, ?, ?, ?)\r\n  `).run",
+          "lineNumber": 4
+        },
+        {
+          "caller": "logAction",
+          "callee": "db.prepare",
+          "lineNumber": 4
+        },
+        {
+          "caller": "logAction",
+          "callee": "String",
+          "lineNumber": 11
+        },
+        {
+          "caller": "logAction",
+          "callee": "JSON.stringify",
+          "lineNumber": 12
+        }
+      ],
+      "metrics": {
+        "importCount": 1,
+        "exportCount": 0,
+        "functionCount": 1,
+        "classCount": 0
+      }
+    },
+    {
+      "path": "server/utils/encrypt.js",
+      "language": "javascript",
+      "fileCategory": "code",
+      "totalLines": 28,
+      "nonEmptyLines": 24,
+      "functions": [
+        {
+          "name": "encrypt",
+          "startLine": 7,
+          "endLine": 13,
+          "params": [
+            "text"
+          ]
+        },
+        {
+          "name": "decrypt",
+          "startLine": 15,
+          "endLine": 26,
+          "params": [
+            "text"
+          ]
+        }
+      ],
+      "callGraph": [
+        {
+          "caller": "encrypt",
+          "callee": "crypto.randomBytes",
+          "lineNumber": 8
+        },
+        {
+          "caller": "encrypt",
+          "callee": "crypto.createCipheriv",
+          "lineNumber": 9
+        },
+        {
+          "caller": "encrypt",
+          "callee": "cipher.update",
+          "lineNumber": 10
+        },
+        {
+          "caller": "encrypt",
+          "callee": "String",
+          "lineNumber": 10
+        },
+        {
+          "caller": "encrypt",
+          "callee": "cipher.final",
+          "lineNumber": 11
+        },
+        {
+          "caller": "encrypt",
+          "callee": "iv.toString",
+          "lineNumber": 12
+        },
+        {
+          "caller": "decrypt",
+          "callee": "text.split",
+          "lineNumber": 17
+        },
+        {
+          "caller": "decrypt",
+          "callee": "Buffer.from",
+          "lineNumber": 18
+        },
+        {
+          "caller": "decrypt",
+          "callee": "crypto.createDecipheriv",
+          "lineNumber": 19
+        },
+        {
+          "caller": "decrypt",
+          "callee": "decipher.update",
+          "lineNumber": 20
+        },
+        {
+          "caller": "decrypt",
+          "callee": "decipher.final",
+          "lineNumber": 21
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 2,
+        "classCount": 0
+      }
+    }
+  ]
+}

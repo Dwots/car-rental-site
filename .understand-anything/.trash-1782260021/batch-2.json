@@ -1,0 +1,214 @@
+{
+  "nodes": [
+    {
+      "id": "file:server/db.js",
+      "type": "file",
+      "name": "db.js",
+      "filePath": "server/db.js",
+      "summary": "Инициализирует подключение к базе данных better-sqlite3, включает режим WAL для производительности и экспортирует единый экземпляр БД для всего сервера.",
+      "tags": ["database", "singleton", "service", "configuration"],
+      "complexity": "simple",
+      "languageNotes": "Синглтон-модуль: единственный экземпляр Database переиспользуется во всех роутах через require."
+    },
+    {
+      "id": "file:server/index.js",
+      "type": "file",
+      "name": "index.js",
+      "filePath": "server/index.js",
+      "summary": "Точка входа Express-сервера: настраивает CORS и статику, монтирует все API-роуты, инициализирует схему БД и тестовые данные, запускает прослушивание порта.",
+      "tags": ["entry-point", "service", "middleware", "api-handler", "database"],
+      "complexity": "moderate",
+      "languageNotes": "Функция initDB выполняет миграции из SQL-файла и сидинг тестовых данных (сотрудник admin и парк автомобилей) при старте."
+    },
+    {
+      "id": "file:server/routes/auth.js",
+      "type": "file",
+      "name": "auth.js",
+      "filePath": "server/routes/auth.js",
+      "summary": "Express-роутер аутентификации: обрабатывает POST /api/auth/login, проверяет пароль через bcrypt и выдаёт JWT-токен со сроком действия 8 часов.",
+      "tags": ["api-handler", "security", "validation", "service"],
+      "complexity": "simple",
+      "languageNotes": "JWT подписывается секретом из process.env.JWT_SECRET; вход сотрудника логируется через logAction."
+    },
+    {
+      "id": "file:server/routes/cars.js",
+      "type": "file",
+      "name": "cars.js",
+      "filePath": "server/routes/cars.js",
+      "summary": "Express-роутер для автомобилей: предоставляет защищённые authMiddleware эндпоинты для списка машин, доступных машин и получения автомобиля по id.",
+      "tags": ["api-handler", "middleware", "data-model", "service"],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:server/index.js:initDB",
+      "type": "function",
+      "name": "initDB",
+      "filePath": "server/index.js",
+      "lineRange": [38, 73],
+      "summary": "Применяет SQL-миграцию для создания таблиц и наполняет БД тестовыми данными: создаёт сотрудника admin с bcrypt-хешем пароля и парк из шести автомобилей, если они отсутствуют.",
+      "tags": ["database", "migration", "initialization", "seed"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:server/routes/auth.js:POST-/api/auth/login",
+      "type": "endpoint",
+      "name": "POST /api/auth/login",
+      "filePath": "server/routes/auth.js",
+      "lineRange": [10, 46],
+      "summary": "Эндпоинт входа сотрудника: валидирует логин и пароль, сверяет bcrypt-хеш, возвращает JWT-токен и данные сотрудника.",
+      "tags": ["api-handler", "security", "validation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars",
+      "type": "endpoint",
+      "name": "GET /api/cars",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [7, 18],
+      "summary": "Возвращает список автомобилей с опциональной фильтрацией по статусу через query-параметр.",
+      "tags": ["api-handler", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars/available",
+      "type": "endpoint",
+      "name": "GET /api/cars/available",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [21, 26],
+      "summary": "Возвращает только автомобили со статусом available.",
+      "tags": ["api-handler", "data-model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:server/routes/cars.js:GET-/api/cars/:id",
+      "type": "endpoint",
+      "name": "GET /api/cars/:id",
+      "filePath": "server/routes/cars.js",
+      "lineRange": [29, 33],
+      "summary": "Возвращает автомобиль по идентификатору или ошибку 404, если он не найден.",
+      "tags": ["api-handler", "data-model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/cars.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/clients.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/logs.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "file:server/routes/orders.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/utils/audit.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "file:server/db.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "file:server/middleware/auth.js",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:server/index.js",
+      "target": "function:server/index.js:initDB",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "endpoint:server/routes/auth.js:POST-/api/auth/login",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars/available",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "file:server/routes/cars.js",
+      "target": "endpoint:server/routes/cars.js:GET-/api/cars/:id",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1.0
+    },
+    {
+      "source": "function:server/index.js:initDB",
+      "target": "file:server/db.js",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:server/routes/auth.js",
+      "target": "file:server/utils/audit.js",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    }
+  ]
+}

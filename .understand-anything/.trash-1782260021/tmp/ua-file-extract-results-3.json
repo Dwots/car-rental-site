@@ -1,0 +1,108 @@
+{
+  "scriptCompleted": true,
+  "filesAnalyzed": 1,
+  "filesSkipped": [],
+  "results": [
+    {
+      "path": "server/migrations/001_create_tables.sql",
+      "language": "sql",
+      "fileCategory": "data",
+      "totalLines": 63,
+      "nonEmptyLines": 59,
+      "definitions": [
+        {
+          "name": "employees",
+          "kind": "table",
+          "fields": [
+            "id",
+            "login",
+            "password_hash",
+            "full_name",
+            "created_at"
+          ],
+          "startLine": 1,
+          "endLine": 7
+        },
+        {
+          "name": "clients",
+          "kind": "table",
+          "fields": [
+            "id",
+            "passport",
+            "full_name",
+            "phone",
+            "address",
+            "driver_license",
+            "created_at"
+          ],
+          "startLine": 9,
+          "endLine": 17
+        },
+        {
+          "name": "cars",
+          "kind": "table",
+          "fields": [
+            "id",
+            "brand",
+            "model",
+            "year",
+            "reg_number",
+            "vin",
+            "color",
+            "price_per_day",
+            "price_per_hour",
+            "status"
+          ],
+          "startLine": 19,
+          "endLine": 30
+        },
+        {
+          "name": "orders",
+          "kind": "table",
+          "fields": [
+            "id",
+            "employee_id",
+            "client_id",
+            "car_id",
+            "duration",
+            "duration_type",
+            "total_cost",
+            "status",
+            "created_at",
+            "returned_at",
+            "synced",
+            "is_saved_to_db",
+            "contract_html",
+            "client_snapshot_json",
+            "car_snapshot_json",
+            "printed_at"
+          ],
+          "startLine": 32,
+          "endLine": 52
+        },
+        {
+          "name": "action_logs",
+          "kind": "table",
+          "fields": [
+            "id",
+            "employee_id",
+            "action",
+            "entity_type",
+            "entity_id",
+            "details_json",
+            "created_at"
+          ],
+          "startLine": 54,
+          "endLine": 63
+        }
+      ],
+      "metrics": {
+        "importCount": 0,
+        "exportCount": 0,
+        "functionCount": 0,
+        "classCount": 0,
+        "definitionCount": 5
+      }
+    }
+  ]
+}

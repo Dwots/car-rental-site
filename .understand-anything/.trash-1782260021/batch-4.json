@@ -1,0 +1,115 @@
+{
+  "nodes": [
+    {
+      "id": "file:client/pages/cars.html",
+      "type": "file",
+      "name": "cars.html",
+      "filePath": "client/pages/cars.html",
+      "summary": "Страница каталога автомобилей CRM с боковой навигацией, кнопками фильтрации по статусу (доступен, в аренде, обслуживание) и таблицей автопарка. Загружает контроллер pages/cars.js и общий набор API/утилитарных модулей.",
+      "tags": ["component", "page", "data-table", "ui", "vanilla-js"],
+      "complexity": "moderate",
+      "languageNotes": "Статическая HTML-разметка; динамика реализована подключаемыми скриптами, рендеринг строк таблицы выполняется в cars.js."
+    },
+    {
+      "id": "file:client/pages/contract.html",
+      "type": "file",
+      "name": "contract.html",
+      "filePath": "client/pages/contract.html",
+      "summary": "Страница печати договора аренды: формирует документ с номером заказа, штрих-кодом (через библиотеку JsBarcode) и блоками подписей. Содержит обширные встроенные стили и подключает print.css для печати.",
+      "tags": ["component", "page", "print", "barcode", "ui"],
+      "complexity": "complex",
+      "languageNotes": "Использует внешнюю CDN-библиотеку JsBarcode и отдельный print.css; большой блок встроенного CSS для верстки печатного документа."
+    },
+    {
+      "id": "file:client/pages/login.html",
+      "type": "file",
+      "name": "login.html",
+      "filePath": "client/pages/login.html",
+      "summary": "Страница входа в CRM с формой логина и пароля. Минимальный набор скриптов (config, auth, storage, регистрация service worker и контроллер login.js) без боковой навигации.",
+      "tags": ["component", "page", "auth", "form", "ui"],
+      "complexity": "simple",
+      "languageNotes": "Единственная страница без layout-сайдбара; форма обрабатывается контроллером login.js через api/auth.js."
+    },
+    {
+      "id": "file:client/pages/logs.html",
+      "type": "file",
+      "name": "logs.html",
+      "filePath": "client/pages/logs.html",
+      "summary": "Страница журнала действий сотрудников и офлайн-синхронизаций с кнопкой обновления и таблицей событий (дата, действие, сотрудник, объект, детали). Управляется контроллером pages/logs.js.",
+      "tags": ["component", "page", "data-table", "audit-log", "ui"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:client/pages/new-order.html",
+      "type": "file",
+      "name": "new-order.html",
+      "filePath": "client/pages/new-order.html",
+      "summary": "Многошаговая форма оформления нового заказа аренды: выбор клиента по паспорту, выбор автомобиля, указание срока и автоматический расчёт стоимости. Управляется контроллером pages/new-order.js.",
+      "tags": ["component", "page", "form", "wizard", "ui"],
+      "complexity": "moderate",
+      "languageNotes": "Трёхшаговый мастер; динамическая подгрузка списка автомобилей и расчёт цены выполняются в new-order.js."
+    },
+    {
+      "id": "file:client/pages/return.html",
+      "type": "file",
+      "name": "return.html",
+      "filePath": "client/pages/return.html",
+      "summary": "Страница возврата автомобиля: поиск заказа по номеру и оформление возврата с выводом деталей и сообщения об успехе. Управляется контроллером pages/return.js.",
+      "tags": ["component", "page", "form", "ui", "vanilla-js"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:client/pages/search.html",
+      "type": "file",
+      "name": "search.html",
+      "filePath": "client/pages/search.html",
+      "summary": "Страница поиска заказа с переключением между поиском по номеру заказа и по паспорту клиента. Содержит встроенный скрипт switchTab для смены режима и контроллер pages/search.js для выполнения поиска.",
+      "tags": ["component", "page", "search", "ui", "vanilla-js"],
+      "complexity": "moderate",
+      "languageNotes": "Содержит встроенную функцию switchTab, переключающую режим ввода (номер заказа / паспорт) и подсказки; поддерживает ввод штрих-кода сканером."
+    }
+  ],
+  "edges": [
+    {"source": "file:client/pages/cars.html", "target": "file:client/js/pages/cars.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/cars.html", "target": "file:client/js/api/cars.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/cars.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/cars.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/cars.html", "target": "file:client/js/utils/format.js", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/contract.html", "target": "file:client/js/pages/contract.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/contract.html", "target": "file:client/js/api/orders.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/contract.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/contract.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/contract.html", "target": "file:client/css/print.css", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/login.html", "target": "file:client/js/pages/login.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/login.html", "target": "file:client/js/api/auth.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/login.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/login.html", "target": "file:client/js/utils/storage.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/login.html", "target": "file:client/js/utils/sw-register.js", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/logs.html", "target": "file:client/js/pages/logs.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/logs.html", "target": "file:client/js/api/logs.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/logs.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/logs.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/logs.html", "target": "file:client/js/utils/sync.js", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/pages/new-order.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/api/clients.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/api/cars.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/api/orders.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/new-order.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/return.html", "target": "file:client/js/pages/return.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/return.html", "target": "file:client/js/api/orders.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/return.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/return.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5},
+
+    {"source": "file:client/pages/search.html", "target": "file:client/js/pages/search.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/search.html", "target": "file:client/js/api/orders.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/search.html", "target": "file:client/js/api/clients.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/search.html", "target": "file:client/js/api/config.js", "type": "related", "direction": "forward", "weight": 0.5},
+    {"source": "file:client/pages/search.html", "target": "file:client/js/utils/auth-guard.js", "type": "related", "direction": "forward", "weight": 0.5}
+  ]
+}

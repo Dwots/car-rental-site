@@ -1,0 +1,10 @@
+{
+  "projectRoot": "C:/Users/kirill/Documents/vscode/FigZnaet/Exams/JS/src/car-rental-site",
+  "batchFiles": [
+    {"path": "server/db.js", "language": "javascript", "sizeLines": 11, "fileCategory": "code"},
+    {"path": "server/index.js", "language": "javascript", "sizeLines": 80, "fileCategory": "code"},
+    {"path": "server/routes/auth.js", "language": "javascript", "sizeLines": 48, "fileCategory": "code"},
+    {"path": "server/routes/cars.js", "language": "javascript", "sizeLines": 35, "fileCategory": "code"}
+  ],
+  "batchImportData": {"server/db.js":[],"server/index.js":["server/db.js","server/routes/auth.js","server/routes/cars.js","server/routes/clients.js","server/routes/logs.js","server/routes/orders.js"],"server/routes/auth.js":["server/db.js","server/utils/audit.js"],"server/routes/cars.js":["server/db.js","server/middleware/auth.js"]}
+}

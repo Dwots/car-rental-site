@@ -1,0 +1,1175 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "14603392f396d559be1e91f0d3f9f307c6ceb7a9",
+  "generatedAt": "2026-06-24T00:13:32.411Z",
+  "files": {
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "06296d2ddd6e1812026b35522e02fe858301b533a61cf40e54a76ce9ee8fce46",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/config.json": {
+      "filePath": ".understand-anything/config.json",
+      "contentHash": "92a57d40119389447c9d824b1710815556af58055f633e0b4d7d84e96a63e9da",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2,
+      "hasStructuralAnalysis": true
+    },
+    "client/css/main.css": {
+      "filePath": "client/css/main.css",
+      "contentHash": "fdc2cde7fde63d5864c51f0a1a40368f4fa6c9a0e9e550abf8764aa7bab03126",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 523,
+      "hasStructuralAnalysis": false
+    },
+    "client/css/print.css": {
+      "filePath": "client/css/print.css",
+      "contentHash": "7ef60fd5dd6990a151248700bf2672c2b3a5e46c9d88dc38a19ef12167ea3802",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 54,
+      "hasStructuralAnalysis": false
+    },
+    "client/js/api/auth.js": {
+      "filePath": "client/js/api/auth.js",
+      "contentHash": "03aeb04e608f594c86710dc57c970b3133d9e8f27e61ce9779bb5fd4604fdf78",
+      "functions": [
+        {
+          "name": "loginRequest",
+          "params": [
+            "login",
+            "password"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/api/cars.js": {
+      "filePath": "client/js/api/cars.js",
+      "contentHash": "875b488a8692be42f51342635e53ae073afa0a56a2b0aeaaa9678e7372fa2238",
+      "functions": [
+        {
+          "name": "getCars",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "getAvailableCars",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 9,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/api/clients.js": {
+      "filePath": "client/js/api/clients.js",
+      "contentHash": "7d68b94d45164b2ea70dead5f431e8851452dc96eaf897213b8859fc40c036aa",
+      "functions": [
+        {
+          "name": "findClient",
+          "params": [
+            "passport"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "createClient",
+          "params": [
+            "data"
+          ],
+          "exported": false,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/api/config.js": {
+      "filePath": "client/js/api/config.js",
+      "contentHash": "ed8c0e9036b9c0b320ee7fb05c28989be64eb280e197cdebd628e96577995d78",
+      "functions": [
+        {
+          "name": "readAuthToken",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "removeAuthToken",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "apiRequest",
+          "params": [
+            "method",
+            "url"
+          ],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/api/logs.js": {
+      "filePath": "client/js/api/logs.js",
+      "contentHash": "6e319ed1c0fb7f3146487f9b549fab71559c06dbfa038df7b603c205a96ee0fb",
+      "functions": [
+        {
+          "name": "getLogs",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 4,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/api/orders.js": {
+      "filePath": "client/js/api/orders.js",
+      "contentHash": "5d8441dcc7c9dfeb3a29328c432f34d11f11a32bc6c65d1ac8ae276c91c7d689",
+      "functions": [
+        {
+          "name": "createOrder",
+          "params": [
+            "data"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getOrder",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "returnOrder",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "markOrderPrinted",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getOrdersByPassport",
+          "params": [
+            "passport"
+          ],
+          "exported": false,
+          "lineCount": 3
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/cars.js": {
+      "filePath": "client/js/pages/cars.js",
+      "contentHash": "8c0a6f67d8ccc9d43c357a11615110370dc351dbe834001c87a92d9d45de5b8f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 60,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/contract.js": {
+      "filePath": "client/js/pages/contract.js",
+      "contentHash": "dee8be6c08105f8fe5a24f98ec37fc9aa500e3efea00b8414b33e3999d262b60",
+      "functions": [
+        {
+          "name": "loadServerOrder",
+          "params": [
+            "orderId"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "normalizeOrder",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "getOrderNumber",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "setupPrint",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 26
+        },
+        {
+          "name": "renderContract",
+          "params": [
+            "o"
+          ],
+          "exported": false,
+          "lineCount": 138
+        },
+        {
+          "name": "generateBarcode",
+          "params": [
+            "orderId"
+          ],
+          "exported": false,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 310,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/login.js": {
+      "filePath": "client/js/pages/login.js",
+      "contentHash": "09ba44fdac086e027a8653a095ebc1c5bc2ba756bd2c4ce0cd1ba2a1ea8a785c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/logs.js": {
+      "filePath": "client/js/pages/logs.js",
+      "contentHash": "eee01a3fa4d971ab612ec808244784e96dc0c41d523d6dce0c50941e52ff3ee7",
+      "functions": [
+        {
+          "name": "getActionLabel",
+          "params": [
+            "action"
+          ],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "getActionClass",
+          "params": [
+            "action"
+          ],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "formatDetails",
+          "params": [
+            "details"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "escapeHtml",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/new-order.js": {
+      "filePath": "client/js/pages/new-order.js",
+      "contentHash": "64023024901f366b4203ae0bcbc565a492a7db340ed4aa1748810d37b6d9eb09",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 559,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/return.js": {
+      "filePath": "client/js/pages/return.js",
+      "contentHash": "0b76577694a90937c465d7a0bafbfcd1dccf4c444578f5cb88e554b8441b378d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/pages/search.js": {
+      "filePath": "client/js/pages/search.js",
+      "contentHash": "2310c718b39bc62772541821ddac04095422a0ab57a76f109020f1f293f5c48d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 267,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/auth-guard.js": {
+      "filePath": "client/js/utils/auth-guard.js",
+      "contentHash": "c0ddb829014f4ad4e588b496898de53568434d729fc7a0a54cbaa6477fa87451",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/crypto.js": {
+      "filePath": "client/js/utils/crypto.js",
+      "contentHash": "9c606d07cc0c4f1be288e1075dda0340401817e7afe344554858de7ba6d3bd8b",
+      "functions": [
+        {
+          "name": "toHex",
+          "params": [
+            "buffer"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "fromHex",
+          "params": [
+            "hex"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "importKey",
+          "params": [],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "encryptText",
+          "params": [
+            "plainText"
+          ],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 28,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/format.js": {
+      "filePath": "client/js/utils/format.js",
+      "contentHash": "5367b14516ce5df31fc022817202707e96a0991d6873a3ff3cec58085244a902",
+      "functions": [
+        {
+          "name": "formatPrice",
+          "params": [
+            "price"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "parseLocalDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "formatDate",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "formatDateOnly",
+          "params": [
+            "dateStr"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "formatDuration",
+          "params": [
+            "duration",
+            "type"
+          ],
+          "exported": false,
+          "lineCount": 5
+        },
+        {
+          "name": "pluralize",
+          "params": [
+            "n",
+            "one",
+            "few",
+            "many"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "getStatusLabel",
+          "params": [
+            "status"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "getStatusClass",
+          "params": [
+            "status"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "formatDriverLicense",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "validateDriverLicense",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 17
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 104,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/offline-db.js": {
+      "filePath": "client/js/utils/offline-db.js",
+      "contentHash": "cef4b1402bc615e325447e7a254ef2fff0e45a6fc2dfdea8b1a7a97d96a868dd",
+      "functions": [
+        {
+          "name": "isQuotaError",
+          "params": [
+            "err"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "openDb",
+          "params": [],
+          "exported": false,
+          "lineCount": 25
+        },
+        {
+          "name": "put",
+          "params": [
+            "storeName",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "putWithCacheCleanup",
+          "params": [
+            "storeName",
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "getAll",
+          "params": [
+            "storeName"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "getByKey",
+          "params": [
+            "storeName",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "deleteByKey",
+          "params": [
+            "storeName",
+            "key"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "clearStore",
+          "params": [
+            "storeName"
+          ],
+          "exported": false,
+          "lineCount": 10
+        },
+        {
+          "name": "clearOfflineCache",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "replaceStore",
+          "params": [
+            "storeName",
+            "values"
+          ],
+          "exported": false,
+          "lineCount": 12
+        },
+        {
+          "name": "savePendingOrder",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "getPendingOrder",
+          "params": [
+            "localId"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "getPendingOrders",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "deletePendingOrder",
+          "params": [
+            "localId"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "saveCachedOrder",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "getCachedOrder",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "getCachedOrders",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "saveCachedClient",
+          "params": [
+            "client"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "getCachedClient",
+          "params": [
+            "passport"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "saveCachedCars",
+          "params": [
+            "cars"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "getCachedCars",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "saveCachedCar",
+          "params": [
+            "car"
+          ],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "markCachedCarStatus",
+          "params": [
+            "carId",
+            "status"
+          ],
+          "exported": false,
+          "lineCount": 8
+        },
+        {
+          "name": "saveOfflineLog",
+          "params": [
+            "action",
+            "entityType"
+          ],
+          "exported": false,
+          "lineCount": 14
+        },
+        {
+          "name": "getOfflineLogs",
+          "params": [],
+          "exported": false,
+          "lineCount": 1
+        },
+        {
+          "name": "deleteOfflineLog",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 1
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 168,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/storage.js": {
+      "filePath": "client/js/utils/storage.js",
+      "contentHash": "92f44e51762f8c71a37c1e2a2927cc5c7b326a89b5d63b8904cd71176ced2a1d",
+      "functions": [
+        {
+          "name": "saveAuth",
+          "params": [
+            "token",
+            "employee"
+          ],
+          "exported": false,
+          "lineCount": 22
+        },
+        {
+          "name": "getToken",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "getEmployee",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "clearAuth",
+          "params": [],
+          "exported": false,
+          "lineCount": 6
+        },
+        {
+          "name": "clearAppStorage",
+          "params": [],
+          "exported": false,
+          "lineCount": 7
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/sw-register.js": {
+      "filePath": "client/js/utils/sw-register.js",
+      "contentHash": "9ddea625441e63ca0b4ba48ee08b22af64f75954361b98ce0e0ce2882ba2c940",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "client/js/utils/sync.js": {
+      "filePath": "client/js/utils/sync.js",
+      "contentHash": "54e3bf136e6ab005e5b05ff396341a4484d0415a5622cd340996d422268911e3",
+      "functions": [
+        {
+          "name": "syncPendingOrders",
+          "params": [],
+          "exported": false,
+          "lineCount": 78
+        },
+        {
+          "name": "syncOfflineLogs",
+          "params": [],
+          "exported": false,
+          "lineCount": 20
+        },
+        {
+          "name": "isCarConflict",
+          "params": [
+            "err"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "cleanupSyncedPendingOrder",
+          "params": [
+            "local"
+          ],
+          "exported": false,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 125,
+      "hasStructuralAnalysis": true
+    },
+    "client/pages/cars.html": {
+      "filePath": "client/pages/cars.html",
+      "contentHash": "defc711aae8d338d5d76eb30a28e7d2240b391ad0016eed7adba0a41bb9e9065",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 95,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/contract.html": {
+      "filePath": "client/pages/contract.html",
+      "contentHash": "dd1b457f20d2a8949fa153612c2e20dbe82c265fbef7683fd106e471d86ed2bb",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 189,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/login.html": {
+      "filePath": "client/pages/login.html",
+      "contentHash": "016ddd2cada11a40fcac14e27c799134af89a7b2b0ca91ee5884469807cf80d9",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/logs.html": {
+      "filePath": "client/pages/logs.html",
+      "contentHash": "ca7e6fefa24efdb0d34314d6eaad0db257cc7977161bdbb359daf875732805c0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 90,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/new-order.html": {
+      "filePath": "client/pages/new-order.html",
+      "contentHash": "620ee932e6d020e600c0bd73eced57f97cc92c131d1d18abc40356875f9b1758",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 118,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/return.html": {
+      "filePath": "client/pages/return.html",
+      "contentHash": "507510191d490e16420be811a67426023a6db992a1a273228e1b06c568159133",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 78,
+      "hasStructuralAnalysis": false
+    },
+    "client/pages/search.html": {
+      "filePath": "client/pages/search.html",
+      "contentHash": "beeede8cef58fc5f6b28be5da9b8fcb367b7dfcd1c8124cf31c7e9ce589420e3",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 127,
+      "hasStructuralAnalysis": false
+    },
+    "client/sw.js": {
+      "filePath": "client/sw.js",
+      "contentHash": "be89d9a39165c92a5fdb90458852fecd9021936f057c0303c3c3e9260559091c",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 99,
+      "hasStructuralAnalysis": true
+    },
+    "docs/FULL_VERIFICATION.md": {
+      "filePath": "docs/FULL_VERIFICATION.md",
+      "contentHash": "851b64449b5026642d0d0bf7250f23c0f1642e774675fb3de3489aa2193bc158",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 659,
+      "hasStructuralAnalysis": true
+    },
+    "docs/IMPLEMENTATION_GUIDE.md": {
+      "filePath": "docs/IMPLEMENTATION_GUIDE.md",
+      "contentHash": "4caf0ccb2d1d08479a007b3a6ce8a27c47a6117c1f053039370cd3f62819ac91",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 551,
+      "hasStructuralAnalysis": true
+    },
+    "docs/tz-implementation-plan.md": {
+      "filePath": "docs/tz-implementation-plan.md",
+      "contentHash": "9498c5763248187b95064473d3bf5025bd0f91e2fc47cee2b6bd32c72cf3df5f",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 504,
+      "hasStructuralAnalysis": true
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "4b7bb436a7e4db558dc2822987bff9bd08382e353bf10e6ba64325ceaa60db80",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1,
+      "hasStructuralAnalysis": true
+    },
+    "server/db.js": {
+      "filePath": "server/db.js",
+      "contentHash": "b861ced7af890638d191d916593923e559272c037ecb6b3e181864876f6da8b0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "server/index.js": {
+      "filePath": "server/index.js",
+      "contentHash": "e9fa91565bb7d0f1ca9c55ff80f469a5357f6c7253a20e40f0af4800bb8c8f9c",
+      "functions": [
+        {
+          "name": "initDB",
+          "params": [],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 81,
+      "hasStructuralAnalysis": true
+    },
+    "server/middleware/auth.js": {
+      "filePath": "server/middleware/auth.js",
+      "contentHash": "705e27ce258c202ca5d846208ffca553d2482158c634306c272410903c7e30d4",
+      "functions": [
+        {
+          "name": "authMiddleware",
+          "params": [
+            "req",
+            "res",
+            "next"
+          ],
+          "exported": false,
+          "lineCount": 16
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "server/migrations/001_create_tables.sql": {
+      "filePath": "server/migrations/001_create_tables.sql",
+      "contentHash": "0f7ab3aeeec32d830abcbcb48fdd69bef266bce54751fef681f1ec2cb0cffcbf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 64,
+      "hasStructuralAnalysis": true
+    },
+    "server/package.json": {
+      "filePath": "server/package.json",
+      "contentHash": "53b62a7f995e5093ef17373a10c349bb6eda08fa2105226d3f1e182ffbfb7831",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 27,
+      "hasStructuralAnalysis": true
+    },
+    "server/routes/auth.js": {
+      "filePath": "server/routes/auth.js",
+      "contentHash": "e059ce6ba2d6e8153402280f90722809f6bf9b6d98d89b4f1ff08e6a4132c6bd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 49,
+      "hasStructuralAnalysis": true
+    },
+    "server/routes/cars.js": {
+      "filePath": "server/routes/cars.js",
+      "contentHash": "b07a9debeb05eb12fad18dbff42e6a47c9a37f82e7325213fe25c3d27daf935e",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 36,
+      "hasStructuralAnalysis": true
+    },
+    "server/routes/clients.js": {
+      "filePath": "server/routes/clients.js",
+      "contentHash": "c11dcbdb519fc620ce93eb17b75bee771b650a14ce6fe8f852b76dea687bf7f0",
+      "functions": [
+        {
+          "name": "maskPassport",
+          "params": [
+            "passport"
+          ],
+          "exported": false,
+          "lineCount": 4
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 90,
+      "hasStructuralAnalysis": true
+    },
+    "server/routes/logs.js": {
+      "filePath": "server/routes/logs.js",
+      "contentHash": "0481eaa6f5e9063ab6c138befe31d2e29b7c15c5c24033ff5c3e9d172f97cc4c",
+      "functions": [
+        {
+          "name": "parseDetails",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 8
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 65,
+      "hasStructuralAnalysis": true
+    },
+    "server/routes/orders.js": {
+      "filePath": "server/routes/orders.js",
+      "contentHash": "504709a68b3f91e5308df471990002477e041eb21322addaebf852f257df903a",
+      "functions": [
+        {
+          "name": "getMoscowTime",
+          "params": [],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "toBool",
+          "params": [
+            "value"
+          ],
+          "exported": false,
+          "lineCount": 3
+        },
+        {
+          "name": "maskPassport",
+          "params": [
+            "passport"
+          ],
+          "exported": false,
+          "lineCount": 4
+        },
+        {
+          "name": "mapOrder",
+          "params": [
+            "order"
+          ],
+          "exported": false,
+          "lineCount": 11
+        },
+        {
+          "name": "getOrderWithDetails",
+          "params": [
+            "id"
+          ],
+          "exported": false,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 224,
+      "hasStructuralAnalysis": true
+    },
+    "server/utils/audit.js": {
+      "filePath": "server/utils/audit.js",
+      "contentHash": "3ac17aa718c2dcb1b8928b2cea480a33772eb7718b86a6f7653f3d5dd0d51e89",
+      "functions": [
+        {
+          "name": "logAction",
+          "params": [
+            "employeeId",
+            "action",
+            "entityType"
+          ],
+          "exported": false,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "server/utils/encrypt.js": {
+      "filePath": "server/utils/encrypt.js",
+      "contentHash": "10ff9a6136d0ce4dadeaaeacb90f7065bd80e8426dd3818c5c29eb38ef9e7448",
+      "functions": [
+        {
+          "name": "encrypt",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 7
+        },
+        {
+          "name": "decrypt",
+          "params": [
+            "text"
+          ],
+          "exported": false,
+          "lineCount": 12
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 29,
+      "hasStructuralAnalysis": true
+    },
+    "task_text/Задача от  20.1  апреля.odt": {
+      "filePath": "task_text/Задача от  20.1  апреля.odt",
+      "contentHash": "e5a70fe1f8dd2e9867f55d63f795a57bd4f33e9eabfabd0fb03012762c687e23",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 145,
+      "hasStructuralAnalysis": false
+    }
+  }
+}
